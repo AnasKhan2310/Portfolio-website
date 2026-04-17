@@ -11,38 +11,20 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="lg:col-span-2"
+          className="lg:col-span-1"
         >
           <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-6">
             Welcome to my portfolio
           </span>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-4">
-            <h1 className="text-5xl md:text-7xl font-black leading-tight">
-              I'm <span className="text-accent">Anas Khan</span>
-            </h1>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, rotate: 10 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6, type: 'spring' }}
-              className="w-48 h-64 md:w-72 md:h-96 rounded-2xl overflow-hidden border-4 border-accent shadow-2xl shrink-0 relative group bg-accent/5"
-            >
-              <img
-                src={profilePic}
-                alt="Muhammad Anas Khan"
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
-          </div>
+          <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+            I'm <span className="text-accent">Anas Khan</span>
+          </h1>
           <div className="w-20 h-1.5 bg-accent mb-6" />
           <h3 className="text-xl md:text-2xl font-bold text-near-black/80 mb-6 uppercase tracking-wide">
             AI & Data Science Engineer / AI Developer
           </h3>
           <p className="text-muted-text text-lg max-w-xl mb-10 leading-relaxed">
-            I'm a passionate AI & Data Science Engineer currently studying at Federal Urdu University Karachi. 
-            I specialize in building intelligent systems, predictive models, and deep learning architectures 
-            to solve real-world problems.
+            Turning complex data into high-ROI intelligence. I build production-ready AI systems and predictive models that automate decisions, solve critical challenges, and drive measurable business growth.
           </p>
           <a
             href="#about"
@@ -51,6 +33,23 @@ export default function Hero() {
             <span>More About Me</span>
             <ArrowRight size={20} />
           </a>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5, rotate: 10 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6, type: 'spring' }}
+          className="flex justify-center lg:justify-end"
+        >
+          <div className="w-48 h-64 md:w-72 md:h-96 rounded-2xl overflow-hidden border-4 border-accent shadow-2xl shrink-0 relative group bg-accent/5">
+            <img
+              src={profilePic}
+              alt="Muhammad Anas Khan"
+              className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+              referrerPolicy="no-referrer"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

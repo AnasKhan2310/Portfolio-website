@@ -78,9 +78,8 @@ export default function About() {
         >
           <h2 className="text-4xl md:text-5xl font-black mb-8">About Me</h2>
           <p className="text-muted-text text-lg max-w-3xl leading-relaxed">
-            I'm Muhammad Anas Khan, an AI & Data Science Engineer passionate about turning data into actionable intelligence. 
-            With a strong foundation in Computer Science from Federal Urdu University, I focus on the intersection of 
-            mathematics, programming, and domain expertise to build models that learn and adapt.
+            I am a results-oriented AI & Data Science Engineer dedicated to extracting maximum value from your data. 
+            By bridging the gap between advanced research and practical business solutions, I deliver high-precision Machine Learning models that transform how you operate, compete, and scale.
           </p>
         </motion.div>
 

@@ -10,7 +10,7 @@ const projects = [
     title: 'Heart Disease Predictor',
     category: 'MACHINE LEARNING',
     tech: 'Python, Scikit-learn, ML Classification',
-    description: 'A predictive model that analyzes patient data to determine the likelihood of heart disease using various machine learning classification algorithms.',
+    description: 'A high-precision healthcare model designed to save lives by identifying early-stage heart disease risks through advanced statistical patterns.',
     github: 'https://github.com/AnasKhan2310/heart-disease-predictor',
     emoji: '❤️',
     featured: true,
@@ -19,7 +19,7 @@ const projects = [
     title: 'AI Invoice Pro',
     category: 'AI & CHATBOTS',
     tech: 'React, Firebase, Gemini AI, TypeScript',
-    description: 'A professional, AI-powered invoice generator that allows users to create, manage, and save professional invoices with ease. Features secure authentication and automated generation.',
+    description: 'Streamlining financial workflows with generative AI. This system automates professional invoice management, reducing manual labor and improving accuracy.',
     github: 'https://github.com/AnasKhan2310/Invoice-generator',
     emoji: '🚀',
     featured: false,
@@ -28,7 +28,7 @@ const projects = [
     title: 'AI Image Classifier Pro',
     category: 'DEEP LEARNING',
     tech: 'TypeScript, Teachable Machine, Computer Vision',
-    description: 'A powerful, browser-based machine learning tool that allows users to train custom AI models to recognize objects, people, or gestures in real-time.',
+    description: 'Custom computer vision solutions for real-time recognition. I build specialized models that perform complex visual tasks with extreme speed and accuracy.',
     github: 'https://github.com/AnasKhan2310/Teachable-Machine',
     emoji: '📸',
     featured: false,
@@ -37,7 +37,7 @@ const projects = [
     title: 'Spotify Data Analysis',
     category: 'DATA ANALYSIS',
     tech: 'Python, Pandas, Matplotlib, Jupyter',
-    description: 'Exploratory Data Analysis of Spotify\'s 2020 Top 200 Global Charts. Analyzed top artists, song popularity, and audio features like danceability and energy.',
+    description: 'Decoding consumer behavior through data. I analyze massive streaming datasets to uncover trends that drive strategic content and marketing decisions.',
     github: 'https://github.com/AnasKhan2310/Spotify-Data-Analysis-Project',
     emoji: '🎵',
     featured: false,
@@ -46,7 +46,7 @@ const projects = [
     title: 'Intelligent Customer Support Bot',
     category: 'AI & CHATBOTS',
     tech: 'Python, LangChain, OpenAI API, Streamlit',
-    description: 'An AI-powered chatbot designed for automated customer support, utilizing RAG (Retrieval-Augmented Generation) to provide accurate answers from custom knowledge bases.',
+    description: 'Revolutionizing customer experience with RAG-based AI. This intelligent bot provides instant, human-like support while drastically lowering operational costs.',
     github: 'https://github.com/AnasKhan2310',
     emoji: '🤖',
     featured: false,
@@ -122,7 +122,7 @@ export default function Projects() {
                   <p className="text-muted-text text-sm leading-relaxed mb-8 flex-grow">
                     {project.description}
                   </p>
-                  <div className="mt-auto">
+                  <div className="mt-auto flex justify-between items-center">
                     <a
                       href={project.github}
                       target="_blank"
