@@ -11,7 +11,7 @@ const projects = [
     category: 'MACHINE LEARNING',
     tech: 'Python, Scikit-learn, ML Classification',
     description: 'A high-precision healthcare model designed to save lives by identifying early-stage heart disease risks through advanced statistical patterns.',
-    link: 'https://freeheartdiseaseprediction.netlify.app/',
+    link: 'https://mediscan-ai-29938184252.europe-west1.run.app/',
     github: 'https://github.com/AnasKhan2310/MediScan-AI',
     emoji: '🧬',
     featured: true,
