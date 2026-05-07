@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import profilePic from '../assets/pic.png';
+
 export default function Hero() {
-  const profilePic = '/pic.png';
   return (
     <section id="home" className="min-h-screen flex items-center px-6 lg:px-16 py-20">
       <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
