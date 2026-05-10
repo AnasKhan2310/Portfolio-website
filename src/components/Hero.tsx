@@ -16,8 +16,8 @@ export default function Hero() {
           <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-6">
             Welcome to my portfolio
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-            I'm <span className="text-accent">Muhammad Anas Khan</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+            I'm <span className="text-accent whitespace-nowrap">Muhammad Anas Khan</span>
           </h1>
           <div className="w-20 h-1.5 bg-accent mb-6" />
           <h3 className="text-xl md:text-2xl font-bold text-near-black/80 mb-6 uppercase tracking-wide">
