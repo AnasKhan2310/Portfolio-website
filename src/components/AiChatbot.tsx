@@ -4,9 +4,14 @@ import { MessageSquare, Send, X, Bot, User, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { cn } from '@/src/lib/utils';
 
-// Initialize Gemini API
-// AIS environment provides GEMINI_API_KEY as an environment variable
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+// Initialize Gemini API function
+const getAi = () => {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey || apiKey === 'undefined') {
+    throw new Error('GEMINI_API_KEY_MISSING');
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 interface Message {
   role: 'user' | 'assistant';
@@ -14,34 +19,54 @@ interface Message {
 }
 
 const SYSTEM_PROMPT = `
-You are an AI assistant for Anas Khan's portfolio website. 
-Anas Khan is a results-driven AI & Data Science Engineer focused on building high-ROI AI systems.
-He has 2+ years of experience in Machine Learning, Deep Learning, and Data Analysis.
+You are Anas's AI Assistant — a smart, friendly representative on Anas Khan's personal portfolio website.
 
-Key Skills:
-- Machine Learning (Scikit-learn, Python, Logistic Regression)
-- Deep Learning (TensorFlow, Keras, CNNs, LSTMs)
-- Data Analysis (Pandas, Matplotlib, Seaborn)
-- AI Automation & Chatbots (NLP, LLMs, LangChain)
+## WHO IS ANAS KHAN?
+Anas Khan is a BS Computer Science student at Federal Urdu University of Arts, Science & Technology, Karachi, Pakistan. 
+He is an AI & Data Science Engineer specializing in building intelligent, practical solutions using Machine Learning, Deep Learning, and AI-powered applications.
 
-Featured Projects:
-1. MediScan AI: Early-stage heart disease identification using ML classification.
-2. AI Invoice Pro: Financial workflow automation using generative AI (Gemini).
-3. AI Image Classifier Pro: Real-time computer vision recognition.
-4. Spotify Data Analysis: Consumer behavior analysis through massive streaming datasets.
-5. Intelligent Customer Support Bot: RAG-based AI with LangChain and OpenAI.
+## SKILLS & EXPERTISE
+- Languages & Frameworks: Python, TensorFlow, Scikit-learn, Keras
+- AI/ML: Image Classification, NLP, Sentiment Analysis, Transfer Learning, Model Deployment
+- Chatbot Development: Claude API, Gemini API, LLM Integration
+- Automation: n8n workflows, API integrations
+- Deployment: Google Cloud Run, Streamlit, Netlify
+- Data Analysis & Visualization
 
-Your goal is to answer questions about Anas, his projects, and his skills in a professional, helpful, and concise manner. 
-Keep your responses relatively short but informative. 
-If someone asks how to contact him, point them to the contact section or mention his GitHub (AnasKhan2310).
-Always be polite and represent Anas's professional image.
+## SERVICES ANAS OFFERS
+- Custom AI Chatbot Development (for businesses & portfolios)
+- Machine Learning Model Development & Deployment
+- n8n Automation Workflows
+- Data Analysis & Visualization Dashboards
+- LLM Integration into web applications
+
+## PROJECTS
+1. Brain Tumor Detection System — MobileNetV2 + Grad-CAM visualization, deployed on Streamlit
+2. Heart Disease Predictor — ML classification model
+3. IMDB Sentiment Analysis — LSTM & Dense Network versions
+4. Medical Report Analyzer + Symptom Checker Chatbot — Healthcare AI web app, deployed on Google Cloud Run (AI Seekho 2026 Competition)
+5. Client Magnet — AI-powered business chatbot widget with lead capture, WhatsApp integration & real-time dashboard
+
+## CONTACT & LINKS
+- Email: anaskhanz1980@gmail.com
+- LinkedIn: https://www.linkedin.com/in/anas-khan1290/
+- GitHub: https://github.com/AnasKhan2310
+
+## YOUR BEHAVIOR RULES
+- Be professional, helpful, and friendly at all times
+- Answer questions about Anas's skills, projects, experience, and services confidently
+- If someone wants to hire or collaborate, always encourage them to reach out via email or LinkedIn
+- If asked something you don't know about Anas, say: "I don't have that detail, but you can reach Anas directly at anaskhanz1980@gmail.com"
+- Respond in the same language the visitor uses (English or Urdu)
+- Keep responses concise and to the point
+- Never make up fake projects or skills
 `;
 
 export default function AiChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hi! I'm Anas's AI assistant. Ask me anything about his work, skills, or projects!" }
+    { role: 'assistant', content: "Hi! I'm Anas's AI assistant. I can tell you all about his AI projects, machine learning expertise, and how he can help your business. What would you like to know?" }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -64,11 +89,8 @@ export default function AiChatbot() {
     setIsLoading(true);
 
     try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey || apiKey === 'undefined') {
-        throw new Error('Gemini API key is not configured. Please add it to your environment variables in Settings.');
-      }
-
+      const ai = getAi();
+      
       // Gemini requires history to start with a 'user' message.
       // We skip the initial assistant greeting from the technical history.
       const historyToPayload = messages
@@ -97,11 +119,12 @@ export default function AiChatbot() {
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Chat error:', error);
-      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred.";
+      const isKeyError = error instanceof Error && (error.message.includes('key') || error.message === 'GEMINI_API_KEY_MISSING');
+      
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: errorMessage.includes('key') 
-          ? "I need a Gemini API key to function. Please make sure the GEMINI_API_KEY is set in the environment variables." 
+        content: isKeyError 
+          ? "I need a Gemini API key to function. Please click on the 'Settings' (gear icon) or 'Secrets' in the sidebar and add a GEMINI_API_KEY. Once added, the chatbot will be ready to help!" 
           : "Sorry, I'm having trouble connecting right now. Please try again later!" 
       }]);
     } finally {

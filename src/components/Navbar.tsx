@@ -60,7 +60,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex flex-col">
-          <h2 className="text-white text-xl font-black tracking-tighter">ANAS KHAN</h2>
+          <h2 className="text-white text-lg md:text-xl font-black tracking-tighter whitespace-nowrap">MUHAMMAD ANAS KHAN</h2>
         </div>
 
         {/* Desktop Nav */}

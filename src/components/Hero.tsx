@@ -16,15 +16,15 @@ export default function Hero() {
           <span className="inline-block px-4 py-1 bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest rounded-full mb-6">
             Welcome to my portfolio
           </span>
-          <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-            I'm <span className="text-accent">Anas Khan</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+            I'm <span className="text-accent">Muhammad Anas Khan</span>
           </h1>
           <div className="w-20 h-1.5 bg-accent mb-6" />
           <h3 className="text-xl md:text-2xl font-bold text-near-black/80 mb-6 uppercase tracking-wide">
-            AI & Data Science Engineer / AI Developer
+            AI & Data Science Engineer
           </h3>
           <p className="text-muted-text text-lg max-w-xl mb-10 leading-relaxed">
-            Turning complex data into high-ROI intelligence. I build production-ready AI systems and predictive models that automate decisions, solve critical challenges, and drive measurable business growth.
+            I don't just study AI, I build with it. As an AI & Data Science Engineer who turns raw data into real impact, I build machine learning models, intelligent chatbots, and automation systems that solve actual business problems. Whether you're a recruiter looking for a dedicated AI engineer or a business needing a custom AI solution, let's talk.
           </p>
           <a
             href="#about"

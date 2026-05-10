@@ -5,13 +5,8 @@ import { useEffect, useState, useRef } from 'react';
 const services = [
   {
     icon: Brain,
-    title: 'Machine Learning',
-    description: 'Building predictive models with Scikit-learn & Python for classification, regression, and clustering.',
-  },
-  {
-    icon: Bot,
-    title: 'Deep Learning',
-    description: 'Developing neural networks, CNNs, and LSTMs with TensorFlow & Keras for complex pattern recognition.',
+    title: 'Machine & Deep Learning',
+    description: 'Developing end-to-end predictive models, neural networks, CNNs, and LSTMs using TensorFlow, Keras, and Scikit-learn for advanced pattern recognition.',
   },
   {
     icon: BarChart3,
@@ -28,7 +23,7 @@ const services = [
 const stats = [
   { label: 'Projects Completed', value: 7, suffix: '+' },
   { label: 'Repos on GitHub', value: 6, suffix: '+' },
-  { label: 'Years Learning', value: 2, suffix: '+' },
+  { label: 'Skills Mastered', value: 15, suffix: '+' },
   { label: 'Dedication', value: 100, suffix: '%' },
 ];
 
@@ -78,8 +73,7 @@ export default function About() {
         >
           <h2 className="text-4xl md:text-5xl font-black mb-8">About Me</h2>
           <p className="text-muted-text text-lg max-w-3xl leading-relaxed">
-            I am a results-oriented AI & Data Science Engineer dedicated to extracting maximum value from your data. 
-            By bridging the gap between advanced research and practical business solutions, I deliver high-precision Machine Learning models that transform how you operate, compete, and scale.
+            I don't just study AI, I build with it. As an AI & Data Science Engineer who turns raw data into real impact, I build machine learning models, intelligent chatbots, and automation systems that solve actual business problems. Whether you're a recruiter looking for a dedicated AI engineer or a business needing a custom AI solution, let's talk.
           </p>
         </motion.div>
 

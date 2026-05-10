@@ -24,7 +24,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-white/30 text-xs font-medium uppercase tracking-[0.2em]">
-          © 2025 Anas Khan — AI & Data Science Engineer. All Rights Reserved.
+          © 2026 Muhammad Anas Khan — AI & Data Science Engineer. All Rights Reserved.
         </p>
       </div>
     </footer>
