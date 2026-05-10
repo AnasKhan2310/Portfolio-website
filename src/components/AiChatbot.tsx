@@ -116,13 +116,14 @@ export default function AiChatbot() {
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Chat error:', error);
-      const isKeyError = error instanceof Error && (error.message.includes('key') || error.message === 'GEMINI_API_KEY_MISSING');
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const isKeyError = errorMessage.includes('key') || errorMessage === 'GEMINI_API_KEY_MISSING' || errorMessage.includes('401');
       
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: isKeyError 
-          ? "I need a Gemini API key to function. Please click on the 'Settings' (gear icon) or 'Secrets' in the sidebar and add a GEMINI_API_KEY. Once added, the chatbot will be ready to help!" 
-          : "Sorry, I'm having trouble connecting right now. Please try again later!" 
+          ? "I need a valid Gemini API key to function. Please make sure you have added a key named 'MY_AI_KEY' or 'GEMINI_API_KEY' in the Secrets tab." 
+          : `Connection Error: ${errorMessage}. Please check your connection or API configuration.` 
       }]);
     } finally {
       setIsLoading(false);
