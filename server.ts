@@ -17,12 +17,15 @@ async function startServer() {
   app.post("/api/chat", async (req, res) => {
     try {
       const { contents, systemInstruction } = req.body;
-      const apiKey = process.env.GEMINI_API_KEY;
+      const apiKey = process.env.MY_AI_KEY || process.env.GEMINI_API_KEY || process.env.CHAT_API_KEY || process.env.VITE_GEMINI_API_KEY;
 
       if (!apiKey) {
-        console.error("GEMINI_API_KEY is missing in environment variables");
+        console.error("No API key found in environment variables (tried GEMINI_API_KEY, CHAT_API_KEY, VITE_GEMINI_API_KEY)");
         return res.status(500).json({ error: "GEMINI_API_KEY_MISSING" });
       }
+
+      // Safe logging for debugging
+      console.log(`Using API key. Length: ${apiKey.length}, Starts with: ${apiKey.substring(0, 3)}...`);
 
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
