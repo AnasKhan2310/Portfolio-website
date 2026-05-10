@@ -1,17 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, Send, X, Bot, User, Loader2 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { cn } from '@/src/lib/utils';
-
-// Initialize Gemini API function
-const getAi = () => {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey || apiKey === 'undefined') {
-    throw new Error('GEMINI_API_KEY_MISSING');
-  }
-  return new GoogleGenAI({ apiKey });
-};
 
 interface Message {
   role: 'user' | 'assistant';
@@ -89,8 +79,6 @@ export default function AiChatbot() {
     setIsLoading(true);
 
     try {
-      const ai = getAi();
-      
       // Gemini requires history to start with a 'user' message.
       // We skip the initial assistant greeting from the technical history.
       const historyToPayload = messages
@@ -100,21 +88,30 @@ export default function AiChatbot() {
           parts: [{ text: msg.content }]
         }));
 
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        config: {
-          systemInstruction: SYSTEM_PROMPT,
-          temperature: 0.7,
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        contents: [
-          ...historyToPayload,
-          { role: 'user', parts: [{ text: input }] }
-        ]
+        body: JSON.stringify({
+          contents: [
+            ...historyToPayload,
+            { role: 'user', parts: [{ text: input }] }
+          ],
+          systemInstruction: SYSTEM_PROMPT
+        }),
       });
 
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to connect to AI');
+      }
+
+      const data = await res.json();
+      
       const assistantMessage: Message = { 
         role: 'assistant', 
-        content: response.text || "I'm sorry, I couldn't generate a response." 
+        content: data.text || "I'm sorry, I couldn't generate a response." 
       };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
