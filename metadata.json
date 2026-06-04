@@ -1,6 +1,8 @@
 {
-  "name": "Anas Khan",
-  "description": "Results-driven AI & Data Science Engineer focused on building high-ROI AI systems, predictive models, and intelligent automation that scale businesses and drive strategic growth.",
+  "name": "Anas Portfolio",
+  "description": "Portfolio website of Muhammad Anas Khan, an AI & Data Science Engineer featuring an interactive Gemini-powered AI Chatbot.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

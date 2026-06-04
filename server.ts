@@ -1,71 +1,77 @@
-import express from "express";
-import { createServer as createViteServer } from "vite";
+import express from 'express';
 import { GoogleGenAI } from "@google/genai";
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function startServer() {
-  const app = express();
-  const PORT = 3000;
+const app = express();
+app.use(express.json());
 
-  app.use(express.json());
+// API route for Chatbot
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { contents, systemInstruction } = req.body;
+    
+    // Check for Secrets in environment variables
+    const apiKey = process.env.MY_AI_KEY || process.env.GEMINI_API_KEY || process.env.CHAT_API_KEY || process.env.VITE_GEMINI_API_KEY;
 
-  // Gemini Proxy Route - Keeping the API Key safe on the server
-  app.post("/api/chat", async (req, res) => {
-    try {
-      const { contents, systemInstruction } = req.body;
-      const apiKey = process.env.MY_AI_KEY || process.env.GEMINI_API_KEY || process.env.CHAT_API_KEY || process.env.VITE_GEMINI_API_KEY;
-
-      if (!apiKey || apiKey.trim() === "" || apiKey === "undefined") {
-        console.error("No valid API key found in environment variables");
-        return res.status(401).json({ error: "GEMINI_API_KEY_MISSING" });
-      }
-
-      // Safe logging for debugging
-      console.log(`Using API key. Length: ${apiKey.length}`);
-
-      const ai = new GoogleGenAI({ apiKey });
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
-        }
-      });
-
-      const text = response.text || "I'm sorry, I couldn't generate a response.";
-      res.json({ text });
-    } catch (error: any) {
-      console.error("Gemini Error:", error);
-      res.status(500).json({ 
-        error: error.message || "Failed to generate response",
-        details: error.stack 
-      });
+    if (!apiKey || apiKey.trim() === "" || apiKey === "undefined") {
+      console.error("No valid API key found in environment variables");
+      return res.status(401).json({ error: "GEMINI_API_KEY_MISSING" });
     }
-  });
 
-  // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
+    // Initialize GoogleGenAI SDK with server-safe API key and required httpOptions for AI Studio telemetry
+    const ai = new GoogleGenAI({ 
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        }
+      }
     });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+
+    // Use default 'gemini-3.5-flash' for standard chat tasks as instructed
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents,
+      config: {
+        systemInstruction: systemInstruction || "You are an AI Assistant.",
+        temperature: 0.7,
+      },
+    });
+
+    const text = response.text || "I'm sorry, I couldn't generate a response.";
+    res.json({ text });
+  } catch (error: any) {
+    console.error("Gemini Server Error:", error);
+    res.status(500).json({ 
+      error: error.message || "Failed to generate response"
     });
   }
+});
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+const PORT = 3000;
+
+// Set up combined frontend and backend serving
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
+} else {
+  // Integrate Vite Dev Server middleware
+  const { createServer } = await import('vite');
+  const vite = await createServer({
+    server: { 
+      middlewareMode: true
+    },
+    appType: 'spa'
+  });
+  app.use(vite.middlewares);
 }
 
-startServer();
+app.listen(PORT, () => {
+  console.log(`Server successfully started at http://localhost:${PORT}`);
+});
