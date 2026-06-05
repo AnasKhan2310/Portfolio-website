@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import picImage from './pic.png';
 import { 
   Send, 
@@ -1039,6 +1040,7 @@ Keep responses concise, impressive, and tailored to recruitment or partnerships.
 
       </div>
 
+      <Analytics />
     </div>
   );
 }
