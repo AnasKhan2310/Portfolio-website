@@ -32,17 +32,41 @@ app.post("/api/chat", async (req, res) => {
       }
     });
 
-    // Use default 'gemini-3.5-flash' for standard chat tasks as instructed
-    const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents,
-      config: {
-        systemInstruction: systemInstruction || "You are an AI Assistant.",
-        temperature: 0.7,
-      },
-    });
+    // Try fallback models to ensure high availability and bypass transient 503/429 high-demand errors
+    const modelsToTry = [
+      "gemini-3.5-flash",
+      "gemini-flash-latest",
+      "gemini-3.1-flash-lite"
+    ];
 
-    const text = response.text || "I'm sorry, I couldn't generate a response.";
+    let lastError = null;
+    let text = "";
+
+    for (const model of modelsToTry) {
+      try {
+        const response = await ai.models.generateContent({
+          model,
+          contents,
+          config: {
+            systemInstruction: systemInstruction || "You are an AI Assistant.",
+            temperature: 0.7,
+          },
+        });
+
+        if (response && response.text) {
+          text = response.text;
+          break; // Success! Exit the fallback loop
+        }
+      } catch (err: any) {
+        console.warn(`Gemini warning: Model '${model}' failed, trying fallback...`, err);
+        lastError = err;
+      }
+    }
+
+    if (!text) {
+      throw lastError || new Error("All Gemini models are currently experiencing high demand. Please try again in a moment.");
+    }
+
     res.json({ text });
   } catch (error: any) {
     console.error("Gemini Server Error:", error);
