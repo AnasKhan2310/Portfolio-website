@@ -6,6 +6,7 @@ import NetworkBackground from './components/NetworkBackground';
 import GlowingCursor from './components/GlowingCursor';
 import TerminalTyping from './components/TerminalTyping';
 import Counter from './components/Counter';
+import picImage from './pic.png';
 import { 
   Send, 
   X, 
@@ -374,101 +375,119 @@ About Anas:
         {/* ==================================== */}
         {/* HERO SECTION - Premium AI SaaS Vibe */}
         {/* ==================================== */}
-        <section id="home" className="relative min-h-[90vh] flex items-center py-16 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5">
+        <section id="home" className="relative pt-4 pb-12 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5">
           
           {/* Subtle Grid overlay representing Vercel mesh */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#2c282504_1px,transparent_1px),linear-gradient(to_bottom,#2c282504_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+
+          {/* Header Title on a Single Line */}
+          <motion.div 
+            variants={itemVariants} 
+            initial="hidden"
+            animate="visible"
+            className="w-full flex flex-col gap-1.5 mb-8 relative z-10"
+          >
+            <span className="text-[#2C2825]/60 font-bold text-xs sm:text-sm tracking-widest uppercase font-mono">HELLO, I'M</span>
+            <h1 className="text-[6.5vw] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[#2C2825] via-[#4A4440] to-[#7A7068] bg-clip-text text-transparent leading-none tracking-tight whitespace-nowrap overflow-hidden text-ellipsis select-none py-1">
+              Muhammad Anas Khan
+            </h1>
+            <div className="w-full h-[1px] bg-[#2C2825]/10 mt-2" />
+          </motion.div>
 
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full items-center relative z-10"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 w-full items-start relative z-10"
           >
             
-            {/* Left Texts Description */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left lg:pr-4">
+            {/* Left Column containing Profile Picture & Description Details side-by-side */}
+            <div className="lg:col-span-8 flex flex-col sm:flex-row gap-8 items-start text-left lg:pr-4">
               
-              {/* Glowing Gradient Title Staggered */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-2 mb-4 w-full">
-                <span className="text-[#2C2825]/60 font-bold text-lg sm:text-xl md:text-2xl tracking-wide uppercase font-mono">HELLO, I'M</span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-[#2C2825] via-[#4A4440] to-[#7A7068] bg-clip-text text-transparent leading-none tracking-tight">
-                  MUHAMMAD ANAS KHAN
-                </h1>
-              </motion.div>
-
-              {/* Glowing Accent Horizontal Line */}
+              {/* Profile Portrait Pic on the Left Side */}
               <motion.div 
                 variants={itemVariants}
-                className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-600 mb-6 rounded-full shadow-[0_2px_10px_rgba(245,158,11,0.3)]"
-              ></motion.div>
-
-              {/* Tagline Role */}
-              <motion.h3 
-                variants={itemVariants}
-                className="text-[#2C2825] font-extrabold text-xl sm:text-2xl md:text-3.5xl tracking-tight mb-6 uppercase leading-tight font-sans whitespace-pre-line"
+                className="w-full sm:w-48 md:w-56 shrink-0 relative flex justify-center sm:justify-start"
               >
-                I BUILD AI SYSTEMS THAT{"\n"}
-                <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">SCALE BUSINESSES.</span>
-              </motion.h3>
-
-              {/* Narrative Content */}
-              <motion.div 
-                variants={itemVariants}
-                className="space-y-4 mb-8 max-w-xl text-[#2C2825]/80 text-sm md:text-base leading-relaxed"
-              >
-                <p>
-                  Hey, I'm Anas Khan, an AI Solutions Engineer focused on building AI-powered SaaS products, intelligent automation systems, and custom AI agents that solve real business problems.
-                </p>
-                <p>
-                  I help businesses automate operations using LLMs, n8n, MCP, APIs, and modern AI workflows, from lead generation and customer support to internal operations and data processing.
-                </p>
-                <p>
-                  Whether it's launching an AI SaaS product, integrating AI into existing software, or building end-to-end automation, I create production-ready solutions that save time, reduce manual work, and help businesses grow faster.
-                </p>
+                <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 blur-2xl rounded-full pointer-events-none scale-110" />
+                <div className="relative w-44 sm:w-48 md:w-56 aspect-[4/5] bg-white border border-[#2C2825]/10 rounded-[2rem] p-1.5 shadow-md overflow-hidden hover:border-amber-500/40 transition-colors duration-500">
+                  <img 
+                    src={picImage} 
+                    alt="Muhammad Anas Khan" 
+                    className="w-full h-full object-cover object-top rounded-[1.75rem] block"
+                  />
+                </div>
               </motion.div>
 
-              {/* Interactive Magnetic Specialty Badges */}
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-8 max-w-xl">
-                {[
-                  "AI SaaS",
-                  "AI Agents",
-                  "n8n Automation",
-                  "MCP",
-                  "LLM Integration",
-                  "Workflow Automation",
-                  "APIs",
-                  "Dashboards"
-                ].map((spec, sIdx) => (
-                  <motion.span 
-                    key={sIdx} 
-                    whileHover={{ scale: 1.05, borderColor: 'rgba(217,119,6,0.4)', color: '#d97706' }}
-                    className="bg-white border border-[#2C2825]/10 text-[#2C2825]/80 text-xs font-semibold font-mono tracking-wider uppercase px-4 py-2 rounded-lg transition-all cursor-default shadow-sm"
-                  >
-                    {spec}
-                  </motion.span>
-                ))}
-              </motion.div>
-
-              {/* Action Buttons with Framer Motion hover mechanics */}
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center">
-                <motion.a 
-                  href="#about" 
-                  whileHover={{ scale: 1.03, boxShadow: '0 4px 15px rgba(245,158,11,0.3)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-full shadow-[0_4px_15px_rgba(245,158,11,0.15)] transition-all flex items-center gap-2 group cursor-pointer"
+              {/* Narrative details right next to the portrait */}
+              <div className="flex-1 flex flex-col items-start w-full">
+                {/* Tagline Role */}
+                <motion.h3 
+                  variants={itemVariants}
+                  className="text-[#2C2825] font-extrabold text-base sm:text-lg md:text-xl tracking-tight mb-4 uppercase leading-tight font-sans"
                 >
-                  <span className="font-extrabold text-white">Explore My Systems</span>
-                  <ChevronRight size={15} className="group-hover:translate-x-1 duration-300 text-white" />
-                </motion.a>
-              </motion.div>
+                  I BUILD AI SYSTEMS THAT{" "}
+                  <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">SCALE BUSINESSES.</span>
+                </motion.h3>
+
+                {/* Narrative Content */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="space-y-4 mb-6 text-[#2C2825]/80 text-xs sm:text-sm md:text-base leading-relaxed"
+                >
+                  <p>
+                    Hey, I'm Anas Khan, an AI Solutions Engineer focused on building AI-powered SaaS products, intelligent automation systems, and custom AI agents that solve real business problems.
+                  </p>
+                  <p>
+                    I help businesses automate operations using LLMs, n8n, MCP, APIs, and modern AI workflows, from lead generation and customer support to internal operations and data processing.
+                  </p>
+                  <p>
+                    Whether it's launching an AI SaaS product, integrating AI into existing software, or building end-to-end automation, I create production-ready solutions that save time, reduce manual work, and help businesses grow faster.
+                  </p>
+                </motion.div>
+
+                {/* Interactive Magnetic Specialty Badges */}
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-6 w-full">
+                  {[
+                    "AI SaaS",
+                    "AI Agents",
+                    "n8n Automation",
+                    "MCP",
+                    "LLM Integration",
+                    "Workflow Automation",
+                    "APIs",
+                    "Dashboards"
+                  ].map((spec, sIdx) => (
+                    <motion.span 
+                      key={sIdx} 
+                      whileHover={{ scale: 1.05, borderColor: 'rgba(217,119,6,0.4)', color: '#d97706' }}
+                      className="bg-white border border-[#2C2825]/10 text-[#2C2825]/80 text-[10px] sm:text-xs font-semibold font-mono tracking-wider uppercase px-3 py-1.5 rounded-lg transition-all cursor-default shadow-sm"
+                    >
+                      {spec}
+                    </motion.span>
+                  ))}
+                </motion.div>
+
+                {/* Action Buttons */}
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center w-full">
+                  <motion.a 
+                    href="#about" 
+                    whileHover={{ scale: 1.03, boxShadow: '0 4px 15px rgba(245,158,11,0.3)' }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full shadow-[0_4px_15px_rgba(245,158,11,0.15)] transition-all flex items-center gap-2 group cursor-pointer"
+                  >
+                    <span className="font-extrabold text-white">Explore My Systems</span>
+                    <ChevronRight size={14} className="group-hover:translate-x-1 duration-300 text-white" />
+                  </motion.a>
+                </motion.div>
+              </div>
 
             </div>
 
             {/* Right Column: Premium Interactive Terminal typing simulator */}
             <motion.div 
               variants={itemVariants}
-              className="lg:col-span-5 w-full flex flex-col justify-center relative"
+              className="lg:col-span-4 w-full flex flex-col justify-center relative self-start"
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 blur-3xl pointer-events-none rounded-full" />
               <TerminalTyping />
