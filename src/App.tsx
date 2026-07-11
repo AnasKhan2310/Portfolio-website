@@ -90,11 +90,12 @@ About Anas:
 - Background: AI Solutions Engineer focused on building AI-powered SaaS products, intelligent automation systems, and custom AI agents that solve real business problems.
 - Key skills: Python, FastAPI, LangChain, RAG Systems, n8n Automation, MCP, LLM Integration, Workflow Automation, API Development, Power BI, Dashboards.
 - Notable Projects:
-  1. Mediscan AI (healthcare screening model)
-  2. AI Invoice Pro (generative agent tool)
-  3. AI Image Classifier Pro (computer vision pipeline)
-  4. Heart Disease Predictor (extremely high confidence statistical model)
-  5. Spotify Data Analysis (business intelligence dashboard)
+  1. AI Operations Manager (autonomous orchestration pipeline with MCP integrations)
+  2. Mediscan AI (healthcare screening model)
+  3. AI Invoice Pro (generative agent tool)
+  4. AI Image Classifier Pro (computer vision pipeline)
+  5. Heart Disease Predictor (extremely high confidence statistical model)
+  6. Spotify Data Analysis (business intelligence dashboard)
 - Contact details: Email 'anaskhanz1980@gmail.com', Location 'Karachi, Pakistan', Phone '+92 311 2413824'.`;
 
   // Quick prompt suggestions
@@ -183,6 +184,21 @@ About Anas:
 
   // Projects list
   const projectsData = [
+    {
+      id: "ai-operations-manager",
+      title: "AI OPERATIONS MANAGER",
+      category: "AI & CHATBOTS" as const,
+      tag: "AI & CHATBOTS",
+      icon: (
+        <div className="h-12 w-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 text-2xl font-semibold shadow-sm shrink-0">
+          ⚙️
+        </div>
+      ),
+      description: "An advanced operations manager built to coordinate autonomous AI workflows, manage tool execution context, and optimize enterprise integrations seamlessly.",
+      githubUrl: "https://github.com/AnasKhan2310/AI-Operations-Manager",
+      liveDemoUrl: "https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/",
+      isHighlighted: true
+    },
     {
       id: "mediscan",
       title: "MEDISCAN AI",
