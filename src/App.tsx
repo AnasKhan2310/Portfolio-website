@@ -49,7 +49,7 @@ export default function App() {
   const [chatError, setChatError] = useState<string | null>(null);
 
   // Project Category Filter State
-  const [activeFilter, setActiveFilter] = useState<'ALL' | 'MACHINE LEARNING' | 'DEEP LEARNING' | 'DATA ANALYSIS' | 'AI & CHATBOTS'>('ALL');
+  const [activeFilter, setActiveFilter] = useState<'ALL' | 'MACHINE LEARNING' | 'DEEP LEARNING' | 'DATA ANALYSIS' | 'AI & CHATBOTS' | 'SAAS PRODUCT'>('ALL');
 
   // Spotify Dashboard Interactive Modal State
   const [isSpotifyDashboardOpen, setIsSpotifyDashboardOpen] = useState(false);
@@ -91,11 +91,12 @@ About Anas:
 - Key skills: Python, FastAPI, LangChain, RAG Systems, n8n Automation, MCP, LLM Integration, Workflow Automation, API Development, Power BI, Dashboards.
 - Notable Projects:
   1. AI Operations Manager (autonomous orchestration pipeline with MCP integrations)
-  2. Mediscan AI (healthcare screening model)
-  3. AI Invoice Pro (generative agent tool)
-  4. AI Image Classifier Pro (computer vision pipeline)
-  5. Heart Disease Predictor (extremely high confidence statistical model)
-  6. Spotify Data Analysis (business intelligence dashboard)
+  2. ZestFit (advanced dynamic fitness & nutrition SaaS product)
+  3. Mediscan AI (healthcare screening model)
+  4. AI Invoice Pro (generative agent tool)
+  5. AI Image Classifier Pro (computer vision pipeline)
+  6. Heart Disease Predictor (extremely high confidence statistical model)
+  7. Spotify Data Analysis (business intelligence dashboard)
 - Contact details: Email 'anaskhanz1980@gmail.com', Location 'Karachi, Pakistan', Phone '+92 311 2413824'.`;
 
   // Quick prompt suggestions
@@ -184,6 +185,21 @@ About Anas:
 
   // Projects list
   const projectsData = [
+    {
+      id: "zestfit",
+      title: "ZESTFIT",
+      category: "SAAS PRODUCT" as const,
+      tag: "SAAS PRODUCT",
+      icon: (
+        <div className="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 text-2xl font-semibold shadow-sm shrink-0">
+          💪
+        </div>
+      ),
+      description: "A premium, subscription-ready SaaS fitness & nutrition tracking platform featuring personalized exercise logs, dynamic gym routines, and health analytics with custom progress metrics.",
+      githubUrl: "https://github.com/AnasKhan2310/ZestFit",
+      liveDemoUrl: "https://zestfit.netlify.app/",
+      isHighlighted: true
+    },
     {
       id: "ai-operations-manager",
       title: "AI OPERATIONS MANAGER",
@@ -843,7 +859,7 @@ About Anas:
 
           {/* Interactive filter pills container */}
           <div className="flex flex-wrap gap-2 mb-10 select-none">
-            {(['ALL', 'MACHINE LEARNING', 'DEEP LEARNING', 'DATA ANALYSIS', 'AI & CHATBOTS'] as const).map((filter) => (
+            {(['ALL', 'MACHINE LEARNING', 'DEEP LEARNING', 'DATA ANALYSIS', 'AI & CHATBOTS', 'SAAS PRODUCT'] as const).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
