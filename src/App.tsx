@@ -144,16 +144,40 @@ About Anas:
         if (response.status === 401) {
           throw new Error("GEMINI_API_KEY_MISSING");
         }
-        const errData = await response.json();
-        throw new Error(errData.error || "Failed to fetch response");
+        
+        let errMessage = "Failed to fetch response";
+        try {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const errData = await response.json();
+            errMessage = errData.error || errMessage;
+          } else {
+            const text = await response.text();
+            // Try to extract a clean string from HTML or fallback to generic message
+            if (text.includes("<title>")) {
+              const match = text.match(/<title>(.*?)<\/title>/);
+              errMessage = match ? `Server Error: ${match[1]}` : `Server returned HTML error (${response.status})`;
+            } else {
+              errMessage = text.substring(0, 150) || `Server returned status code ${response.status}`;
+            }
+          }
+        } catch (e) {
+          errMessage = `Server error status: ${response.status}`;
+        }
+        throw new Error(errMessage);
       }
 
-      const data = await response.json();
-      
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        parts: [{ text: data.text }]
-      }]);
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          parts: [{ text: data.text }]
+        }]);
+      } else {
+        const text = await response.text();
+        throw new Error(`Invalid non-JSON response from server: ${text.substring(0, 150)}`);
+      }
     } catch (error: any) {
       console.error("Chatbot query error:", error);
       if (error.message === "GEMINI_API_KEY_MISSING" || error.message.includes("401")) {
