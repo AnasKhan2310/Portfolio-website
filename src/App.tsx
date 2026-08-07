@@ -91,7 +91,7 @@ About Muhammad Anas Khan:
 2. Location: Karachi, Pakistan
 3. Contact Details:
    - Email: anaskhanz1980@gmail.com
-   - Phone/WhatsApp: +92 311 2413824
+   - Phone/WhatsApp: +92 311 2813828
    - GitHub: https://github.com/AnasKhan2310
    - LinkedIn: https://linkedin.com/in/muhammadanaskhan
 
@@ -235,21 +235,15 @@ Interaction Guidelines & Tone:
     }
   };
 
-  // Skill proficiency metrics
+  // Skill proficiency metrics directly aligned with portfolio projects
   const skillsData = [
-    { name: "AI SaaS Development", level: 95 },
-    { name: "AI Agents", level: 96 },
-    { name: "n8n Automation", level: 94 },
-    { name: "MCP Integration", level: 92 },
-    { name: "LLM Integration", level: 95 },
-    { name: "Workflow Automation", level: 93 },
-    { name: "API Development", level: 91 },
-    { name: "Python", level: 96 },
-    { name: "FastAPI", level: 90 },
-    { name: "LangChain", level: 92 },
-    { name: "Dashboards", level: 88 },
-    { name: "Power BI", level: 87 },
-    { name: "RAG Systems", level: 93 }
+    { name: "AI SaaS Development", level: 96 },
+    { name: "Autonomous AI Agents & MCP", level: 96 },
+    { name: "Machine Learning & Deep Learning", level: 95 },
+    { name: "Computer Vision & Image Models", level: 93 },
+    { name: "Generative AI & LLM Automation", level: 94 },
+    { name: "Data Science & BI Dashboards", level: 92 },
+    { name: "Python & FastAPI Backend", level: 95 }
   ];
 
   // Projects list
@@ -689,7 +683,7 @@ Interaction Guidelines & Tone:
 
           </div>
 
-          {/* Animated Statistics Counters matching premium Linear telemetry */}
+          {/* Animated Statistics Counters matching clean professional telemetry */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
             
             {/* Stat Item 1 */}
@@ -698,12 +692,12 @@ Interaction Guidelines & Tone:
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
+              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
             >
-              <span className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 font-sans tracking-tight">
-                <Counter target={10} suffix="+" />
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
+                <Counter target={7} suffix="+" />
               </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-3">PROJECTS SHIPPED</span>
+              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">FEATURED PROJECTS</span>
             </motion.div>
  
             {/* Stat Item 2 */}
@@ -712,12 +706,12 @@ Interaction Guidelines & Tone:
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
+              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
             >
-              <span className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-rose-500 font-sans tracking-tight">
-                <Counter target={15} suffix="+" />
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
+                <Counter target={8} suffix="+" />
               </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-3">AI TECHS MASTERED</span>
+              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">CORE AI FRAMEWORKS</span>
             </motion.div>
  
             {/* Stat Item 3 */}
@@ -726,12 +720,12 @@ Interaction Guidelines & Tone:
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
+              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
             >
-              <span className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 font-sans tracking-tight">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
                 <Counter target={100} suffix="%" />
               </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-3">CLIENT FOCUS INDEX</span>
+              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">CLIENT SATISFACTION</span>
             </motion.div>
  
           </div> 
@@ -1102,7 +1096,7 @@ Interaction Guidelines & Tone:
                 </div>
                 <div>
                   <span className="text-[10px] text-[#2C2825]/50 font-bold uppercase tracking-widest block font-mono">Phone Number</span>
-                  <a href="tel:+923112413824" className="text-[#2C2825] hover:text-amber-600 text-sm font-semibold block transition-colors mt-1">03112413824</a>
+                  <a href="tel:+923112813828" className="text-[#2C2825] hover:text-amber-600 text-sm font-semibold block transition-colors mt-1">+92 311 2813828</a>
                 </div>
               </div>
 
