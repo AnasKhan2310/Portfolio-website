@@ -1,4 +1,36 @@
 import { GoogleGenAI } from "@google/genai";
+import fs from "fs";
+import path from "path";
+
+// Function to manually parse and load .env file if present in the workspace root
+function loadEnvFile() {
+  try {
+    const envPath = path.resolve(process.cwd(), ".env");
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, "utf-8");
+      envContent.split(/\r?\n/).forEach((line) => {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith("#")) {
+          const eqIdx = trimmed.indexOf("=");
+          if (eqIdx !== -1) {
+            const key = trimmed.substring(0, eqIdx).trim();
+            const val = trimmed.substring(eqIdx + 1).trim();
+            if (key && !process.env[key]) {
+              // Strip matching leading/trailing quotes if present
+              const cleanedVal = val.replace(/^['"]|['"]$/g, "");
+              process.env[key] = cleanedVal;
+            }
+          }
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("Could not load .env file manually:", err);
+  }
+}
+
+// Invoke environment loader
+loadEnvFile();
 
 export default async function handler(req: any, res: any) {
   // Allow CORS
