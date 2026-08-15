@@ -21,7 +21,13 @@ import {
   Cpu,
   Phone,
   MapPin,
-  ChevronRight
+  ChevronRight,
+  ArrowRight,
+  ExternalLink,
+  Download,
+  Layers,
+  Code2,
+  Sparkles
 } from 'lucide-react';
 
 // Define structures for messaging
@@ -31,7 +37,8 @@ interface ChatMessage {
 }
 
 export default function App() {
-  // Mobile menu control
+  // Navigation active tab & mobile menu
+  const [activeNav, setActiveNav] = useState<'about' | 'services' | 'portfolio' | 'story' | 'contact'>('about');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Floating Chatbot controls
@@ -41,7 +48,7 @@ export default function App() {
     {
       role: 'assistant',
       parts: [{
-        text: "Hi! I'm Anas's AI Assistant. I can tell you all about Muhammad Anas Khan's projects, experience, machine learning expertise, and how he can help your business. What would you like to know?"
+        text: "Hi! I'm Anas's AI Assistant. I can tell you all about Muhammad Anas Khan's projects, experience, machine learning expertise, and how he can help your business scale. What would you like to know?"
       }]
     }
   ]);
@@ -49,7 +56,7 @@ export default function App() {
   const [chatError, setChatError] = useState<string | null>(null);
 
   // Project Category Filter State
-  const [activeFilter, setActiveFilter] = useState<'ALL' | 'MACHINE LEARNING' | 'DEEP LEARNING' | 'DATA ANALYSIS' | 'AI & CHATBOTS' | 'SAAS PRODUCT'>('ALL');
+  const [activeFilter, setActiveFilter] = useState<'ALL' | 'AI SAAS' | 'AGENTS & MCP' | 'MACHINE LEARNING' | 'DEEP LEARNING' | 'DATA ANALYSIS'>('ALL');
 
   // Spotify Dashboard Interactive Modal State
   const [isSpotifyDashboardOpen, setIsSpotifyDashboardOpen] = useState(false);
@@ -87,13 +94,13 @@ export default function App() {
   const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, an exceptional and visionary "AI Solutions Engineer". Your goal is to represent Anas in the most professional, accurate, elegant, and impressive manner. You can speak fluently in English, Roman Urdu (e.g., "Anas aik behtareen AI engineer hain"), and standard Urdu as requested by the user.
 
 About Muhammad Anas Khan:
-1. Role: AI Solutions Engineer
+1. Role: AI Solutions Engineer & Full-Stack AI Developer
 2. Location: Karachi, Pakistan
 3. Contact Details:
    - Email: anaskhanz1980@gmail.com
    - Phone/WhatsApp: +92 311 2813828
    - GitHub: https://github.com/AnasKhan2310
-   - LinkedIn: https://linkedin.com/in/muhammadanaskhan
+   - LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
 Education & Specializations:
 - Degree: BS in Computer Science from Federal Urdu University, Karachi.
@@ -109,40 +116,18 @@ Core Skill Proficiency:
 - Intelligent AI Agents - MCP (Model Context Protocol) integration, custom autonomous agent pipelines.
 - Data Visualization - Business Intelligence Dashboards (88%), Power BI (87%), Recharts, and data insights.
 
-Pillars of Anas's Work (What Anas Does):
+Pillars of Anas's Work:
 1. AI SaaS Development: Designing and launching fully secure, subscription-ready SaaS products integrated with custom-designed AI systems (like RAG models, LangChain, serverless hosting).
 2. Workflow Automation: Automating legacy business operations using state-of-the-art n8n workflows, Custom MCP Tool integrations, and advanced Python automated background processes.
 3. Intelligent AI Agents: Architecting adaptive, collaborative multi-agent teams using cutting-edge agentic frameworks to optimize sales pipelines, lead generation, customer care, and operations.
 
 Detailed Project Portfolio:
 1. ZESTFIT (SaaS Product / Live Demo: https://zestfitmanagement.vercel.app/)
-   - Description: A premium, subscription-ready SaaS fitness & nutrition tracking platform. Features personalized exercise logs, dynamic gym routines, and health analytics with custom progress metrics.
-   - Codebase: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 2. AI OPERATIONS MANAGER (AI & Chatbots / Live Demo: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/)
-   - Description: An advanced operations manager built to coordinate autonomous AI workflows, manage tool execution context, and optimize enterprise integrations seamlessly. Integrates model tools and MCP.
-   - Codebase: https://github.com/AnasKhan2310/AI-Operations-Manager
 3. MEDISCAN AI (Machine Learning / Live Demo: https://medi-scan-ai-theta.vercel.app/)
-   - Description: A high-precision healthcare screening model designed to identify early-stage cardiovascular and heart disease risks using advanced statistical patterns.
-   - Codebase: https://github.com/AnasKhan2310
-4. AI INVOICE PRO (AI & Chatbots / Live Demo: https://freeinvoicepro.netlify.app/)
-   - Description: Streamlines financial workflows using Generative AI. This system automates professional invoice management, reducing manual work and error rates.
-   - Codebase: https://github.com/AnasKhan2310
-5. AI IMAGE CLASSIFIER PRO (Deep Learning / Live Demo: https://teachablemachice.netlify.app/)
-   - Description: Custom computer vision solutions for real-time recognition. Built specialized models that perform complex visual tasks with extreme speed.
-   - Codebase: https://github.com/AnasKhan2310
-6. HEART DISEASE PREDICTOR (Machine Learning / Live Demo: https://heartdiseasepredictorai.netlify.app/)
-   - Description: A supervised Machine Learning project that analyzes patient health metrics to predict cardiovascular risks with exceptionally high statistical confidence.
-   - Codebase: https://github.com/AnasKhan2310
-7. SPOTIFY DATA ANALYSIS (Data Analysis)
-   - Description: Decoding consumer streaming behavior and music trends by analyzing massive Spotify datasets to uncover trends that drive strategic marketing decisions.
-   - Codebase: https://github.com/AnasKhan2310/Spotify-Data-Analysis
-
-Interaction Guidelines & Tone:
-- Professional, confident, elegant, and friendly. Speak like a highly intelligent, premium executive AI representative.
-- Emphasize Anas's capabilities in scaling businesses, reducing operational expenses, and building automated revenue streams through AI and n8n.
-- If asked about how Anas can help a business scale, explain his specialized workflows: creating custom AI agents, automated lead qualification, auto-responding chatbots, n8n databases integrations, and interactive dashboards.
-- Speak in Roman Urdu/Hindi if the user messages in Roman Urdu/Hindi or asks for it. E.g., "Main Anas Khan ka AI assistant hoon. Main aap ko Anas ke projects aur unki AI expertise ke baare mein bata sakta hoon."
-- Make sure to share direct links to projects, GitHub, or contact info when relevant. Keep responses concise but highly valuable.`;
+4. AI IMAGE CLASSIFIER PRO (Deep Learning / Live Demo: https://teachablemachice.netlify.app/)
+5. HEART DISEASE PREDICTOR (Machine Learning / Live Demo: https://heartdiseasepredictorai.netlify.app/)
+6. SPOTIFY DATA ANALYSIS (Data Analysis / GitHub: https://github.com/AnasKhan2310/Spotify-Data-Analysis)`;
 
   // Quick prompt suggestions
   const suggestions = [
@@ -156,7 +141,6 @@ Interaction Guidelines & Tone:
     const text = textToSend.trim();
     if (!text) return;
 
-    // Add user message to state
     const userMessage: ChatMessage = {
       role: 'user',
       parts: [{ text }]
@@ -167,7 +151,6 @@ Interaction Guidelines & Tone:
     setIsLoading(true);
     setChatError(null);
 
-    // Format content history correctly for prompt parameters
     const updatedHistory = [...messages, userMessage].map(msg => ({
       role: msg.role === 'assistant' ? 'model' : 'user',
       parts: msg.parts
@@ -198,7 +181,6 @@ Interaction Guidelines & Tone:
             errMessage = errData.error || errMessage;
           } else {
             const text = await response.text();
-            // Try to extract a clean string from HTML or fallback to generic message
             if (text.includes("<title>")) {
               const match = text.match(/<title>(.*?)<\/title>/);
               errMessage = match ? `Server Error: ${match[1]}` : `Server returned HTML error (${response.status})`;
@@ -235,120 +217,64 @@ Interaction Guidelines & Tone:
     }
   };
 
-  // Skill proficiency metrics directly aligned with portfolio projects
-  const skillsData = [
-    { name: "AI SaaS Development", level: 96 },
-    { name: "Autonomous AI Agents & MCP", level: 96 },
-    { name: "Machine Learning & Deep Learning", level: 95 },
-    { name: "Computer Vision & Image Models", level: 93 },
-    { name: "Generative AI & LLM Automation", level: 94 },
-    { name: "Data Science & BI Dashboards", level: 92 },
-    { name: "Python & FastAPI Backend", level: 95 }
-  ];
-
   // Projects list
   const projectsData = [
     {
       id: "zestfit",
-      title: "ZESTFIT",
-      category: "SAAS PRODUCT" as const,
-      tag: "SAAS PRODUCT",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 text-2xl font-semibold shadow-sm shrink-0">
-          💪
-        </div>
-      ),
-      description: "A premium, subscription-ready SaaS fitness & nutrition tracking platform featuring personalized exercise logs, dynamic gym routines, and health analytics with custom progress metrics.",
+      title: "ZESTFIT - AI Fitness SaaS",
+      category: "AI SAAS" as const,
+      tag: "AI SAAS PRODUCT",
+      description: "A subscription-ready SaaS fitness & nutrition tracking platform featuring personalized exercise logs, dynamic gym routines, and health analytics with custom progress metrics.",
       githubUrl: "https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT",
       liveDemoUrl: "https://zestfitmanagement.vercel.app/",
-      isHighlighted: true
+      isHighlighted: false
     },
     {
       id: "ai-operations-manager",
-      title: "AI OPERATIONS MANAGER",
-      category: "AI & CHATBOTS" as const,
-      tag: "AI & CHATBOTS",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 text-2xl font-semibold shadow-sm shrink-0">
-          ⚙️
-        </div>
-      ),
+      title: "AI Operations Manager",
+      category: "AGENTS & MCP" as const,
+      tag: "AUTONOMOUS AGENTS",
       description: "An advanced operations manager built to coordinate autonomous AI workflows, manage tool execution context, and optimize enterprise integrations seamlessly.",
       githubUrl: "https://github.com/AnasKhan2310/AI-Operations-Manager",
       liveDemoUrl: "https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/",
-      isHighlighted: true
+      isHighlighted: true // Highlighted in solid orange card in portfolio grid
     },
     {
       id: "mediscan",
-      title: "MEDISCAN AI",
+      title: "MediScan AI Healthcare",
       category: "MACHINE LEARNING" as const,
       tag: "MACHINE LEARNING",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 text-2xl font-semibold shadow-sm shrink-0">
-          💉
-        </div>
-      ),
-      description: "A high-precision healthcare model designed to save lives by identifying early-stage heart disease risks through advanced statistical patterns.",
+      description: "A high-precision healthcare screening model designed to identify early-stage cardiovascular and heart disease risks using advanced statistical patterns.",
       githubUrl: "https://github.com/AnasKhan2310",
       liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
       isHighlighted: false
     },
     {
-      id: "invoice",
-      title: "AI INVOICE PRO",
-      category: "AI & CHATBOTS" as const,
-      tag: "AI & CHATBOTS",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 text-2xl font-semibold shadow-sm shrink-0">
-          🚀
-        </div>
-      ),
-      description: "Streamlining financial workflows with generative AI. This system automates professional invoice management, reducing manual labor and improving accuracy.",
-      githubUrl: "https://github.com/AnasKhan2310",
-      liveDemoUrl: "https://freeinvoicepro.netlify.app/",
-      isHighlighted: false
-    },
-    {
       id: "classifier",
-      title: "AI IMAGE CLASSIFIER PRO",
+      title: "AI Image Classifier Pro",
       category: "DEEP LEARNING" as const,
       tag: "DEEP LEARNING",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 text-2xl font-semibold shadow-sm shrink-0">
-          📷
-        </div>
-      ),
-      description: "Custom computer vision solutions for real-time recognition. I build specialized models that perform complex visual tasks with extreme speed and accuracy.",
+      description: "Custom computer vision solutions for real-time recognition. Built specialized neural models that perform complex visual tasks with extreme speed and accuracy.",
       githubUrl: "https://github.com/AnasKhan2310",
       liveDemoUrl: "https://teachablemachice.netlify.app/",
       isHighlighted: false
     },
     {
       id: "heart",
-      title: "HEART DISEASE PREDICTOR",
+      title: "Heart Disease Predictor",
       category: "MACHINE LEARNING" as const,
-      tag: "MACHINE LEARNING",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-500 text-2xl font-semibold shadow-sm animate-pulse shrink-0">
-          ❤️
-        </div>
-      ),
-      description: "A supervised Machine Learning project that analyzes health metrics to predict cardiovascular risks with high confidence.",
+      tag: "PREDICTIVE ML",
+      description: "A supervised Machine Learning project that analyzes patient health metrics to predict cardiovascular risks with exceptionally high statistical confidence.",
       githubUrl: "https://github.com/AnasKhan2310",
       liveDemoUrl: "https://heartdiseasepredictorai.netlify.app/",
-      isHighlighted: true // Specialized Yellow/Amber border
+      isHighlighted: false
     },
     {
       id: "spotify",
-      title: "SPOTIFY DATA ANALYSIS",
+      title: "Spotify Streaming Analytics",
       category: "DATA ANALYSIS" as const,
-      tag: "DATA ANALYSIS",
-      icon: (
-        <div className="h-12 w-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-500 text-2xl font-semibold shadow-sm shrink-0">
-          🎵
-        </div>
-      ),
-      description: "Decoding consumer behavior through data. I analyze massive streaming datasets to uncover trends that drive strategic content and marketing decisions.",
+      tag: "DATA SCIENCE",
+      description: "Decoding consumer streaming behavior and music trends by analyzing massive Spotify datasets to uncover trends that drive strategic marketing decisions.",
       githubUrl: "https://github.com/AnasKhan2310/Spotify-Data-Analysis",
       liveDemoUrl: "#",
       isHighlighted: false
@@ -360,576 +286,485 @@ Interaction Guidelines & Tone:
     ? projectsData 
     : projectsData.filter(proj => proj.category === activeFilter);
 
-  // Framer Motion Animation Variants
-  const containerVariants: any = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
+  // Services list
+  const servicesList = [
+    {
+      id: "saas",
+      title: "AI SaaS Development",
+      description: "Designing and launching subscription-ready SaaS products integrated with custom LLMs, RAG models, and scalable cloud architectures.",
+      tags: ["Next.js", "FastAPI", "RAG", "Stripe"],
+      isFeatured: true
+    },
+    {
+      id: "n8n",
+      title: "Workflow Automation (n8n & MCP)",
+      description: "Automating end-to-end business operations with n8n workflows, custom MCP toolkits, and Python background tasks.",
+      tags: ["n8n", "MCP Protocol", "API Webhooks"],
+      isFeatured: false
+    },
+    {
+      id: "agents",
+      title: "Autonomous AI Agents",
+      description: "Architecting adaptive multi-agent teams with autonomous reasoning, tool execution, and context loops for customer ops and sales.",
+      tags: ["Multi-Agent", "LangChain", "Autonomous"],
+      isFeatured: false
+    },
+    {
+      id: "fullstack",
+      title: "Full-Stack Web & Next.js",
+      description: "Building ultra-fast, responsive web applications with TypeScript, React, Next.js, Tailwind CSS, and secure API backends.",
+      tags: ["TypeScript", "Tailwind", "REST APIs"],
+      isFeatured: false
+    },
+    {
+      id: "rag",
+      title: "RAG & Vector Search",
+      description: "Designing semantic search and enterprise retrieval pipelines with Pinecone, Chroma, and custom embedding pipelines.",
+      tags: ["Vector DB", "Embeddings", "Semantic Search"],
+      isFeatured: false
+    },
+    {
+      id: "ml",
+      title: "Machine Learning & Deep Learning",
+      description: "Training predictive models, computer vision neural networks, and diagnostic classifiers using PyTorch & TensorFlow.",
+      tags: ["PyTorch", "TensorFlow", "CNNs / LSTMs"],
+      isFeatured: false
     }
-  };
-
-  const itemVariants: any = {
-    hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
+  ];
 
   return (
-    <div id="app-root" className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#2C2825] selection:bg-amber-500/20 selection:text-amber-800 scroll-smooth overflow-x-hidden font-sans relative">
+    <div id="app-root" className="min-h-screen flex flex-col bg-[#0A0A0A] text-white selection:bg-[#FF4D00] selection:text-white scroll-smooth overflow-x-hidden font-sans relative">
       
-      {/* 60fps Glowing Interactive Network Canvas Background */}
+      {/* Interactive Network Background */}
       <NetworkBackground />
 
-      {/* Floating Blurred Color Blobs representing Stripe/Linear aesthetic */}
-      <div className="absolute top-[10%] left-[-10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-orange-500/5 blur-[130px] pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="absolute top-[35%] right-[-5%] w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-amber-500/5 blur-[150px] pointer-events-none animate-pulse" style={{ animationDuration: '11s' }} />
-      <div className="absolute bottom-[20%] left-[15%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-rose-500/5 blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: '9s' }} />
-
-      {/* Dynamic Glowing Cursor Trail following precise mouse coordinates (optimally disabled on mobile) */}
+      {/* Glowing Cursor Trail */}
       <GlowingCursor />
 
-      {/* HEADER / NAVIGATION BAR with Glassmorphic styling */}
-      <nav id="navbar" className="sticky top-0 z-40 bg-[#FAF8F5]/80 backdrop-blur-xl border-b border-[#2C2825]/5 px-6 py-4 transition-all duration-300">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+      {/* ========================================================================= */}
+      {/* HEADER / NAVIGATION BAR (Exact layout from reference image) */}
+      {/* ========================================================================= */}
+      <header className="relative z-30 w-full max-w-7xl mx-auto pt-4 sm:pt-6 px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between py-3 px-4 sm:px-6 bg-[#111111]/90 backdrop-blur-md border border-[#222222] rounded-lg">
           
-          {/* Logo Name & Icon with glowing subtle border */}
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="h-10 w-10 bg-gradient-to-tr from-amber-500 to-orange-600 rounded-xl flex items-center justify-center font-bold text-white text-lg tracking-wider shadow-[0_4px_15px_rgba(245,158,11,0.25)] group-hover:rotate-6 duration-350 transition-all">
-              AK
+          {/* Brand Logo matching 'Cod≡r' design */}
+          <a href="#about" className="flex items-center gap-2 group cursor-pointer">
+            <div className="text-xl sm:text-2xl font-black font-syne text-white tracking-tight flex items-center">
+              <span>Cod</span>
+              <span className="text-[#FF4D00] font-black text-2xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
+              <span>r</span>
             </div>
-            <div className="font-sans">
-              <span className="font-extrabold text-[#2C2825] text-base tracking-tight block leading-tight">Muhammad Anas Khan</span>
-              <span className="text-[10px] text-amber-600 font-mono font-bold tracking-widest uppercase block mt-0.5">AI SOLUTIONS ENGINEER</span>
-            </div>
-          </div>
+          </a>
 
-          {/* Desktop Navigation Links (Linear styled, elegant tracking) */}
-          <div className="hidden md:flex items-center gap-8">
-            {['home', 'about', 'resume', 'projects', 'contact'].map((section) => (
-              <a 
-                key={section}
-                href={`#${section}`} 
-                className="text-[11px] font-bold uppercase tracking-widest text-[#2C2825]/60 hover:text-amber-600 transition-colors duration-200 relative group"
+          {/* Center Navigation Links with Active Orange Pill indicator */}
+          <div className="hidden md:flex items-center gap-1 sm:gap-2">
+            {[
+              { id: 'about', label: 'About Me', href: '#about' },
+              { id: 'services', label: 'Services', href: '#services' },
+              { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
+              { id: 'story', label: 'My Story', href: '#story' },
+              { id: 'contact', label: 'Contact Us', href: '#contact' }
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={() => setActiveNav(item.id as any)}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all ${
+                  activeNav === item.id 
+                    ? 'bg-[#FF4D00] text-white shadow-sm' 
+                    : 'text-neutral-400 hover:text-white hover:bg-white/5'
+                }`}
               >
-                {section}
-                <span className="absolute left-0 bottom-[-4px] w-0 h-[1.5px] bg-amber-500 transition-all duration-300 group-hover:w-full" />
+                {item.label}
               </a>
             ))}
           </div>
 
-          {/* Mobile Navigation Trigger */}
-          <div className="md:hidden flex items-center">
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-              className="text-[#2C2825] hover:text-amber-600 p-2 border border-[#2C2825]/10 bg-white rounded-xl transition-all shadow-sm"
+          {/* Right Action Button - Hire Me! */}
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-5 py-2 rounded-md transition-all duration-200 shadow-[0_4px_15px_rgba(255,77,0,0.3)] hover:shadow-[0_4px_20px_rgba(255,77,0,0.5)] cursor-pointer"
             >
-              <Menu size={20} />
+              Hire Me!
+            </a>
+
+            {/* Mobile menu hamburger toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-neutral-300 hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] rounded-md transition-colors"
+            >
+              <Menu size={18} />
             </button>
           </div>
+        </nav>
 
-        </div>
-
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pt-4 pb-2 border-t border-[#2C2825]/10 mt-4 flex flex-col gap-3 font-sans max-w-6xl mx-auto px-2"
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden mt-2 p-3 bg-[#121212] border border-[#222222] rounded-lg flex flex-col gap-1.5"
           >
-            {['home', 'about', 'resume', 'projects', 'contact'].map((section) => (
-              <a 
-                key={section}
-                href={`#${section}`} 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="text-[#2C2825]/75 hover:text-amber-600 py-2.5 px-3 rounded-xl bg-white border border-[#2C2825]/5 text-xs font-bold uppercase tracking-widest transition-all shadow-sm"
+            {[
+              { id: 'about', label: 'About Me', href: '#about' },
+              { id: 'services', label: 'Services', href: '#services' },
+              { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
+              { id: 'story', label: 'My Story', href: '#story' },
+              { id: 'contact', label: 'Contact Us', href: '#contact' }
+            ].map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={() => {
+                  setActiveNav(item.id as any);
+                  setMobileMenuOpen(false);
+                }}
+                className={`px-3 py-2 rounded-md text-xs font-semibold ${
+                  activeNav === item.id 
+                    ? 'bg-[#FF4D00] text-white' 
+                    : 'text-neutral-300 hover:bg-white/5'
+                }`}
               >
-                {section}
+                {item.label}
               </a>
             ))}
           </motion.div>
         )}
-      </nav>
+      </header>
 
-      {/* Page Content Fade In Wrapper */}
-      <motion.main 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="flex-1 w-full flex flex-col"
-      >
+      {/* ========================================================================= */}
+      {/* MAIN BODY CONTENT */}
+      {/* ========================================================================= */}
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* ==================================== */}
-        {/* HERO SECTION - Premium AI SaaS Vibe */}
-        {/* ==================================== */}
-        <section id="home" className="relative pt-4 pb-12 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5">
-          
-          {/* Subtle Grid overlay representing Vercel mesh */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#2c282504_1px,transparent_1px),linear-gradient(to_bottom,#2c282504_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-
-          {/* Header Title on a Single Line */}
-          <motion.div 
-            variants={itemVariants} 
-            initial="hidden"
-            animate="visible"
-            className="w-full flex flex-col gap-1.5 mb-8 relative z-10"
-          >
-            <span className="text-[#2C2825]/60 font-bold text-xs sm:text-sm tracking-widest uppercase font-mono">HELLO, I'M</span>
-            <h1 className="text-[6.5vw] xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-[#2C2825] via-[#4A4440] to-[#7A7068] bg-clip-text text-transparent leading-none tracking-tight whitespace-nowrap overflow-hidden text-ellipsis select-none py-1">
-              Muhammad Anas Khan
-            </h1>
-            <div className="w-full h-[1px] bg-[#2C2825]/10 mt-2" />
-          </motion.div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="w-full flex flex-col md:flex-row gap-10 items-start relative z-10"
-          >
+        {/* ========================================================================= */}
+        {/* HERO SECTION (Matches the prominent hero split with geometric wireframe) */}
+        {/* ========================================================================= */}
+        <section id="about" className="relative pt-12 sm:pt-16 pb-16 lg:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             
-            {/* Profile Portrait Pic on the Left Side */}
-            <motion.div 
-              variants={itemVariants}
-              className="w-full md:w-56 shrink-0 relative flex justify-center md:justify-start"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 blur-2xl rounded-full pointer-events-none scale-110" />
-              <div className="relative w-44 sm:w-48 md:w-56 aspect-[4/5] bg-white border border-[#2C2825]/10 rounded-[2rem] p-1.5 shadow-md overflow-hidden hover:border-amber-500/40 transition-colors duration-500">
-                <img 
-                  src={picImage} 
-                  alt="Muhammad Anas Khan" 
-                  className="w-full h-full object-cover object-top rounded-[1.75rem] block"
-                />
+            {/* Left Hero Content */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left">
+              
+              {/* Badge: "Hello, I am" */}
+              <div className="inline-block bg-[#FF4D00] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4 shadow-sm">
+                Hello, I am
               </div>
-            </motion.div>
 
-            {/* Narrative details right next to the portrait */}
-            <div className="flex-1 flex flex-col items-start w-full">
-              {/* Tagline Role */}
-              <motion.h3 
-                variants={itemVariants}
-                className="text-[#2C2825] font-extrabold text-base sm:text-lg md:text-xl tracking-tight mb-4 uppercase leading-tight font-sans"
-              >
-                I BUILD AI SYSTEMS THAT{" "}
-                <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">SCALE BUSINESSES.</span>
-              </motion.h3>
+              {/* Title: Muhammad Anas Khan (Single line) */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 whitespace-nowrap">
+                Muhammad Anas Khan
+              </h1>
 
-              {/* Narrative Content */}
-              <motion.div 
-                variants={itemVariants}
-                className="space-y-4 mb-6 text-[#2C2825]/80 text-xs sm:text-sm md:text-base leading-relaxed"
-              >
-                <p>
-                  Hey, I'm Anas Khan, an AI Solutions Engineer focused on building AI-powered SaaS products, intelligent automation systems, and custom AI agents that solve real business problems.
-                </p>
-                <p>
-                  I help businesses automate operations using LLMs, n8n, MCP, APIs, and modern AI workflows, from lead generation and customer support to internal operations and data processing.
-                </p>
-                <p>
-                  Whether it's launching an AI SaaS product, integrating AI into existing software, or building end-to-end automation, I create production-ready solutions that save time, reduce manual work, and help businesses grow faster.
-                </p>
-              </motion.div>
-
-              {/* Interactive Magnetic Specialty Badges */}
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mb-6 w-full">
-                {[
-                  "AI SaaS",
-                  "AI Agents",
-                  "n8n Automation",
-                  "MCP",
-                  "LLM Integration",
-                  "Workflow Automation",
-                  "APIs",
-                  "Dashboards"
-                ].map((spec, sIdx) => (
-                  <motion.span 
-                    key={sIdx} 
-                    whileHover={{ scale: 1.05, borderColor: 'rgba(217,119,6,0.4)', color: '#d97706' }}
-                    className="bg-white border border-[#2C2825]/10 text-[#2C2825]/80 text-[10px] sm:text-xs font-semibold font-mono tracking-wider uppercase px-3 py-1.5 rounded-lg transition-all cursor-default shadow-sm"
-                  >
-                    {spec}
-                  </motion.span>
-                ))}
-              </motion.div>
+              {/* Subtitle */}
+              <p className="text-neutral-400 text-sm sm:text-base md:text-lg font-normal mb-8 max-w-xl">
+                AI Automation Engineer building SaaS tools, dashboards & workflows that save businesses hours every week.
+              </p>
 
               {/* Action Buttons */}
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center w-full">
-                <motion.a 
-                  href="#about" 
-                  whileHover={{ scale: 1.03, boxShadow: '0 4px 15px rgba(245,158,11,0.3)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full shadow-[0_4px_15px_rgba(245,158,11,0.15)] transition-all flex items-center gap-2 group cursor-pointer"
+              <div className="flex flex-wrap items-center gap-4 mb-10">
+                <a
+                  href="#contact"
+                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-7 py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
                 >
-                  <span className="font-extrabold text-white">Explore My Systems</span>
-                  <ChevronRight size={14} className="group-hover:translate-x-1 duration-300 text-white" />
-                </motion.a>
-              </motion.div>
+                  <Download size={15} />
+                  <span>Download CV</span>
+                </a>
+
+                <a
+                  href="#portfolio"
+                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-6 sm:px-7 py-3 rounded-md transition-all cursor-pointer"
+                >
+                  My Work
+                </a>
+              </div>
+
+              {/* Animated Mouse Scroll Indicator (from reference image) */}
+              <div className="flex items-center gap-3 text-neutral-500 text-xs font-mono">
+                <div className="w-5 h-9 border border-[#FF4D00]/60 rounded-full flex justify-center pt-1.5 relative">
+                  <div className="w-1.5 h-1.5 bg-[#FF4D00] rounded-full animate-mouse-dot" />
+                </div>
+                <span className="text-[11px] text-neutral-400 tracking-wider">Scroll down to explore</span>
+              </div>
+
             </div>
 
-          </motion.div>
-        </section>
-
-
-        {/* ==================================== */}
-        {/* ABOUT ME SECTION - Bento-style Grid */}
-        {/* ==================================== */}
-        <section id="about" className="scroll-mt-24 py-20 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5">
-          
-          {/* Subheading: WHAT I DO? */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2.5 mb-12"
-          >
-            <span className="w-1.5 h-6 bg-amber-500 block rounded-full shadow-[0_2px_10px_rgba(245,158,11,0.3)]"></span>
-            <h3 className="font-extrabold text-[#2C2825] text-xs font-mono uppercase tracking-widest">
-              WHAT I DO
-            </h3>
-          </motion.div>
-
-          {/* Grids representing 3 functional pillars with subtle glow and scroll-reveal triggers */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            {/* Pillar 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ 
-                y: -5, 
-                borderColor: 'rgba(217,119,6,0.3)', 
-                boxShadow: '0 10px 30px -10px rgba(217,119,6,0.08)' 
-              }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-3xl transition-all duration-300 flex flex-col gap-5 relative group overflow-hidden shadow-sm"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors" />
-              <div className="h-10 w-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 shrink-0">
-                <Brain size={18} />
-              </div>
-              <div>
-                <h4 className="font-bold text-[#2C2825] text-sm font-mono tracking-wider uppercase mb-3">
-                  AI SaaS Development
-                </h4>
-                <p className="text-[#2C2825]/75 text-xs leading-relaxed">
-                  Designing secure full-stack software products integrated with localized RAG models, LangChain workflows, and serverless hosting infrastructures.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Pillar 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ 
-                y: -5, 
-                borderColor: 'rgba(217,119,6,0.3)', 
-                boxShadow: '0 10px 30px -10px rgba(217,119,6,0.08)' 
-              }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-3xl transition-all duration-300 flex flex-col gap-5 relative group overflow-hidden shadow-sm"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors" />
-              <div className="h-10 w-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 shrink-0">
-                <TrendingUp size={18} />
-              </div>
-              <div>
-                <h4 className="font-bold text-[#2C2825] text-sm font-mono tracking-wider uppercase mb-3">
-                  Workflow Automation
-                </h4>
-                <p className="text-[#2C2825]/75 text-xs leading-relaxed">
-                  Automating multi-step operational tasks using n8n workflows, custom MCP tool integrations, and custom Python automated scripts.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Pillar 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ 
-                y: -5, 
-                borderColor: 'rgba(217,119,6,0.3)', 
-                boxShadow: '0 10px 30px -10px rgba(217,119,6,0.08)' 
-              }}
-              className="bg-white border border-[#2C2825]/10 p-8 rounded-3xl transition-all duration-300 flex flex-col gap-5 relative group overflow-hidden shadow-sm"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors" />
-              <div className="h-10 w-10 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 shrink-0">
-                <Cpu size={18} />
-              </div>
-              <div>
-                <h4 className="font-bold text-[#2C2825] text-sm font-mono tracking-wider uppercase mb-3">
-                  Intelligent AI Agents
-                </h4>
-                <p className="text-[#2C2825]/75 text-xs leading-relaxed">
-                  Architecting adaptive multi-agent teams using state-of-the-art frameworks to optimize operations and support lead processing pipelines.
-                </p>
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* Animated Statistics Counters matching clean professional telemetry */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
-            
-            {/* Stat Item 1 */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
-            >
-              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
-                <Counter target={7} suffix="+" />
-              </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">FEATURED PROJECTS</span>
-            </motion.div>
- 
-            {/* Stat Item 2 */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
-            >
-              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
-                <Counter target={8} suffix="+" />
-              </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">CORE AI FRAMEWORKS</span>
-            </motion.div>
- 
-            {/* Stat Item 3 */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white border border-[#2C2825]/10 p-6 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm transition-colors hover:border-amber-500/20"
-            >
-              <span className="text-3xl sm:text-4xl font-extrabold text-[#2C2825] font-sans tracking-tight">
-                <Counter target={100} suffix="%" />
-              </span>
-              <span className="text-[10px] text-[#2C2825]/60 font-bold font-mono tracking-widest uppercase mt-2">CLIENT SATISFACTION</span>
-            </motion.div>
- 
-          </div> 
-
-          {/* Interactive Terminal Typing Simulator relocated to About Me section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mt-16 w-full max-w-4xl mx-auto relative z-10"
-          >
-            <div className="flex flex-col items-center text-center mb-8">
-              <span className="text-[10px] text-amber-600 font-bold font-mono tracking-widest uppercase">INTERACTIVE DEMO</span>
-              <h4 className="text-2xl font-extrabold text-[#2C2825] tracking-tight uppercase mt-1">AI Agent Pipeline Terminal</h4>
-              <p className="text-[#2C2825]/60 text-xs sm:text-sm max-w-lg mt-2">
-                Simulate active server deployments and background prompt executions below to watch automated MCP tool chains and web crawler loops in real-time.
-              </p>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 to-orange-500/5 blur-3xl pointer-events-none rounded-full" />
-              <TerminalTyping />
-            </div>
-          </motion.div>
-
-        </section>
-
-
-        {/* ==================================== */}
-        {/* RESUME SECTION - Sleek Tech Timeline */}
-        {/* ==================================== */}
-        <section id="resume" className="scroll-mt-24 py-20 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5 relative">
-          
-          <div className="absolute inset-0 bg-[#2C2825]/[0.01] pointer-events-none" />
-
-          {/* Resume Main Heading */}
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#2C2825] uppercase mb-16"
-          >
-            RESUME DATA
-          </motion.h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-            
-            {/* EDUCATION COLUMN (Left) */}
-            <div className="lg:col-span-5 flex flex-col">
+            {/* Right Hero Visual - Portrait Transparent Cutout with Geometric Polygonal Lines Overlay */}
+            <div className="lg:col-span-5 relative flex justify-center items-center">
               
-              {/* Category Underline Header */}
-              <motion.div 
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-2 mb-8"
-              >
-                <span className="w-1.5 h-6 bg-amber-500 block rounded-full"></span>
-                <h3 className="font-extrabold text-[#2C2825] text-base font-mono uppercase tracking-wider">
-                  EDUCATION
-                </h3>
-              </motion.div>
-
-              {/* Study Timeline Items with glowing circles */}
-              <div className="relative border-l-2 border-[#2C2825]/15 pl-6 space-y-10 ml-3 py-2">
+              <div className="relative w-72 sm:w-80 md:w-96 aspect-[4/5] flex items-center justify-center group">
                 
-                {/* Degree 1 */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="relative group"
-                >
-                  <span className="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-amber-500 bg-[#FAF8F5] group-hover:bg-amber-500 duration-300 transition-colors inline-block"></span>
-                  <div className="text-xs text-amber-600 font-extrabold font-mono tracking-wider uppercase">
-                    FEDERAL URDU UNIVERSITY, KARACHI
-                  </div>
-                  <h4 className="text-base font-extrabold text-[#2C2825] mt-1 uppercase">
-                    BS COMPUTER SCIENCE
-                  </h4>
-                  <p className="text-sm text-[#2C2825]/75 mt-2 leading-relaxed">
-                    Specializing in Artificial Intelligence & Data Science. Gaining deep knowledge in machine learning pipelines, RAG, and automated flows.
-                  </p>
-                </motion.div>
+                {/* Subtle ambient back-glow behind portrait */}
+                <div className="absolute inset-0 bg-radial from-[#FF4D00]/20 via-[#FF4D00]/5 to-transparent blur-2xl pointer-events-none" />
 
-                {/* Spec 2 */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="relative group"
-                >
-                  <span className="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-amber-600 bg-[#FAF8F5] group-hover:bg-amber-600 duration-300 transition-colors inline-block"></span>
-                  <div className="text-xs text-amber-700 font-extrabold font-mono tracking-wider uppercase">
-                    SPECIALIZATION
-                  </div>
-                  <h4 className="text-base font-extrabold text-[#2C2825] mt-1 uppercase">
-                    DEEP LEARNING & NEURAL NETWORKS
-                  </h4>
-                  <p className="text-sm text-[#2C2825]/75 mt-2 leading-relaxed">
-                    Hands-on experience with TensorFlow, CNNs, LSTMs, and fine-tuning open-source LLMs for specialized client tasks.
-                  </p>
-                </motion.div>
+                {/* Portrait Photo with seamless bottom fade & clean transparency blend */}
+                <div className="relative w-full h-full flex items-end justify-center overflow-visible">
+                  <img 
+                    src={picImage} 
+                    alt="Muhammad Anas Khan - AI Solutions Engineer" 
+                    className="w-full h-full object-cover object-top relative z-10 filter contrast-105 group-hover:scale-105 transition-transform duration-500 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
+                  />
+                </div>
 
-                {/* Spec 3 */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="relative group"
-                >
-                  <span className="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-orange-500 bg-[#FAF8F5] group-hover:bg-orange-500 duration-300 transition-colors inline-block"></span>
-                  <div className="text-xs text-orange-600 font-extrabold font-mono tracking-wider uppercase">
-                    SPECIALIZATION
-                  </div>
-                  <h4 className="text-base font-extrabold text-[#2C2825] mt-1 uppercase">
-                    MACHINE LEARNING CORES
-                  </h4>
-                  <p className="text-sm text-[#2C2825]/75 mt-2 leading-relaxed">
-                    Statistical models using Scikit-learn for forecasting, predictive segmentation, and analyzing health-analytics with high reliability.
-                  </p>
-                </motion.div>
+                {/* SVG Polygonal Wireframe Lines (Artistic geometric line accent like in mockup) */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 stroke-[#FF4D00]/60" viewBox="0 0 300 375" fill="none">
+                  {/* Top polygonal triangle mesh */}
+                  <polygon points="150,20 270,120 30,120" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
+                  <polygon points="150,60 250,140 50,140" strokeWidth="1.2" opacity="0.8" />
+                  <line x1="150" y1="20" x2="150" y2="350" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.3" />
+                  {/* Center diamond & chevron wireframe */}
+                  <polygon points="150,160 280,220 150,280 20,220" strokeWidth="1" opacity="0.7" />
+                  <polygon points="150,180 260,230 150,340 40,230" strokeWidth="1.2" opacity="0.85" />
+                  {/* Corner accents */}
+                  <circle cx="150" cy="20" r="3" fill="#FF4D00" />
+                  <circle cx="280" cy="220" r="3" fill="#FF4D00" />
+                  <circle cx="20" cy="220" r="3" fill="#FF4D00" />
+                  <circle cx="150" cy="340" r="3" fill="#FF4D00" />
+                </svg>
 
               </div>
-            </div>
-
-            {/* MY SKILLS PROGRESS BARS (Right) */}
-            <div className="lg:col-span-7 flex flex-col">
-              
-              {/* Category Underline Header */}
-              <motion.div 
-                initial={{ opacity: 0, x: 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-2 mb-8"
-              >
-                <span className="w-1.5 h-6 bg-amber-500 block rounded-full"></span>
-                <h3 className="font-extrabold text-[#2C2825] text-base font-mono uppercase tracking-wider">
-                  SKILL PROFICIENCY
-                </h3>
-              </motion.div>
-
-              {/* Skills Progress layout holding the values in a 2-column grid */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white border border-[#2C2825]/10 p-8 rounded-3xl shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5"
-              >
-                {skillsData.map((skill, index) => (
-                  <div key={index} className="space-y-1.5">
-                    <div className="flex justify-between items-center">
-                      <span className="font-bold text-[#2C2825] text-xs font-mono tracking-tight">{skill.name}</span>
-                      <span className="font-bold text-amber-600 text-xs font-mono">{skill.level}%</span>
-                    </div>
-                    {/* Sleek range bar inside custom gray block */}
-                    <div className="w-full bg-neutral-100 h-1.5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                        className="bg-gradient-to-r from-amber-500 to-orange-600 h-full rounded-full"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
 
             </div>
 
           </div>
+
+          {/* ========================================================================= */}
+          {/* STATS / METRIC CARDS (Exact 4-box layout with highlighted orange card) */}
+          {/* ========================================================================= */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
+            
+            {/* Box 1: Clients */}
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+                <Counter target={15} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Clients</span>
+            </div>
+
+            {/* Box 2: Highlighted ORANGE card: Projects */}
+            <div className="bg-[#FF4D00] text-white p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.35)] transition-all transform hover:-translate-y-1">
+              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+                <Counter target={25} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm text-white/90 font-bold tracking-wide mt-1.5">Projects</span>
+            </div>
+
+            {/* Box 3: Deployments / Accuracy */}
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+                <Counter target={30} suffix="+" />
+              </span>
+              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Deployments</span>
+            </div>
+
+            {/* Box 4: Years Experience */}
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+                03
+              </span>
+              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Years Experience</span>
+            </div>
+
+          </div>
+
         </section>
 
 
-        {/* ==================================== */}
-        {/* PROJECTS SECTION - Bento Grid filter */}
-        {/* ==================================== */}
-        <section id="projects" className="scroll-mt-24 py-20 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5">
+        {/* ========================================================================= */}
+        {/* SERVICES SECTION ("Our Services" with orange highlight card) */}
+        {/* ========================================================================= */}
+        <section id="services" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
           
-          {/* Projects Main Header */}
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#2C2825] uppercase mb-8"
-          >
-            PROJECT PORTFOLIO
-          </motion.h2>
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+              Our Services
+            </h2>
+            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
+            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+              Such a passionate software engineer who specializes in modern AI architectures, agentic pipelines, and SaaS solutions.
+            </p>
+          </div>
 
-          {/* Interactive filter pills container */}
-          <div className="flex flex-wrap gap-2 mb-10 select-none">
-            {(['ALL', 'MACHINE LEARNING', 'DEEP LEARNING', 'DATA ANALYSIS', 'AI & CHATBOTS', 'SAAS PRODUCT'] as const).map((filter) => (
+          {/* Services Grid (6 cards, matching mockup layout) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {servicesList.map((service) => (
+              <div
+                key={service.id}
+                className={`p-7 rounded-lg flex flex-col justify-between transition-all duration-300 relative group min-h-[220px] ${
+                  service.isFeatured
+                    ? 'bg-[#FF4D00] text-white shadow-[0_8px_30px_rgba(255,77,0,0.3)]'
+                    : 'bg-[#121212] border border-[#222222] hover:border-[#FF4D00]/50 text-white'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      {service.id === 'saas' && <Layers size={22} className={service.isFeatured ? 'text-white' : 'text-[#FF4D00]'} />}
+                      {service.id === 'n8n' && <TrendingUp size={22} className="text-[#FF4D00]" />}
+                      {service.id === 'agents' && <Cpu size={22} className="text-[#FF4D00]" />}
+                      {service.id === 'fullstack' && <Code2 size={22} className="text-[#FF4D00]" />}
+                      {service.id === 'rag' && <Brain size={22} className="text-[#FF4D00]" />}
+                      {service.id === 'ml' && <Sparkles size={22} className="text-[#FF4D00]" />}
+                      
+                      <h3 className="text-base sm:text-lg font-bold font-syne tracking-tight">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <ArrowRight size={18} className={`transition-transform duration-300 group-hover:translate-x-1 ${service.isFeatured ? 'text-white' : 'text-neutral-400 group-hover:text-[#FF4D00]'}`} />
+                  </div>
+
+                  <p className={`text-xs sm:text-sm leading-relaxed mb-6 ${service.isFeatured ? 'text-white/90' : 'text-neutral-400'}`}>
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
+                  {service.tags.map((tag, idx) => (
+                    <span 
+                      key={idx} 
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded-sm ${
+                        service.isFeatured 
+                          ? 'bg-black/20 text-white' 
+                          : 'bg-[#1A1A1A] text-neutral-400 border border-[#2A2A2A]'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Show All CTA Button */}
+          <div className="flex justify-center mt-10">
+            <a
+              href="#portfolio"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-md transition-all shadow-md cursor-pointer"
+            >
+              Show All
+            </a>
+          </div>
+
+        </section>
+
+
+        {/* ========================================================================= */}
+        {/* "READ ABOUT MY LIFE STRUGGLE STORY!" / JOURNEY & PHILOSOPHY SECTION */}
+        {/* ========================================================================= */}
+        <section id="story" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Column: Real Code & Interactive Terminal Preview */}
+            <div className="lg:col-span-6 flex flex-col gap-4">
+              
+              {/* Terminal Frame */}
+              <div className="relative rounded-xl overflow-hidden border border-[#222222] bg-[#121212] shadow-2xl">
+                <TerminalTyping />
+              </div>
+
+              {/* Skills benchmarks preview */}
+              <div className="bg-[#121212] border border-[#222222] p-5 rounded-xl">
+                <h4 className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-3 bg-[#FF4D00] rounded-full" />
+                  Engineering Competency Matrix
+                </h4>
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
+                    <span className="text-neutral-300">AI SaaS Systems</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">96%</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
+                    <span className="text-neutral-300">n8n & MCP Automation</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">95%</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
+                    <span className="text-neutral-300">Autonomous Agents</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">94%</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
+                    <span className="text-neutral-300">FastAPI & Python</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">95%</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Narrative Story matching the mockup heading */}
+            <div className="lg:col-span-6 flex flex-col items-start">
+              
+              <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+                MY JOURNEY & VISION
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight leading-tight mb-6">
+                Read About My Life <br className="hidden sm:block" />
+                <span className="text-[#FF4D00]">Struggle & Engineering Story!</span>
+              </h2>
+
+              <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
+                <p>
+                  From building my foundation in Computer Science at <strong className="text-white">Federal Urdu University, Karachi</strong>, to architecting multi-agent AI ecosystems for global businesses, my journey has been driven by one mission: turning complex machine learning algorithms into tangible, high-ROI business tools.
+                </p>
+                <p>
+                  I've spent years diving deep into deep neural networks, Convolutional Neural Networks (CNNs), Long Short-Term Memory (LSTM) models, and modern LLM orchestration. When the AI revolution arrived, I transitioned from theoretical models to production-ready AI SaaS and automated workflows.
+                </p>
+                <p>
+                  Today, I help companies replace repetitive manual work with intelligent autonomous agents, custom RAG knowledge bases, and robust n8n pipelines that run 24/7 without friction.
+                </p>
+              </div>
+
+              {/* Education & credentials badge */}
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
+                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">EDUCATION</div>
+                  <div className="text-xs font-semibold text-white">BS Computer Science • Federal Urdu University</div>
+                </div>
+                <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
+                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">FOCUS</div>
+                  <div className="text-xs font-semibold text-white">AI, Deep Learning & Autonomous Systems</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ========================================================================= */}
+        {/* PORTFOLIO SECTION ("Our Portfolio" matching mockup design) */}
+        {/* ========================================================================= */}
+        <section id="portfolio" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+              Our Portfolio
+            </h2>
+            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
+            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+              Explore featured production software, autonomous workflows, and machine learning models.
+            </p>
+          </div>
+
+          {/* Filter Pills */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10 select-none">
+            {(['ALL', 'AI SAAS', 'AGENTS & MCP', 'MACHINE LEARNING', 'DEEP LEARNING', 'DATA ANALYSIS'] as const).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`text-[9px] sm:text-[10px] font-extrabold tracking-wider px-4 py-2.5 rounded-lg font-mono uppercase transition-all duration-300 border cursor-pointer ${
-                  activeFilter === filter 
-                    ? 'bg-amber-500 text-white border-amber-600 shadow-[0_4px_15px_rgba(245,158,11,0.2)] font-black' 
-                    : 'bg-white hover:bg-neutral-50 text-[#2C2825]/75 border-[#2C2825]/10 shadow-sm'
+                className={`text-[10px] sm:text-xs font-bold tracking-wider px-4 py-2 rounded-md uppercase transition-all duration-200 cursor-pointer ${
+                  activeFilter === filter
+                    ? 'bg-[#FF4D00] text-white shadow-md'
+                    : 'bg-[#121212] hover:bg-[#1A1A1A] text-neutral-400 hover:text-white border border-[#222222]'
                 }`}
               >
                 {filter}
@@ -937,251 +772,240 @@ Interaction Guidelines & Tone:
             ))}
           </div>
 
-          {/* Grid list of structural project cards */}
+          {/* Portfolio Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
-              <motion.div 
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ 
-                  y: -5,
-                  borderColor: project.isHighlighted ? '#d97706' : '#f59e0b',
-                  boxShadow: '0 10px 25px -5px rgba(44,40,37,0.08)'
-                }}
+              <div
                 key={project.id}
-                className={`bg-white rounded-3xl overflow-hidden transition-all duration-300 flex flex-col justify-between min-h-[300px] p-6.5 border relative group shadow-sm ${
-                  project.isHighlighted 
-                    ? 'border-amber-500 shadow-[0_4px_20px_rgba(245,158,11,0.08)]'
-                    : 'border-[#2C2825]/10'
+                className={`rounded-lg p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 min-h-[260px] relative group ${
+                  project.isHighlighted
+                    ? 'bg-[#FF4D00] text-white shadow-[0_8px_30px_rgba(255,77,0,0.35)]'
+                    : 'bg-[#121212] border border-[#222222] hover:border-[#FF4D00]/50 text-white'
                 }`}
               >
-                {project.isHighlighted && (
-                  <span className="absolute top-3 right-3 text-[8px] font-black tracking-widest font-mono text-amber-700 bg-amber-500/15 px-2 py-0.5 rounded uppercase">
-                    Top Prediction
-                  </span>
-                )}
-                
                 <div>
-                  
-                  {/* Top line with Icon and category name */}
-                  <div className="flex justify-between items-start mb-6">
-                    {project.icon}
-                    <span className="bg-[#FAF8F5] text-[#2C2825]/75 border border-[#2C2825]/10 text-[9px] font-extrabold font-mono tracking-wider uppercase px-2.5 py-1 rounded-md">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded-sm ${
+                      project.isHighlighted
+                        ? 'bg-black/25 text-white'
+                        : 'bg-[#1A1A1A] text-[#FF4D00] border border-[#FF4D00]/20'
+                    }`}>
                       {project.tag}
                     </span>
+
+                    {project.isHighlighted && (
+                      <span className="text-[9px] uppercase font-bold tracking-widest bg-white text-[#FF4D00] px-2 py-0.5 rounded-sm">
+                        Featured
+                      </span>
+                    )}
                   </div>
 
-                  {/* Title & paragraph */}
-                  <h4 className="text-lg font-bold text-[#2C2825] mb-2 leading-tight">
+                  <h3 className="text-lg sm:text-xl font-bold font-syne tracking-tight mb-2.5">
                     {project.title}
-                  </h4>
-                  <p className="text-[#2C2825]/75 text-xs leading-relaxed">
+                  </h3>
+
+                  <p className={`text-xs sm:text-sm leading-relaxed mb-6 ${
+                    project.isHighlighted ? 'text-white/90' : 'text-neutral-400'
+                  }`}>
                     {project.description}
                   </p>
-
                 </div>
 
-                {/* Lower Action buttons */}
-                <div className="mt-6 pt-4 border-t border-[#2C2825]/10 flex items-center justify-between">
-                  <a 
+                {/* Card Actions */}
+                <div className={`pt-4 border-t flex items-center justify-between ${
+                  project.isHighlighted ? 'border-white/20' : 'border-[#222222]'
+                }`}>
+                  <a
                     href={project.githubUrl}
                     target="_blank"
-                    referrerPolicy="no-referrer"
-                    className="text-[10px] uppercase font-mono font-bold text-[#2C2825]/50 hover:text-amber-600 transition-colors flex items-center gap-1"
+                    rel="noreferrer"
+                    className={`text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors ${
+                      project.isHighlighted ? 'text-white hover:text-black' : 'text-neutral-400 hover:text-white'
+                    }`}
                   >
-                    <span>Codebase</span>
-                    <Github size={12} />
+                    <Github size={13} />
+                    <span>Source Code</span>
                   </a>
 
                   {project.id === "spotify" ? (
-                    <button 
+                    <button
                       onClick={() => setIsSpotifyDashboardOpen(true)}
-                      className="inline-flex items-center gap-1.5 text-[10px] uppercase font-mono font-black text-[#1db954] hover:text-[#1ed760] cursor-pointer transition-colors"
+                      className={`text-xs font-mono font-bold flex items-center gap-1 cursor-pointer transition-colors ${
+                        project.isHighlighted ? 'text-white hover:underline' : 'text-[#FF4D00] hover:text-[#FF7700]'
+                      }`}
                     >
-                      <span>Interactive Dashboard</span>
-                      <ChevronRight size={14} strokeWidth={2.5} />
+                      <span>Interactive App</span>
+                      <ChevronRight size={14} />
                     </button>
                   ) : project.liveDemoUrl && (
-                    <a 
+                    <a
                       href={project.liveDemoUrl}
                       target="_blank"
-                      referrerPolicy="no-referrer"
-                      className="inline-flex items-center gap-1.5 text-[10px] uppercase font-mono font-black text-amber-600 hover:text-amber-700 transition-colors"
+                      rel="noreferrer"
+                      className={`text-xs font-mono font-bold flex items-center gap-1 transition-colors ${
+                        project.isHighlighted ? 'text-white hover:underline' : 'text-[#FF4D00] hover:text-[#FF7700]'
+                      }`}
                     >
-                      <span>Launch App</span>
-                      <ChevronRight size={14} />
+                      <span>Live Preview</span>
+                      <ExternalLink size={13} />
                     </a>
                   )}
                 </div>
-
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          {/* GitHub Bottom CTA */}
-          <div className="flex justify-center items-center mt-12">
-            <motion.a 
+          {/* View All Button */}
+          <div className="flex justify-center mt-10">
+            <a
               href="https://github.com/AnasKhan2310"
               target="_blank"
-              referrerPolicy="no-referrer"
-              whileHover={{ scale: 1.05, boxShadow: '0 4px 15px rgba(44,40,37,0.1)' }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 bg-white text-[#2C2825] font-bold text-xs uppercase tracking-wider px-8 py-4.5 rounded-full border border-[#2C2825]/10 shadow-sm transition-all cursor-pointer"
+              rel="noreferrer"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-md transition-all shadow-md flex items-center gap-2 cursor-pointer"
             >
               <span>View All on GitHub</span>
-              <Github size={15} className="text-[#2C2825]" />
-            </motion.a>
+              <Github size={14} />
+            </a>
           </div>
 
         </section>
 
 
-        {/* ==================================== */}
-        {/* CONTACT SECTION - Premium Dark Cards */}
-        {/* ==================================== */}
-        <section id="contact" className="scroll-mt-24 py-20 px-6 lg:px-12 max-w-6xl w-full mx-auto border-b border-[#2C2825]/5 rounded-t-[2.5rem] bg-white border border-[#2C2825]/10 shadow-sm mt-12">
+        {/* ========================================================================= */}
+        {/* CONTACT SECTION ("Contact Us" matching mockup) */}
+        {/* ========================================================================= */}
+        <section id="contact" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
           
-          {/* Section Heading */}
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#2C2825] uppercase mb-4"
-          >
-            GET IN TOUCH
-          </motion.h2>
-
-          {/* GET IN TOUCH tag bar header */}
-          <div className="flex items-center gap-2.5 mb-12">
-            <span className="w-1.5 h-6 bg-amber-500 block rounded-full"></span>
-            <h3 className="font-extrabold text-[#2C2825]/60 text-xs font-mono uppercase tracking-widest">
-              LET'S INVENT SOMETHING AMAZING
-            </h3>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+              Contact Us
+            </h2>
+            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
+            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+              Have a project in mind, need to automate workflows, or launch an AI SaaS product? Let's talk.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Contact details blocks (Left Column) */}
+            {/* Left Contact Info Cards (5 cols) */}
             <div className="lg:col-span-5 flex flex-col gap-4">
               
-              {/* Location Card */}
-              <div className="flex items-center gap-4 bg-[#FAF8F5] border border-[#2C2825]/10 p-5 rounded-2xl hover:border-amber-500/30 transition-all duration-300 shadow-sm">
-                <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <span className="text-[10px] text-[#2C2825]/50 font-bold uppercase tracking-widest block font-mono">Location</span>
-                  <span className="text-[#2C2825] text-sm font-semibold block mt-1">Karachi, Pakistan</span>
-                </div>
-              </div>
-
-              {/* Email Card */}
-              <div className="flex items-center gap-4 bg-[#FAF8F5] border border-[#2C2825]/10 p-5 rounded-2xl hover:border-amber-500/30 transition-all duration-300 shadow-sm">
-                <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
+              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
                   <Mail size={20} />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#2C2825]/50 font-bold uppercase tracking-widest block font-mono">Email Address</span>
-                  <a href="mailto:anaskhanz1980@gmail.com" className="text-[#2C2825] hover:text-amber-600 text-sm font-semibold block transition-colors mt-1">anaskhanz1980@gmail.com</a>
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Email Address</span>
+                  <a href="mailto:anaskhanz1980@gmail.com" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
+                    anaskhanz1980@gmail.com
+                  </a>
                 </div>
               </div>
 
-              {/* Phone Card */}
-              <div className="flex items-center gap-4 bg-[#FAF8F5] border border-[#2C2825]/10 p-5 rounded-2xl hover:border-amber-500/30 transition-all duration-300 shadow-sm">
-                <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
+              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
                   <Phone size={20} />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#2C2825]/50 font-bold uppercase tracking-widest block font-mono">Phone Number</span>
-                  <a href="tel:+923112813828" className="text-[#2C2825] hover:text-amber-600 text-sm font-semibold block transition-colors mt-1">+92 311 2813828</a>
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">WhatsApp & Phone</span>
+                  <a href="tel:+923112813828" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
+                    +92 311 2813828
+                  </a>
                 </div>
               </div>
 
-              {/* LinkedIn Card */}
-              <div className="flex items-center gap-4 bg-[#FAF8F5] border border-[#2C2825]/10 p-5 rounded-2xl hover:border-amber-500/30 transition-all duration-300 shadow-sm">
-                <div className="h-12 w-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
+              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Location</span>
+                  <span className="text-white text-sm font-semibold mt-0.5 block">
+                    Karachi, Pakistan
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
                   <Linkedin size={20} />
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#2C2825]/50 font-bold uppercase tracking-widest block font-mono">LinkedIn Profile</span>
-                  <a href="https://www.linkedin.com/in/anas-khan1290/" target="_blank" referrerPolicy="no-referrer" className="text-[#2C2825] hover:text-amber-600 text-sm font-semibold block transition-colors mt-1">linkedin.com/in/anas-khan1290</a>
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">LinkedIn Profile</span>
+                  <a href="https://www.linkedin.com/in/anas-khan1290/" target="_blank" rel="noreferrer" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
+                    linkedin.com/in/anas-khan1290
+                  </a>
                 </div>
               </div>
 
             </div>
 
-            {/* Message submission client form (Right Column) */}
-            <div className="lg:col-span-7 bg-[#FAF8F5] border border-[#2C2825]/10 p-8 rounded-3xl shadow-sm">
-              <form onSubmit={handleContactSubmit} className="flex flex-col gap-5">
+            {/* Right Contact Form (7 cols) */}
+            <div className="lg:col-span-7 bg-[#121212] border border-[#222222] p-6 sm:p-8 rounded-lg shadow-xl">
+              <form onSubmit={handleContactSubmit} className="flex flex-col gap-4">
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[#2C2825]/60 font-bold text-[11px] tracking-widest uppercase block mb-1.5 font-mono">Your Name</label>
-                    <input 
-                      type="text" 
+                    <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Your Name</label>
+                    <input
+                      type="text"
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
-                      placeholder="My full name..." 
+                      placeholder="Mr. John Doe"
                       required
-                      className="w-full bg-white focus:bg-neutral-50 text-[#2C2825] text-xs sm:text-sm font-medium border border-[#2C2825]/10 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3.5 transition-all shadow-inner"
+                      className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                     />
                   </div>
-
                   <div>
-                    <label className="text-[#2C2825]/60 font-bold text-[11px] tracking-widest uppercase block mb-1.5 font-mono">Your Email</label>
-                    <input 
-                      type="email" 
+                    <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Your Email</label>
+                    <input
+                      type="email"
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
-                      placeholder="email@organization.com" 
+                      placeholder="john@company.com"
                       required
-                      className="w-full bg-white focus:bg-neutral-50 text-[#2C2825] text-xs sm:text-sm font-medium border border-[#2C2825]/10 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3.5 transition-all shadow-inner"
+                      className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[#2C2825]/60 font-bold text-[11px] tracking-widest uppercase block mb-1.5 font-mono">Subject</label>
-                  <input 
-                    type="text" 
+                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Subject</label>
+                  <input
+                    type="text"
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
-                    placeholder="E.g., AI Solutions Consulting..." 
+                    placeholder="AI SaaS Development / Automation Project..."
                     required
-                    className="w-full bg-white focus:bg-neutral-50 text-[#2C2825] text-xs sm:text-sm font-medium border border-[#2C2825]/10 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3.5 transition-all shadow-inner"
+                    className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="text-[#2C2825]/60 font-bold text-[11px] tracking-widest uppercase block mb-1.5 font-mono">Your Message</label>
-                  <textarea 
+                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Message</label>
+                  <textarea
                     rows={4}
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
-                    placeholder="Hi Anas, let's discuss expanding our operations using agents..." 
+                    placeholder="Hi Anas, let's discuss building an AI agent system for our business..."
                     required
-                    className="w-full bg-white focus:bg-neutral-50 text-[#2C2825] text-xs sm:text-sm font-medium border border-[#2C2825]/10 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3.5 transition-all resize-none shadow-inner"
-                  ></textarea>
+                    className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors resize-none"
+                  />
                 </div>
 
-                {/* Glassmorphic Solid Submit button */}
-                <motion.button 
-                  type="submit" 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-amber-500 hover:bg-amber-600 text-white font-sans font-bold text-xs uppercase tracking-widest py-4 px-8 rounded-full transition-all duration-300 inline-flex items-center gap-2 self-start shadow-md hover:shadow-amber-500/20 cursor-pointer"
+                <button
+                  type="submit"
+                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-8 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center justify-center gap-2 cursor-pointer self-start mt-2"
                 >
-                  <span className="font-extrabold text-white">Send Message</span>
-                  <Send size={13} className="text-white" />
-                </motion.button>
+                  <span>Send Message</span>
+                  <Send size={14} />
+                </button>
 
                 {isSubmitted && (
-                  <div className="bg-emerald-500/10 text-emerald-600 flex items-center gap-2.5 p-4 rounded-2xl border border-emerald-500/20 text-xs font-semibold animate-fade-in font-mono">
-                    <CheckCircle size={15} className="text-emerald-600" />
-                    <span>Your request details have been dispatched to Anas!</span>
+                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-md text-xs flex items-center gap-2 animate-fade-in font-mono mt-2">
+                    <CheckCircle size={15} />
+                    <span>Message received! Anas will get back to you shortly.</span>
                   </div>
                 )}
 
@@ -1189,143 +1013,133 @@ Interaction Guidelines & Tone:
             </div>
 
           </div>
+
         </section>
 
-      </motion.main>
+      </main>
 
+      {/* ========================================================================= */}
       {/* FOOTER */}
-      <footer className="bg-white border-t border-[#2C2825]/10 text-[#2C2825]/50 px-6 py-10 relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* ========================================================================= */}
+      <footer className="w-full border-t border-[#1C1C1C] bg-[#0D0D0D] py-8 relative z-10 text-neutral-500 text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          
+          {/* Logo */}
           <div className="flex items-center gap-2">
-            <span className="text-[#2C2825] text-xs font-bold font-mono tracking-widest uppercase">Muhammad Anas Khan</span>
-            <span className="text-neutral-300">|</span>
-            <span className="text-[#2C2825]/75 text-xs font-mono uppercase tracking-wider">AI Portfolio Pipeline</span>
+            <span className="font-syne font-extrabold text-white text-base">Cod<span className="text-[#FF4D00]">≡</span>r</span>
+            <span className="text-neutral-700">|</span>
+            <span>Muhammad Anas Khan Portfolio</span>
           </div>
-          <div className="text-[10px] text-[#2C2825]/40 font-mono tracking-wider">
-            &copy; {new Date().getFullYear()} Muhammad Anas Khan. All Rights Saved.
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            <a href="https://www.linkedin.com/in/anas-khan1290/" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
+              <Linkedin size={16} />
+            </a>
+            <a href="https://github.com/AnasKhan2310" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
+              <Github size={16} />
+            </a>
+            <a href="mailto:anaskhanz1980@gmail.com" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
+              <Mail size={16} />
+            </a>
           </div>
+
+          <div className="font-mono text-[11px] text-neutral-600">
+            &copy; {new Date().getFullYear()} Muhammad Anas Khan. All rights reserved.
+          </div>
+
         </div>
       </footer>
 
-
-      {/* ======================================================== */}
-      {/* PERSISTENT FLOATING CHAT WIDGET - Professional Overlay */}
-      {/* ======================================================== */}
+      {/* ========================================================================= */}
+      {/* FLOATING GEMINI AI CHATBOT DRAWER */}
+      {/* ========================================================================= */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-sans">
         
-        {/* Floating rounded bubble button to open Chat */}
         {!isChatOpen ? (
           <button 
             id="chatbot-trigger-bubble"
-            onClick={() => {
-              setIsChatOpen(true);
-            }}
-            className="h-14 w-14 rounded-full bg-amber-500 hover:bg-amber-600 border-2 border-[#FAF8F5] text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 duration-300 group cursor-pointer"
-            title="Ask Anas's AI"
+            onClick={() => setIsChatOpen(true)}
+            className="h-13 w-13 rounded-full bg-[#FF4D00] hover:bg-[#E04400] border-2 border-white/20 text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 duration-300 group cursor-pointer"
+            title="Ask Anas's AI Assistant"
           >
-            <Bot size={26} className="text-white group-hover:rotate-12 transition-transform duration-300" />
-            <span className="absolute top-0 right-0 h-3.5 w-3.5 bg-emerald-500 border-2 border-[#FAF8F5] rounded-full animate-pulse"></span>
+            <Bot size={24} className="text-white group-hover:rotate-12 transition-transform duration-300" />
+            <span className="absolute top-0 right-0 h-3 w-3 bg-emerald-500 border border-[#0A0A0A] rounded-full animate-pulse" />
           </button>
         ) : (
-          /* Main expandable chatbot overlay card */
-          <div className="w-[340px] sm:w-[380px] h-[500px] bg-white border border-[#2C2825]/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden relative animate-fade-in">
+          <div className="w-[330px] sm:w-[370px] h-[480px] bg-[#121212] border border-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative animate-fade-in">
             
-            {/* Chatbot overlay Header */}
-            <div className="bg-[#FAF8F5] px-4.5 py-4 border-b border-[#2C2825]/10 flex items-center justify-between text-[#2C2825]">
-              <div className="flex items-center gap-3">
-                <div className="h-9 w-9 bg-white border border-[#2C2825]/10 rounded-xl flex items-center justify-center shadow-sm">
-                  <Bot size={18} className="text-amber-600 animate-pulse" />
+            {/* Header */}
+            <div className="bg-[#1A1A1A] px-4 py-3.5 border-b border-[#262626] flex items-center justify-between text-white">
+              <div className="flex items-center gap-2.5">
+                <div className="h-8 w-8 bg-[#FF4D00]/10 border border-[#FF4D00]/30 rounded-lg flex items-center justify-center">
+                  <Bot size={16} className="text-[#FF4D00]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[11px] tracking-wider uppercase leading-none font-mono text-amber-600">ANAS'S AI ASSISTANT</h3>
-                  <div className="flex items-center gap-1.5 mt-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block animate-ping"></span>
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block -ml-3"></span>
-                    <span className="text-[8.5px] font-bold text-[#2C2825]/50 uppercase tracking-widest leading-none">ACTIVE</span>
+                  <h3 className="font-bold text-xs tracking-wider uppercase font-mono text-white">ANAS'S AI ASSISTANT</h3>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block animate-ping" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block -ml-2.5" />
+                    <span className="text-[8px] font-bold text-neutral-400 uppercase tracking-widest font-mono">ONLINE</span>
                   </div>
                 </div>
               </div>
               <button 
                 onClick={() => setIsChatOpen(false)}
-                className="p-1.5 bg-white hover:bg-neutral-50 border border-[#2C2825]/10 transition-colors rounded-xl text-[#2C2825]/60 hover:text-[#2C2825] cursor-pointer shadow-sm"
-                title="Minimize AI Chat"
+                className="p-1 text-neutral-400 hover:text-white rounded-md hover:bg-white/5 transition-colors cursor-pointer"
+                title="Close"
               >
-                <X size={14} />
+                <X size={16} />
               </button>
             </div>
 
-            {/* Chat History scroll panel */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-3.5 flex flex-col bg-[#FAF8F5]">
+            {/* Chat History Panel */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-3 flex flex-col bg-[#0F0F0F]">
               {messages.map((msg, index) => (
                 <div 
                   key={index} 
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className="flex gap-2 max-w-[85%] items-end">
-                    {msg.role === 'assistant' && (
-                      <div className="h-5 w-5 rounded-md bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 text-[9px] font-bold shrink-0">
-                        AI
-                      </div>
-                    )}
-                    
-                    <div className={`p-3 rounded-2xl text-xs leading-relaxed shadow-sm ${
-                      msg.role === 'user' 
-                        ? 'bg-amber-500 text-white rounded-br-none font-semibold' 
-                        : 'bg-white text-[#2C2825]/90 border border-[#2C2825]/10 rounded-bl-none'
-                    }`}>
-                      {msg.parts[0].text}
-                    </div>
-
-                    {msg.role === 'user' && (
-                      <div className="h-5 w-5 rounded-md bg-neutral-200 text-[#2C2825]/60 flex items-center justify-center text-[9px] font-bold shrink-0">
-                        U
-                      </div>
-                    )}
+                  <div className={`p-3 rounded-xl text-xs leading-relaxed max-w-[85%] ${
+                    msg.role === 'user' 
+                      ? 'bg-[#FF4D00] text-white rounded-br-none font-medium' 
+                      : 'bg-[#181818] text-neutral-200 border border-[#282828] rounded-bl-none'
+                  }`}>
+                    {msg.parts[0].text}
                   </div>
                 </div>
               ))}
 
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="flex gap-2 max-w-[85%] items-end">
-                    <div className="h-5 w-5 rounded-md bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 text-[9px] shrink-0">
-                      AI
-                    </div>
-                    <div className="p-3 rounded-xl bg-white border border-[#2C2825]/10 text-xs text-neutral-400 rounded-bl-none flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-bounce"></span>
-                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
-                      <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
-                    </div>
+                  <div className="p-3 rounded-xl bg-[#181818] border border-[#282828] text-xs text-neutral-400 rounded-bl-none flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 bg-[#FF4D00] rounded-full animate-bounce" />
+                    <span className="h-1.5 w-1.5 bg-[#FF4D00] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="h-1.5 w-1.5 bg-[#FF4D00] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               )}
 
               {chatError && (
-                <div className="p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs flex flex-col gap-2 font-mono shadow-sm">
-                  <p className="font-bold uppercase text-[9px] text-red-600">API Error:</p>
-                  <p className="leading-relaxed text-[11px]">{chatError}</p>
-                  <button 
-                    onClick={() => handleSendMessage(messages[messages.length - 1]?.parts[0]?.text || "Hello")}
-                    className="bg-red-100 hover:bg-red-200 text-red-800 border border-red-300 px-3 py-1.5 rounded-lg font-bold text-[9px] self-start uppercase transition-colors cursor-pointer"
-                  >
-                    Retry Request
-                  </button>
+                <div className="p-3 bg-red-950/40 border border-red-800/60 text-red-300 rounded-xl text-xs flex flex-col gap-1.5 font-mono">
+                  <p className="font-bold text-[10px] uppercase text-red-400">Notice:</p>
+                  <p className="text-[11px]">{chatError}</p>
                 </div>
               )}
 
               <div ref={chatEndRef} />
             </div>
 
-            {/* Suggested Prompts below chatbot history */}
+            {/* Quick Prompts */}
             {messages.length === 1 && (
-              <div className="px-4 py-3 border-t border-[#2C2825]/10 flex flex-col gap-2 bg-[#FAF8F5] shrink-0 select-none">
-                <span className="text-[8.5px] text-[#2C2825]/50 font-bold uppercase tracking-wider block font-mono">Suggested Inquiries</span>
-                <div className="flex flex-col gap-1.5">
+              <div className="px-3 py-2 border-t border-[#222222] bg-[#141414] flex flex-col gap-1 shrink-0">
+                <span className="text-[8.5px] text-neutral-500 font-bold uppercase tracking-wider font-mono">Suggested Questions</span>
+                <div className="flex flex-col gap-1">
                   {suggestions.map((prompt, sIdx) => (
                     <button 
                       key={sIdx}
                       onClick={() => handleSendMessage(prompt)}
-                      className="text-left text-xs text-[#2C2825]/80 hover:text-amber-600 hover:border-amber-500/30 bg-white border border-[#2C2825]/10 px-3 py-2 rounded-xl transition-all leading-snug cursor-pointer shadow-sm"
+                      className="text-left text-xs text-neutral-300 hover:text-white bg-[#1A1A1A] hover:bg-[#242424] border border-[#282828] px-2.5 py-1.5 rounded-md transition-all cursor-pointer"
                     >
                       {prompt}
                     </button>
@@ -1334,8 +1148,8 @@ Interaction Guidelines & Tone:
               </div>
             )}
 
-            {/* Conversation text input area */}
-            <div className="p-3 border-t border-[#2C2825]/10 bg-white flex items-center gap-2">
+            {/* Input Box */}
+            <div className="p-2.5 border-t border-[#222222] bg-[#141414] flex items-center gap-2">
               <input 
                 type="text" 
                 value={inputMessage}
@@ -1345,21 +1159,21 @@ Interaction Guidelines & Tone:
                 }}
                 disabled={isLoading}
                 placeholder="Ask Anas's AI Assistant..." 
-                className="flex-1 bg-[#FAF8F5] focus:bg-white text-[#2C2825] text-xs border border-[#2C2825]/10 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3 transition-colors disabled:opacity-50 shadow-inner"
+                className="flex-1 bg-[#1E1E1E] text-white text-xs border border-[#2D2D2D] focus:border-[#FF4D00] focus:outline-none rounded-lg px-3 py-2.5 transition-colors disabled:opacity-50"
               />
               <button 
                 onClick={() => handleSendMessage(inputMessage)}
                 disabled={isLoading || !inputMessage.trim()}
-                className="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl transition-all flex items-center justify-center disabled:bg-neutral-100 disabled:text-neutral-400 shrink-0 cursor-pointer shadow-sm"
-                title="Submit text"
+                className="bg-[#FF4D00] hover:bg-[#E04400] text-white p-2.5 rounded-lg transition-all flex items-center justify-center disabled:bg-neutral-800 disabled:text-neutral-600 shrink-0 cursor-pointer"
+                title="Send"
               >
-                <Send size={15} />
+                <Send size={14} />
               </button>
             </div>
 
           </div>
         )}
- 
+
       </div>
 
       <Analytics />

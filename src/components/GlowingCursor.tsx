@@ -45,7 +45,7 @@ export default function GlowingCursor() {
     <>
       {/* Outer ambient glow trail */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-500/40 bg-amber-500/5 pointer-events-none z-50"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#FF5500]/50 bg-[#FF5500]/10 pointer-events-none z-50 shadow-[0_0_15px_rgba(255,85,0,0.3)]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -53,7 +53,7 @@ export default function GlowingCursor() {
       />
       {/* Inner precise pointer dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-amber-600 pointer-events-none z-50 shadow-[0_0_8px_rgba(217,119,6,0.5)]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#FF5500] pointer-events-none z-50 shadow-[0_0_10px_rgba(255,85,0,0.8)]"
         style={{
           x: innerCursorXSpring,
           y: innerCursorYSpring,

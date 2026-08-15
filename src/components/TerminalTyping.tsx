@@ -47,41 +47,41 @@ export default function TerminalTyping() {
   }, [currentText, isDeleting, phraseIdx, typingSpeed]);
 
   return (
-    <div className="w-full bg-white border border-[#2C2825]/10 rounded-2xl overflow-hidden font-mono text-sm shadow-[0_10px_30px_rgba(44,40,37,0.05)] select-none">
+    <div className="w-full bg-[#121212] border border-[#222222] rounded-2xl overflow-hidden font-mono text-sm shadow-[0_15px_35px_rgba(0,0,0,0.5)] select-none">
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#FAF8F5] border-b border-[#2C2825]/10">
+      <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#222222]">
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-full bg-red-400" />
-          <span className="w-3 h-3 rounded-full bg-amber-400" />
-          <span className="w-3 h-3 rounded-full bg-emerald-400" />
+          <span className="w-3 h-3 rounded-full bg-[#FF4D00]" />
+          <span className="w-3 h-3 rounded-full bg-amber-400/80" />
+          <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
         </div>
-        <div className="text-[10px] text-[#2C2825]/60 font-bold uppercase tracking-wider">
-          anas@agent: ~/automation
+        <div className="text-[10px] text-white/50 font-bold uppercase tracking-wider">
+          anas@agent: ~/ai-pipeline
         </div>
         <div className="w-12" /> {/* Spacer */}
       </div>
 
       {/* Terminal Body */}
-      <div className="p-5 text-[#2C2825] min-h-[140px] flex flex-col justify-between leading-relaxed">
+      <div className="p-5 text-white min-h-[140px] flex flex-col justify-between leading-relaxed">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs text-[#2C2825]/40">
-            <span>Last login: {new Date().toDateString()} on ttys001</span>
+          <div className="flex items-center gap-2 text-xs text-white/40">
+            <span>System: neural-pipeline-v4.2 online</span>
           </div>
-          <div className="text-amber-600 text-xs font-bold">
-            $ npm run deploy --prod
+          <div className="text-[#FF5500] text-xs font-bold">
+            $ execute ai_agent_daemon --model=gemini-2.5
           </div>
-          <div className="text-[#2C2825]/50 text-xs">
-            {`> anas-portfolio@3.2.0 build:production`}
+          <div className="text-white/50 text-xs">
+            {`> compiling RAG vectors & MCP toolchains...`}
             <br />
-            {`> compiling core agent flows and neural weights...`}
+            {`> orchestrating automated autonomous agent cluster [READY]`}
           </div>
         </div>
 
         {/* Typed Output Line */}
-        <div className="flex items-center gap-2 mt-4 text-amber-600 font-semibold md:text-base">
-          <span className="text-[#2C2825]/40 font-black">&gt;</span>
+        <div className="flex items-center gap-2 mt-4 text-[#FF5500] font-bold md:text-base">
+          <span className="text-white/40 font-black">&gt;</span>
           <span>{currentText}</span>
-          <span className="w-1.5 h-4 bg-amber-50 animate-pulse inline-block" />
+          <span className="w-2 h-4 bg-[#FF5500] animate-pulse inline-block" />
         </div>
       </div>
     </div>

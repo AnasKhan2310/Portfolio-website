@@ -88,8 +88,8 @@ export default function NetworkBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.15;
-            ctx.strokeStyle = `rgba(44, 40, 37, ${alpha})`; // warm charcoal connection
+            const alpha = (1 - dist / connectionDistance) * 0.18;
+            ctx.strokeStyle = `rgba(255, 85, 0, ${alpha})`; // vibrant orange line
             ctx.beginPath();
             ctx.moveTo(n1.x, n1.y);
             ctx.lineTo(n2.x, n2.y);
@@ -134,18 +134,18 @@ export default function NetworkBackground() {
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         
         // Node color with hover glow influence
-        let nodeAlpha = 0.35;
+        let nodeAlpha = 0.4;
         if (mouse.x !== -1000) {
           const dx = node.x - mouse.x;
           const dy = node.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 150) {
-            nodeAlpha = 0.35 + (1 - dist / 150) * 0.45;
+            nodeAlpha = 0.4 + (1 - dist / 150) * 0.5;
           }
         }
-        ctx.fillStyle = `rgba(217, 119, 6, ${nodeAlpha})`; // amber node
-        ctx.shadowColor = 'rgba(217, 119, 6, 0.4)';
-        ctx.shadowBlur = nodeAlpha > 0.35 ? 6 : 0;
+        ctx.fillStyle = `rgba(255, 85, 0, ${nodeAlpha})`; // bright orange node
+        ctx.shadowColor = 'rgba(255, 85, 0, 0.6)';
+        ctx.shadowBlur = nodeAlpha > 0.4 ? 8 : 2;
         ctx.fill();
         ctx.shadowBlur = 0; // reset
       }
