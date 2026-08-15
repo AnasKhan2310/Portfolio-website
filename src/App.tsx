@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
 import SpotifyDashboard from './components/SpotifyDashboard';
+import { ResumeModal } from './components/ResumeModal';
 import NetworkBackground from './components/NetworkBackground';
 import GlowingCursor from './components/GlowingCursor';
 import TerminalTyping from './components/TerminalTyping';
@@ -60,6 +61,9 @@ export default function App() {
 
   // Spotify Dashboard Interactive Modal State
   const [isSpotifyDashboardOpen, setIsSpotifyDashboardOpen] = useState(false);
+
+  // Resume / CV Modal State
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // Message scroll reference
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -344,14 +348,14 @@ Detailed Project Portfolio:
       {/* ========================================================================= */}
       {/* HEADER / NAVIGATION BAR (Exact layout from reference image) */}
       {/* ========================================================================= */}
-      <header className="relative z-30 w-full max-w-7xl mx-auto pt-4 sm:pt-6 px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between py-3 px-4 sm:px-6 bg-[#111111]/90 backdrop-blur-md border border-[#222222] rounded-lg">
+      <header className="relative z-40 w-full max-w-7xl mx-auto pt-3 sm:pt-6 px-3 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111]/95 backdrop-blur-md border border-[#222222] rounded-lg">
           
           {/* Brand Logo matching 'Cod≡r' design */}
           <a href="#about" className="flex items-center gap-2 group cursor-pointer">
-            <div className="text-xl sm:text-2xl font-black font-syne text-white tracking-tight flex items-center">
+            <div className="text-lg sm:text-2xl font-black font-syne text-white tracking-tight flex items-center">
               <span>Cod</span>
-              <span className="text-[#FF4D00] font-black text-2xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
+              <span className="text-[#FF4D00] font-black text-xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
               <span>r</span>
             </div>
           </a>
@@ -381,10 +385,10 @@ Detailed Project Portfolio:
           </div>
 
           {/* Right Action Button - Hire Me! */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#contact"
-              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-5 py-2 rounded-md transition-all duration-200 shadow-[0_4px_15px_rgba(255,77,0,0.3)] hover:shadow-[0_4px_20px_rgba(255,77,0,0.5)] cursor-pointer"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-md transition-all duration-200 shadow-[0_4px_15px_rgba(255,77,0,0.3)] hover:shadow-[0_4px_20px_rgba(255,77,0,0.5)] cursor-pointer"
             >
               Hire Me!
             </a>
@@ -392,9 +396,10 @@ Detailed Project Portfolio:
             {/* Mobile menu hamburger toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-neutral-300 hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] rounded-md transition-colors"
+              className="md:hidden p-1.5 sm:p-2 text-neutral-300 hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] rounded-md transition-colors"
+              aria-label="Toggle Navigation Menu"
             >
-              <Menu size={18} />
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </nav>
@@ -402,9 +407,9 @@ Detailed Project Portfolio:
         {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden mt-2 p-3 bg-[#121212] border border-[#222222] rounded-lg flex flex-col gap-1.5"
+            className="md:hidden mt-2 p-2.5 bg-[#121212] border border-[#222222] rounded-lg flex flex-col gap-1 shadow-2xl relative z-50"
           >
             {[
               { id: 'about', label: 'About Me', href: '#about' },
@@ -436,45 +441,46 @@ Detailed Project Portfolio:
       {/* ========================================================================= */}
       {/* MAIN BODY CONTENT */}
       {/* ========================================================================= */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 overflow-x-hidden">
         
         {/* ========================================================================= */}
         {/* HERO SECTION (Matches the prominent hero split with geometric wireframe) */}
         {/* ========================================================================= */}
-        <section id="about" className="relative pt-12 sm:pt-16 pb-16 lg:pb-24">
+        <section id="about" className="relative pt-8 sm:pt-16 pb-12 lg:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
             {/* Left Hero Content - Expanded column so name has ample space */}
             <div className="lg:col-span-8 flex flex-col items-start text-left z-20">
               
               {/* Badge: "Hello, I am" */}
-              <div className="inline-block bg-[#FF4D00] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4 shadow-sm">
+              <div className="inline-block bg-[#FF4D00] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-sm mb-3 sm:mb-4 shadow-sm">
                 Hello, I am
               </div>
 
-              {/* Title: Muhammad Anas Khan (Fully visible single-line heading) */}
-              <h1 className="text-3xl sm:text-4xl md:text-[40px] lg:text-[40px] xl:text-[48px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 whitespace-nowrap">
+              {/* Title: Muhammad Anas Khan (Responsive font scaling across mobile & desktop) */}
+              <h1 className="text-[26px] xs:text-[32px] sm:text-4xl md:text-[40px] lg:text-[40px] xl:text-[48px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 sm:whitespace-nowrap break-words w-full">
                 Muhammad Anas Khan
               </h1>
 
               {/* Subtitle */}
-              <p className="text-neutral-400 text-sm sm:text-base md:text-lg font-normal mb-8 max-w-xl">
+              <p className="text-neutral-400 text-xs sm:text-base md:text-lg font-normal mb-6 sm:mb-8 max-w-xl leading-relaxed">
                 AI Automation Engineer building SaaS tools, dashboards & workflows that save businesses hours every week.
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 mb-10">
-                <a
-                  href="#contact"
-                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-7 py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <button
+                  type="button"
+                  onClick={() => setIsResumeModalOpen(true)}
+                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-5 sm:px-7 py-2.5 sm:py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
                 >
                   <Download size={15} />
                   <span>Download CV</span>
-                </a>
+                </button>
 
                 <a
                   href="#portfolio"
-                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-6 sm:px-7 py-3 rounded-md transition-all cursor-pointer"
+                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-7 py-2.5 sm:py-3 rounded-md transition-all cursor-pointer"
                 >
                   My Work
                 </a>
@@ -482,18 +488,18 @@ Detailed Project Portfolio:
 
               {/* Animated Mouse Scroll Indicator (from reference image) */}
               <div className="flex items-center gap-3 text-neutral-500 text-xs font-mono">
-                <div className="w-5 h-9 border border-[#FF4D00]/60 rounded-full flex justify-center pt-1.5 relative">
+                <div className="w-4 sm:w-5 h-8 sm:h-9 border border-[#FF4D00]/60 rounded-full flex justify-center pt-1 sm:pt-1.5 relative">
                   <div className="w-1.5 h-1.5 bg-[#FF4D00] rounded-full animate-mouse-dot" />
                 </div>
-                <span className="text-[11px] text-neutral-400 tracking-wider">Scroll down to explore</span>
+                <span className="text-[10px] sm:text-[11px] text-neutral-400 tracking-wider">Scroll down to explore</span>
               </div>
 
             </div>
 
             {/* Right Hero Visual - Compact, proportional portrait picture */}
-            <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10">
+            <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10 mt-4 lg:mt-0">
               
-              <div className="relative w-52 sm:w-60 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group">
+              <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group max-w-full">
                 
                 {/* Subtle ambient back-glow behind portrait */}
                 <div className="absolute inset-0 bg-radial from-[#FF4D00]/20 via-[#FF4D00]/5 to-transparent blur-2xl pointer-events-none" />
@@ -532,38 +538,38 @@ Detailed Project Portfolio:
           {/* ========================================================================= */}
           {/* STATS / METRIC CARDS (Exact 4-box layout with highlighted orange card) */}
           {/* ========================================================================= */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-8 sm:mt-16">
             
             {/* Box 1: Clients */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
                 <Counter target={15} suffix="+" />
               </span>
-              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Clients</span>
+              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Clients</span>
             </div>
 
             {/* Box 2: Highlighted ORANGE card: Projects */}
-            <div className="bg-[#FF4D00] text-white p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.35)] transition-all transform hover:-translate-y-1">
-              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#FF4D00] text-white p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.35)] transition-all transform hover:-translate-y-1">
+              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
                 <Counter target={25} suffix="+" />
               </span>
-              <span className="text-xs sm:text-sm text-white/90 font-bold tracking-wide mt-1.5">Projects</span>
+              <span className="text-[11px] sm:text-sm text-white/90 font-bold tracking-wide mt-1">Projects</span>
             </div>
 
             {/* Box 3: Deployments / Accuracy */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
                 <Counter target={30} suffix="+" />
               </span>
-              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Deployments</span>
+              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Deployments</span>
             </div>
 
             {/* Box 4: Years Experience */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-5 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
+              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
                 03
               </span>
-              <span className="text-xs sm:text-sm text-neutral-400 font-medium tracking-wide mt-1.5">Years Experience</span>
+              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Years Experience</span>
             </div>
 
           </div>
@@ -1054,20 +1060,21 @@ Detailed Project Portfolio:
       {/* ========================================================================= */}
       {/* FLOATING GEMINI AI CHATBOT DRAWER */}
       {/* ========================================================================= */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-sans">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3 font-sans">
         
         {!isChatOpen ? (
           <button 
             id="chatbot-trigger-bubble"
             onClick={() => setIsChatOpen(true)}
-            className="h-13 w-13 rounded-full bg-[#FF4D00] hover:bg-[#E04400] border-2 border-white/20 text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 duration-300 group cursor-pointer"
+            className="h-12 w-12 sm:h-13 sm:w-13 rounded-full bg-[#FF4D00] hover:bg-[#E04400] border-2 border-white/20 text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 duration-300 group cursor-pointer"
             title="Ask Anas's AI Assistant"
+            aria-label="Open AI Assistant Chat"
           >
-            <Bot size={24} className="text-white group-hover:rotate-12 transition-transform duration-300" />
+            <Bot size={22} className="text-white group-hover:rotate-12 transition-transform duration-300 sm:w-6 sm:h-6" />
             <span className="absolute top-0 right-0 h-3 w-3 bg-emerald-500 border border-[#0A0A0A] rounded-full animate-pulse" />
           </button>
         ) : (
-          <div className="w-[330px] sm:w-[370px] h-[480px] bg-[#121212] border border-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative animate-fade-in">
+          <div className="w-[calc(100vw-32px)] sm:w-[370px] max-w-[370px] h-[480px] max-h-[calc(100vh-90px)] bg-[#121212] border border-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative animate-fade-in">
             
             {/* Header */}
             <div className="bg-[#1A1A1A] px-4 py-3.5 border-b border-[#262626] flex items-center justify-between text-white">
@@ -1178,6 +1185,7 @@ Detailed Project Portfolio:
 
       <Analytics />
       <SpotifyDashboard isOpen={isSpotifyDashboardOpen} onClose={() => setIsSpotifyDashboardOpen(false)} />
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </div>
   );
 }
