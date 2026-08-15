@@ -442,18 +442,18 @@ Detailed Project Portfolio:
         {/* HERO SECTION (Matches the prominent hero split with geometric wireframe) */}
         {/* ========================================================================= */}
         <section id="about" className="relative pt-12 sm:pt-16 pb-16 lg:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
-            {/* Left Hero Content */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* Left Hero Content - Expanded column so name has ample space */}
+            <div className="lg:col-span-8 flex flex-col items-start text-left z-20">
               
               {/* Badge: "Hello, I am" */}
               <div className="inline-block bg-[#FF4D00] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-sm mb-4 shadow-sm">
                 Hello, I am
               </div>
 
-              {/* Title: Muhammad Anas Khan (Single line) */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 whitespace-nowrap">
+              {/* Title: Muhammad Anas Khan (Fully visible single-line heading) */}
+              <h1 className="text-3xl sm:text-4xl md:text-[40px] lg:text-[40px] xl:text-[48px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 whitespace-nowrap">
                 Muhammad Anas Khan
               </h1>
 
@@ -490,10 +490,10 @@ Detailed Project Portfolio:
 
             </div>
 
-            {/* Right Hero Visual - Portrait Transparent Cutout with Geometric Polygonal Lines Overlay */}
-            <div className="lg:col-span-5 relative flex justify-center items-center">
+            {/* Right Hero Visual - Compact, proportional portrait picture */}
+            <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10">
               
-              <div className="relative w-72 sm:w-80 md:w-96 aspect-[4/5] flex items-center justify-center group">
+              <div className="relative w-52 sm:w-60 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group">
                 
                 {/* Subtle ambient back-glow behind portrait */}
                 <div className="absolute inset-0 bg-radial from-[#FF4D00]/20 via-[#FF4D00]/5 to-transparent blur-2xl pointer-events-none" />
