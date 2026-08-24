@@ -130,26 +130,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </div>
                   </div>
 
-                  {/* Workflow steps badge (if present, e.g. for forecasting) */}
-                  {project.id === 'sales-forecasting' && (
-                    <div className="mb-4 p-3 bg-[#181818] border border-[#282828] rounded-lg">
-                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block mb-1.5 font-bold">
-                        ML Workflow:
-                      </span>
-                      <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-mono text-neutral-300">
-                        <span className="bg-[#111] px-1.5 py-0.5 rounded text-[#FF4D00]">Data Ingestion</span>
-                        <span>→</span>
-                        <span className="bg-[#111] px-1.5 py-0.5 rounded text-[#FF4D00]">Cleaning</span>
-                        <span>→</span>
-                        <span className="bg-[#111] px-1.5 py-0.5 rounded text-[#FF4D00]">EDA</span>
-                        <span>→</span>
-                        <span className="bg-[#111] px-1.5 py-0.5 rounded text-[#FF4D00]">XGBoost Model</span>
-                        <span>→</span>
-                        <span className="bg-[#111] px-1.5 py-0.5 rounded text-[#FF4D00]">Forecast Dashboard</span>
-                      </div>
-                    </div>
-                  )}
-
                   {/* Tech Stack Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {project.technologies.map((tech, tIdx) => (
