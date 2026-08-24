@@ -3,11 +3,16 @@ import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
 import SpotifyDashboard from './components/SpotifyDashboard';
 import { ResumeModal } from './components/ResumeModal';
+import { CaseStudyModal } from './components/CaseStudyModal';
+import { ServicesSection } from './components/ServicesSection';
+import { ProcessSection } from './components/ProcessSection';
+import { ProjectsSection } from './components/ProjectsSection';
+import { TechStackSection } from './components/TechStackSection';
 import NetworkBackground from './components/NetworkBackground';
 import GlowingCursor from './components/GlowingCursor';
 import TerminalTyping from './components/TerminalTyping';
-import Counter from './components/Counter';
 import picImage from './pic.png';
+import { ProjectItem } from './data/projectsData';
 import { 
   Send, 
   X, 
@@ -16,22 +21,16 @@ import {
   Linkedin, 
   Mail, 
   CheckCircle, 
-  Brain, 
   Menu,
-  TrendingUp,
-  Cpu,
-  Phone,
-  MapPin,
-  ChevronRight,
-  ArrowRight,
-  ExternalLink,
+  Phone, 
+  MapPin, 
+  ArrowRight, 
   Download,
-  Layers,
-  Code2,
-  Sparkles
+  BarChart3,
+  Brain,
+  Layers
 } from 'lucide-react';
 
-// Define structures for messaging
 interface ChatMessage {
   role: 'user' | 'assistant';
   parts: { text: string }[];
@@ -39,7 +38,7 @@ interface ChatMessage {
 
 export default function App() {
   // Navigation active tab & mobile menu
-  const [activeNav, setActiveNav] = useState<'about' | 'services' | 'portfolio' | 'story' | 'contact'>('about');
+  const [activeNav, setActiveNav] = useState<'hero' | 'solutions' | 'projects' | 'process' | 'about' | 'contact'>('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Floating Chatbot controls
@@ -49,21 +48,18 @@ export default function App() {
     {
       role: 'assistant',
       parts: [{
-        text: "Hi! I'm Anas's AI Assistant. I can tell you all about Muhammad Anas Khan's projects, experience, machine learning expertise, and how he can help your business scale. What would you like to know?"
+        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in AI & Data Solutions for E-commerce & SaaS — focusing on Data Analytics, AI/ML, and SaaS Development. How can I help you today?"
       }]
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
 
-  // Project Category Filter State
-  const [activeFilter, setActiveFilter] = useState<'ALL' | 'AI SAAS' | 'AGENTS & MCP' | 'MACHINE LEARNING' | 'DEEP LEARNING' | 'DATA ANALYSIS'>('ALL');
-
-  // Spotify Dashboard Interactive Modal State
+  // Modals state
   const [isSpotifyDashboardOpen, setIsSpotifyDashboardOpen] = useState(false);
-
-  // Resume / CV Modal State
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<ProjectItem | null>(null);
+  const [isCaseStudyModalOpen, setIsCaseStudyModalOpen] = useState(false);
 
   // Message scroll reference
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -80,6 +76,19 @@ export default function App() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
+  // Open Case Study Modal
+  const handleOpenCaseStudy = (project: ProjectItem) => {
+    setSelectedCaseStudy(project);
+    setIsCaseStudyModalOpen(true);
+  };
+
+  // Open Interactive Previews
+  const handleOpenInteractivePreview = (type: 'spotify') => {
+    if (type === 'spotify') {
+      setIsSpotifyDashboardOpen(true);
+    }
+  };
+
   // Handle contact form submission
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,50 +103,39 @@ export default function App() {
     }, 4000);
   };
 
-  // Helper system instruction for representation
-  const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, an exceptional and visionary "AI Solutions Engineer". Your goal is to represent Anas in the most professional, accurate, elegant, and impressive manner. You can speak fluently in English, Roman Urdu (e.g., "Anas aik behtareen AI engineer hain"), and standard Urdu as requested by the user.
+  // System instruction for Gemini chatbot
+  const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, an AI & Data Science developer.
 
-About Muhammad Anas Khan:
-1. Role: AI Solutions Engineer & Full-Stack AI Developer
-2. Location: Karachi, Pakistan
-3. Contact Details:
-   - Email: anaskhanz1980@gmail.com
-   - Phone/WhatsApp: +92 311 2813828
-   - GitHub: https://github.com/AnasKhan2310
-   - LinkedIn: https://www.linkedin.com/in/anas-khan1290/
+Primary Positioning:
+- Muhammad Anas Khan builds AI & Data Solutions for E-commerce & SaaS.
+- Three Core Pillars:
+  1. Data Analytics (Business dashboards, KPI reporting, analytics pipelines)
+  2. AI / Machine Learning (Predictive models, document intelligence, classification & computer vision, LLM applications)
+  3. SaaS Development (AI SaaS MVPs, internal business tools, admin dashboards, full-stack software)
+- Supporting Capability: Automation (n8n workflows, AI agents, API integrations)
+- Target Clients: E-commerce & Shopify businesses, Early-stage SaaS companies, Marketing & Digital agencies.
 
-Education & Specializations:
-- Degree: BS in Computer Science from Federal Urdu University, Karachi.
-- Specialty focus: Artificial Intelligence, Data Science, Deep Learning, and Neural Networks.
-- Expert-level competencies with TensorFlow, Convolutional Neural Networks (CNNs), Long Short-Term Memory (LSTM) models, and fine-tuning open-source LLMs.
+Contact & Profile:
+- Name: Muhammad Anas Khan
+- Location: Karachi, Pakistan
+- Degree: BS in Computer Science from Federal Urdu University, Karachi
+- Email: anaskhanz1980@gmail.com
+- Phone / WhatsApp: +92 311 2813828
+- GitHub: https://github.com/AnasKhan2310
+- LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
-Core Skill Proficiency:
-- Python (96%) - Advanced scripting, analytics, machine learning pipeline development.
-- RAG Systems (93%) - Designing custom Retrieval-Augmented Generation architectures with high semantic accuracy.
-- Workflow Automation (93%) - Multi-step operations, scheduling, and automatic data parsing.
-- LangChain (92%) - Agentic orchestration, tool-calling loops, and multi-agent systems.
-- API Development & Integration (91%) - Fast, robust REST endpoints using FastAPI (90%).
-- Intelligent AI Agents - MCP (Model Context Protocol) integration, custom autonomous agent pipelines.
-- Data Visualization - Business Intelligence Dashboards (88%), Power BI (87%), Recharts, and data insights.
+Featured Projects:
+1. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
+2. AI Operations Manager (Autonomous Agents: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/) - LangChain, MCP Protocol, FastAPI, n8n, React.
+3. Spotify Streaming Data Analytics (Interactive Data Science App) - Python, Pandas, React, Recharts.
+4. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
 
-Pillars of Anas's Work:
-1. AI SaaS Development: Designing and launching fully secure, subscription-ready SaaS products integrated with custom-designed AI systems (like RAG models, LangChain, serverless hosting).
-2. Workflow Automation: Automating legacy business operations using state-of-the-art n8n workflows, Custom MCP Tool integrations, and advanced Python automated background processes.
-3. Intelligent AI Agents: Architecting adaptive, collaborative multi-agent teams using cutting-edge agentic frameworks to optimize sales pipelines, lead generation, customer care, and operations.
+Style: Be professional, concise, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture and problem-solving.`;
 
-Detailed Project Portfolio:
-1. ZESTFIT (SaaS Product / Live Demo: https://zestfitmanagement.vercel.app/)
-2. AI OPERATIONS MANAGER (AI & Chatbots / Live Demo: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/)
-3. MEDISCAN AI (Machine Learning / Live Demo: https://medi-scan-ai-theta.vercel.app/)
-4. AI IMAGE CLASSIFIER PRO (Deep Learning / Live Demo: https://teachablemachice.netlify.app/)
-5. HEART DISEASE PREDICTOR (Machine Learning / Live Demo: https://heartdiseasepredictorai.netlify.app/)
-6. SPOTIFY DATA ANALYSIS (Data Analysis / GitHub: https://github.com/AnasKhan2310/Spotify-Data-Analysis)`;
-
-  // Quick prompt suggestions
   const suggestions = [
-    "Tell me about his AI Agents",
-    "What are his n8n capabilities?",
-    "How does Anas scale businesses?"
+    "Tell me about your E-commerce & SaaS solutions",
+    "How does the AI Operations Manager work?",
+    "What tech stack do you use for SaaS MVPs?"
   ];
 
   // Send message to Server
@@ -221,121 +219,6 @@ Detailed Project Portfolio:
     }
   };
 
-  // Projects list
-  const projectsData = [
-    {
-      id: "zestfit",
-      title: "ZESTFIT - AI Fitness SaaS",
-      category: "AI SAAS" as const,
-      tag: "AI SAAS PRODUCT",
-      description: "A subscription-ready SaaS fitness & nutrition tracking platform featuring personalized exercise logs, dynamic gym routines, and health analytics with custom progress metrics.",
-      githubUrl: "https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT",
-      liveDemoUrl: "https://zestfitmanagement.vercel.app/",
-      isHighlighted: false
-    },
-    {
-      id: "ai-operations-manager",
-      title: "AI Operations Manager",
-      category: "AGENTS & MCP" as const,
-      tag: "AUTONOMOUS AGENTS",
-      description: "An advanced operations manager built to coordinate autonomous AI workflows, manage tool execution context, and optimize enterprise integrations seamlessly.",
-      githubUrl: "https://github.com/AnasKhan2310/AI-Operations-Manager",
-      liveDemoUrl: "https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/",
-      isHighlighted: true // Highlighted in solid orange card in portfolio grid
-    },
-    {
-      id: "mediscan",
-      title: "MediScan AI Healthcare",
-      category: "MACHINE LEARNING" as const,
-      tag: "MACHINE LEARNING",
-      description: "A high-precision healthcare screening model designed to identify early-stage cardiovascular and heart disease risks using advanced statistical patterns.",
-      githubUrl: "https://github.com/AnasKhan2310",
-      liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
-      isHighlighted: false
-    },
-    {
-      id: "classifier",
-      title: "AI Image Classifier Pro",
-      category: "DEEP LEARNING" as const,
-      tag: "DEEP LEARNING",
-      description: "Custom computer vision solutions for real-time recognition. Built specialized neural models that perform complex visual tasks with extreme speed and accuracy.",
-      githubUrl: "https://github.com/AnasKhan2310",
-      liveDemoUrl: "https://teachablemachice.netlify.app/",
-      isHighlighted: false
-    },
-    {
-      id: "heart",
-      title: "Heart Disease Predictor",
-      category: "MACHINE LEARNING" as const,
-      tag: "PREDICTIVE ML",
-      description: "A supervised Machine Learning project that analyzes patient health metrics to predict cardiovascular risks with exceptionally high statistical confidence.",
-      githubUrl: "https://github.com/AnasKhan2310",
-      liveDemoUrl: "https://heartdiseasepredictorai.netlify.app/",
-      isHighlighted: false
-    },
-    {
-      id: "spotify",
-      title: "Spotify Streaming Analytics",
-      category: "DATA ANALYSIS" as const,
-      tag: "DATA SCIENCE",
-      description: "Decoding consumer streaming behavior and music trends by analyzing massive Spotify datasets to uncover trends that drive strategic marketing decisions.",
-      githubUrl: "https://github.com/AnasKhan2310/Spotify-Data-Analysis",
-      liveDemoUrl: "#",
-      isHighlighted: false
-    }
-  ];
-
-  // Filtering Logic
-  const filteredProjects = activeFilter === 'ALL' 
-    ? projectsData 
-    : projectsData.filter(proj => proj.category === activeFilter);
-
-  // Services list
-  const servicesList = [
-    {
-      id: "saas",
-      title: "AI SaaS Development",
-      description: "Designing and launching subscription-ready SaaS products integrated with custom LLMs, RAG models, and scalable cloud architectures.",
-      tags: ["Next.js", "FastAPI", "RAG", "Stripe"],
-      isFeatured: true
-    },
-    {
-      id: "n8n",
-      title: "Workflow Automation (n8n & MCP)",
-      description: "Automating end-to-end business operations with n8n workflows, custom MCP toolkits, and Python background tasks.",
-      tags: ["n8n", "MCP Protocol", "API Webhooks"],
-      isFeatured: false
-    },
-    {
-      id: "agents",
-      title: "Autonomous AI Agents",
-      description: "Architecting adaptive multi-agent teams with autonomous reasoning, tool execution, and context loops for customer ops and sales.",
-      tags: ["Multi-Agent", "LangChain", "Autonomous"],
-      isFeatured: false
-    },
-    {
-      id: "fullstack",
-      title: "Full-Stack Web & Next.js",
-      description: "Building ultra-fast, responsive web applications with TypeScript, React, Next.js, Tailwind CSS, and secure API backends.",
-      tags: ["TypeScript", "Tailwind", "REST APIs"],
-      isFeatured: false
-    },
-    {
-      id: "rag",
-      title: "RAG & Vector Search",
-      description: "Designing semantic search and enterprise retrieval pipelines with Pinecone, Chroma, and custom embedding pipelines.",
-      tags: ["Vector DB", "Embeddings", "Semantic Search"],
-      isFeatured: false
-    },
-    {
-      id: "ml",
-      title: "Machine Learning & Deep Learning",
-      description: "Training predictive models, computer vision neural networks, and diagnostic classifiers using PyTorch & TensorFlow.",
-      tags: ["PyTorch", "TensorFlow", "CNNs / LSTMs"],
-      isFeatured: false
-    }
-  ];
-
   return (
     <div id="app-root" className="min-h-screen flex flex-col bg-[#0A0A0A] text-white selection:bg-[#FF4D00] selection:text-white scroll-smooth overflow-x-hidden font-sans relative">
       
@@ -346,28 +229,31 @@ Detailed Project Portfolio:
       <GlowingCursor />
 
       {/* ========================================================================= */}
-      {/* HEADER / NAVIGATION BAR (Exact layout from reference image) */}
+      {/* HEADER / NAVIGATION BAR */}
       {/* ========================================================================= */}
       <header className="relative z-40 w-full max-w-7xl mx-auto pt-3 sm:pt-6 px-3 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111]/95 backdrop-blur-md border border-[#222222] rounded-lg">
           
-          {/* Brand Logo matching 'Cod≡r' design */}
-          <a href="#about" className="flex items-center gap-2 group cursor-pointer">
+          {/* Brand Logo */}
+          <a href="#hero" className="flex items-center gap-2 group cursor-pointer">
             <div className="text-lg sm:text-2xl font-black font-syne text-white tracking-tight flex items-center">
               <span>Cod</span>
               <span className="text-[#FF4D00] font-black text-xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
               <span>r</span>
             </div>
+            <div className="hidden sm:flex items-center gap-1.5 pl-2 ml-2 border-l border-[#282828] text-[11px] font-mono text-neutral-400">
+              <span className="text-white font-semibold">Muhammad Anas Khan</span>
+            </div>
           </a>
 
-          {/* Center Navigation Links with Active Orange Pill indicator */}
+          {/* Center Navigation Links */}
           <div className="hidden md:flex items-center gap-1 sm:gap-2">
             {[
-              { id: 'about', label: 'About Me', href: '#about' },
-              { id: 'services', label: 'Services', href: '#services' },
-              { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
-              { id: 'story', label: 'My Story', href: '#story' },
-              { id: 'contact', label: 'Contact Us', href: '#contact' }
+              { id: 'hero', label: 'Home', href: '#hero' },
+              { id: 'solutions', label: 'Solutions', href: '#solutions' },
+              { id: 'projects', label: 'Featured Projects', href: '#projects' },
+              { id: 'about', label: 'About', href: '#about' },
+              { id: 'contact', label: 'Contact', href: '#contact' }
             ].map((item) => (
               <a
                 key={item.id}
@@ -384,13 +270,13 @@ Detailed Project Portfolio:
             ))}
           </div>
 
-          {/* Right Action Button - Hire Me! */}
+          {/* Right Action Button - Let's Talk */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#contact"
               className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-md transition-all duration-200 shadow-[0_4px_15px_rgba(255,77,0,0.3)] hover:shadow-[0_4px_20px_rgba(255,77,0,0.5)] cursor-pointer"
             >
-              Hire Me!
+              Let's Talk
             </a>
 
             {/* Mobile menu hamburger toggle */}
@@ -412,11 +298,11 @@ Detailed Project Portfolio:
             className="md:hidden mt-2 p-2.5 bg-[#121212] border border-[#222222] rounded-lg flex flex-col gap-1 shadow-2xl relative z-50"
           >
             {[
-              { id: 'about', label: 'About Me', href: '#about' },
-              { id: 'services', label: 'Services', href: '#services' },
-              { id: 'portfolio', label: 'Portfolio', href: '#portfolio' },
-              { id: 'story', label: 'My Story', href: '#story' },
-              { id: 'contact', label: 'Contact Us', href: '#contact' }
+              { id: 'hero', label: 'Home', href: '#hero' },
+              { id: 'solutions', label: 'Solutions', href: '#solutions' },
+              { id: 'projects', label: 'Featured Projects', href: '#projects' },
+              { id: 'about', label: 'About', href: '#about' },
+              { id: 'contact', label: 'Contact', href: '#contact' }
             ].map((item) => (
               <a
                 key={item.id}
@@ -444,59 +330,95 @@ Detailed Project Portfolio:
       <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 overflow-x-hidden">
         
         {/* ========================================================================= */}
-        {/* HERO SECTION (Matches the prominent hero split with geometric wireframe) */}
+        {/* HERO SECTION — Repositioned for AI & Data Solutions for E-commerce & SaaS */}
         {/* ========================================================================= */}
-        <section id="about" className="relative pt-8 sm:pt-16 pb-12 lg:pb-24">
+        <section id="hero" className="relative pt-8 sm:pt-14 pb-12 lg:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
-            {/* Left Hero Content - Expanded column so name has ample space */}
+            {/* Left Hero Content */}
             <div className="lg:col-span-8 flex flex-col items-start text-left z-20">
               
-              {/* Badge: "Hello, I am" */}
-              <div className="inline-block bg-[#FF4D00] text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-sm mb-3 sm:mb-4 shadow-sm">
-                Hello, I am
+              {/* Identity & Availability Pill */}
+              <div className="inline-flex items-center gap-2 bg-[#161616] border border-[#2A2A2A] text-neutral-300 text-[11px] font-mono px-3 py-1 rounded-full mb-4">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-bold text-white">Muhammad Anas Khan</span>
+                <span className="text-neutral-500">•</span>
+                <span className="text-[#FF4D00]">Available for Projects</span>
               </div>
 
-              {/* Title: Muhammad Anas Khan (Responsive font scaling across mobile & desktop) */}
-              <h1 className="text-[26px] xs:text-[32px] sm:text-4xl md:text-[40px] lg:text-[40px] xl:text-[48px] font-extrabold text-white font-syne tracking-tight leading-tight mb-3 sm:whitespace-nowrap break-words w-full">
-                Muhammad Anas Khan
+              {/* Exact Repositioning Headline */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-syne tracking-tight leading-[1.15] mb-4">
+                AI & Data Solutions for <br className="hidden sm:inline" />
+                <span className="text-[#FF4D00]">E-commerce & SaaS</span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="text-neutral-400 text-xs sm:text-base md:text-lg font-normal mb-6 sm:mb-8 max-w-xl leading-relaxed">
-                AI Automation Engineer building SaaS tools, dashboards & workflows that save businesses hours every week.
+              {/* Exact Repositioning Subheadline */}
+              <p className="text-neutral-300 text-sm sm:text-base md:text-lg font-normal mb-6 max-w-2xl leading-relaxed">
+                I build analytics dashboards, AI/ML solutions and SaaS products that help businesses automate repetitive work, understand their data and make better decisions.
               </p>
 
+              {/* 3 Core Pillars + Supporting Automation Pill */}
+              <div className="flex flex-wrap items-center gap-2 mb-7">
+                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
+                  <BarChart3 size={13} className="text-[#FF4D00]" />
+                  Data Analytics
+                </span>
+                <span className="text-neutral-600 font-mono">→</span>
+                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
+                  <Brain size={13} className="text-[#FF4D00]" />
+                  AI / Machine Learning
+                </span>
+                <span className="text-neutral-600 font-mono">→</span>
+                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
+                  <Layers size={13} className="text-[#FF4D00]" />
+                  SaaS Development
+                </span>
+                <span className="text-neutral-600 font-mono">|</span>
+                <span className="bg-[#141414] text-neutral-400 border border-[#242424] text-[11px] font-mono px-2.5 py-1 rounded-md">
+                  + Automation
+                </span>
+              </div>
+
+              {/* Target Audience Bar */}
+              <div className="bg-[#121212] border border-[#222222] px-3.5 py-2 rounded-lg mb-8 text-xs text-neutral-400 font-mono flex flex-wrap items-center gap-2">
+                <span className="text-[#FF4D00] font-bold uppercase text-[10px]">Target Clients:</span>
+                <span>Shopify & E-commerce Brands</span>
+                <span className="text-neutral-600">•</span>
+                <span>Early-Stage SaaS</span>
+                <span className="text-neutral-600">•</span>
+                <span>Digital Agencies</span>
+              </div>
+
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
+                <a
+                  href="#projects"
+                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-8 py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+                >
+                  <span>View Projects</span>
+                  <ArrowRight size={14} />
+                </a>
+
+                <a
+                  href="#contact"
+                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-7 py-3 rounded-md transition-all cursor-pointer"
+                >
+                  Let's Work Together
+                </a>
+
                 <button
                   type="button"
                   onClick={() => setIsResumeModalOpen(true)}
-                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-5 sm:px-7 py-2.5 sm:py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+                  className="bg-[#161616] hover:bg-[#202020] text-neutral-300 hover:text-white border border-[#282828] text-xs sm:text-sm font-mono font-medium px-4 py-3 rounded-md transition-all flex items-center gap-1.5 cursor-pointer"
                 >
-                  <Download size={15} />
-                  <span>Download CV</span>
+                  <Download size={14} />
+                  <span>CV</span>
                 </button>
-
-                <a
-                  href="#portfolio"
-                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-7 py-2.5 sm:py-3 rounded-md transition-all cursor-pointer"
-                >
-                  My Work
-                </a>
-              </div>
-
-              {/* Animated Mouse Scroll Indicator (from reference image) */}
-              <div className="flex items-center gap-3 text-neutral-500 text-xs font-mono">
-                <div className="w-4 sm:w-5 h-8 sm:h-9 border border-[#FF4D00]/60 rounded-full flex justify-center pt-1 sm:pt-1.5 relative">
-                  <div className="w-1.5 h-1.5 bg-[#FF4D00] rounded-full animate-mouse-dot" />
-                </div>
-                <span className="text-[10px] sm:text-[11px] text-neutral-400 tracking-wider">Scroll down to explore</span>
               </div>
 
             </div>
 
-            {/* Right Hero Visual - Compact, proportional portrait picture */}
+            {/* Right Hero Visual - Compact portrait with polygonal overlay */}
             <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10 mt-4 lg:mt-0">
               
               <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group max-w-full">
@@ -504,25 +426,22 @@ Detailed Project Portfolio:
                 {/* Subtle ambient back-glow behind portrait */}
                 <div className="absolute inset-0 bg-radial from-[#FF4D00]/20 via-[#FF4D00]/5 to-transparent blur-2xl pointer-events-none" />
 
-                {/* Portrait Photo with seamless bottom fade & clean transparency blend */}
+                {/* Portrait Photo with seamless bottom fade */}
                 <div className="relative w-full h-full flex items-end justify-center overflow-visible">
                   <img 
                     src={picImage} 
-                    alt="Muhammad Anas Khan - AI Solutions Engineer" 
+                    alt="Muhammad Anas Khan - AI & Data Solutions Developer" 
                     className="w-full h-full object-cover object-top relative z-10 filter contrast-105 group-hover:scale-105 transition-transform duration-500 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
                   />
                 </div>
 
-                {/* SVG Polygonal Wireframe Lines (Artistic geometric line accent like in mockup) */}
+                {/* SVG Polygonal Wireframe Lines */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 stroke-[#FF4D00]/60" viewBox="0 0 300 375" fill="none">
-                  {/* Top polygonal triangle mesh */}
                   <polygon points="150,20 270,120 30,120" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
                   <polygon points="150,60 250,140 50,140" strokeWidth="1.2" opacity="0.8" />
                   <line x1="150" y1="20" x2="150" y2="350" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.3" />
-                  {/* Center diamond & chevron wireframe */}
                   <polygon points="150,160 280,220 150,280 20,220" strokeWidth="1" opacity="0.7" />
                   <polygon points="150,180 260,230 150,340 40,230" strokeWidth="1.2" opacity="0.85" />
-                  {/* Corner accents */}
                   <circle cx="150" cy="20" r="3" fill="#FF4D00" />
                   <circle cx="280" cy="220" r="3" fill="#FF4D00" />
                   <circle cx="20" cy="220" r="3" fill="#FF4D00" />
@@ -535,138 +454,76 @@ Detailed Project Portfolio:
 
           </div>
 
-          {/* ========================================================================= */}
-          {/* STATS / METRIC CARDS (Exact 4-box layout with highlighted orange card) */}
-          {/* ========================================================================= */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-8 sm:mt-16">
+          {/* Grounded & Honest Metric / Capability Pillars */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-10 sm:mt-16">
             
-            {/* Box 1: Clients */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
-                <Counter target={15} suffix="+" />
-              </span>
-              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Clients</span>
-            </div>
-
-            {/* Box 2: Highlighted ORANGE card: Projects */}
-            <div className="bg-[#FF4D00] text-white p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.35)] transition-all transform hover:-translate-y-1">
-              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
-                <Counter target={25} suffix="+" />
-              </span>
-              <span className="text-[11px] sm:text-sm text-white/90 font-bold tracking-wide mt-1">Projects</span>
-            </div>
-
-            {/* Box 3: Deployments / Accuracy */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
-                <Counter target={30} suffix="+" />
-              </span>
-              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Deployments</span>
-            </div>
-
-            {/* Box 4: Years Experience */}
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-7 rounded-lg text-center flex flex-col justify-center items-center transition-all shadow-sm">
-              <span className="text-2xl sm:text-4xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
                 03
               </span>
-              <span className="text-[11px] sm:text-sm text-neutral-400 font-medium tracking-wide mt-1">Years Experience</span>
+              <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Core Pillars</span>
+              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Data • AI • SaaS</span>
+            </div>
+
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+                Full-Stack
+              </span>
+              <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Architecture</span>
+              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">FastAPI & Next.js</span>
+            </div>
+
+            <div className="bg-[#FF4D00] text-white p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.3)] transition-all">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+                End-to-End
+              </span>
+              <span className="text-[11px] sm:text-xs text-white/90 font-bold tracking-wide mt-1">Problem Solver</span>
+              <span className="text-[10px] text-white/80 font-mono mt-0.5">Discover → Deploy</span>
+            </div>
+
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+                BS CS
+              </span>
+              <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Computer Science</span>
+              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Federal Urdu University</span>
             </div>
 
           </div>
 
         </section>
 
+        {/* ========================================================================= */}
+        {/* SERVICES / SOLUTIONS SECTION (4 Clean Cards) */}
+        {/* ========================================================================= */}
+        <ServicesSection />
 
         {/* ========================================================================= */}
-        {/* SERVICES SECTION ("Our Services" with orange highlight card) */}
+        {/* FEATURED & ADDITIONAL PROJECTS SECTION */}
         {/* ========================================================================= */}
-        <section id="services" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
-          
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
-              Our Services
-            </h2>
-            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
-            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-              Such a passionate software engineer who specializes in modern AI architectures, agentic pipelines, and SaaS solutions.
-            </p>
-          </div>
-
-          {/* Services Grid (6 cards, matching mockup layout) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicesList.map((service) => (
-              <div
-                key={service.id}
-                className={`p-7 rounded-lg flex flex-col justify-between transition-all duration-300 relative group min-h-[220px] ${
-                  service.isFeatured
-                    ? 'bg-[#FF4D00] text-white shadow-[0_8px_30px_rgba(255,77,0,0.3)]'
-                    : 'bg-[#121212] border border-[#222222] hover:border-[#FF4D00]/50 text-white'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      {service.id === 'saas' && <Layers size={22} className={service.isFeatured ? 'text-white' : 'text-[#FF4D00]'} />}
-                      {service.id === 'n8n' && <TrendingUp size={22} className="text-[#FF4D00]" />}
-                      {service.id === 'agents' && <Cpu size={22} className="text-[#FF4D00]" />}
-                      {service.id === 'fullstack' && <Code2 size={22} className="text-[#FF4D00]" />}
-                      {service.id === 'rag' && <Brain size={22} className="text-[#FF4D00]" />}
-                      {service.id === 'ml' && <Sparkles size={22} className="text-[#FF4D00]" />}
-                      
-                      <h3 className="text-base sm:text-lg font-bold font-syne tracking-tight">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    <ArrowRight size={18} className={`transition-transform duration-300 group-hover:translate-x-1 ${service.isFeatured ? 'text-white' : 'text-neutral-400 group-hover:text-[#FF4D00]'}`} />
-                  </div>
-
-                  <p className={`text-xs sm:text-sm leading-relaxed mb-6 ${service.isFeatured ? 'text-white/90' : 'text-neutral-400'}`}>
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
-                  {service.tags.map((tag, idx) => (
-                    <span 
-                      key={idx} 
-                      className={`text-[10px] font-mono px-2 py-0.5 rounded-sm ${
-                        service.isFeatured 
-                          ? 'bg-black/20 text-white' 
-                          : 'bg-[#1A1A1A] text-neutral-400 border border-[#2A2A2A]'
-                      }`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Show All CTA Button */}
-          <div className="flex justify-center mt-10">
-            <a
-              href="#portfolio"
-              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-md transition-all shadow-md cursor-pointer"
-            >
-              Show All
-            </a>
-          </div>
-
-        </section>
-
+        <ProjectsSection 
+          onOpenCaseStudy={handleOpenCaseStudy}
+          onOpenInteractivePreview={handleOpenInteractivePreview}
+        />
 
         {/* ========================================================================= */}
-        {/* "READ ABOUT MY LIFE STRUGGLE STORY!" / JOURNEY & PHILOSOPHY SECTION */}
+        {/* ENGINEERING PROCESS SECTION (Discover → Analyze → Build → Deploy) */}
         {/* ========================================================================= */}
-        <section id="story" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
+        <ProcessSection />
+
+        {/* ========================================================================= */}
+        {/* FOCUSED TECH STACK SECTION */}
+        {/* ========================================================================= */}
+        <TechStackSection />
+
+        {/* ========================================================================= */}
+        {/* ABOUT SECTION */}
+        {/* ========================================================================= */}
+        <section id="about" className="py-16 lg:py-20 border-t border-[#1C1C1C] relative z-10">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Left Column: Real Code & Interactive Terminal Preview */}
+            {/* Left Column: Code Terminal & Competency Matrix */}
             <div className="lg:col-span-6 flex flex-col gap-4">
               
               {/* Terminal Frame */}
@@ -674,55 +531,55 @@ Detailed Project Portfolio:
                 <TerminalTyping />
               </div>
 
-              {/* Skills benchmarks preview */}
+              {/* Engineering Competency */}
               <div className="bg-[#121212] border border-[#222222] p-5 rounded-xl">
                 <h4 className="text-xs font-mono font-bold text-neutral-400 uppercase tracking-widest mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-3 bg-[#FF4D00] rounded-full" />
-                  Engineering Competency Matrix
+                  Engineering Competencies
                 </h4>
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
-                    <span className="text-neutral-300">AI SaaS Systems</span>
-                    <span className="text-[#FF4D00] font-mono font-bold">96%</span>
+                  <div className="bg-[#181818] p-2.5 rounded border border-[#242424] flex items-center justify-between">
+                    <span className="text-neutral-300 font-medium">Data Analytics & ETL</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">Pandas/SQL</span>
                   </div>
-                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
-                    <span className="text-neutral-300">n8n & MCP Automation</span>
-                    <span className="text-[#FF4D00] font-mono font-bold">95%</span>
+                  <div className="bg-[#181818] p-2.5 rounded border border-[#242424] flex items-center justify-between">
+                    <span className="text-neutral-300 font-medium">Predictive ML</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">Scikit/XGBoost</span>
                   </div>
-                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
-                    <span className="text-neutral-300">Autonomous Agents</span>
-                    <span className="text-[#FF4D00] font-mono font-bold">94%</span>
+                  <div className="bg-[#181818] p-2.5 rounded border border-[#242424] flex items-center justify-between">
+                    <span className="text-neutral-300 font-medium">Full-Stack SaaS</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">FastAPI/Next.js</span>
                   </div>
-                  <div className="flex justify-between items-center bg-[#181818] p-2.5 rounded border border-[#242424]">
-                    <span className="text-neutral-300">FastAPI & Python</span>
-                    <span className="text-[#FF4D00] font-mono font-bold">95%</span>
+                  <div className="bg-[#181818] p-2.5 rounded border border-[#242424] flex items-center justify-between">
+                    <span className="text-neutral-300 font-medium">Workflow Automation</span>
+                    <span className="text-[#FF4D00] font-mono font-bold">n8n / Agents</span>
                   </div>
                 </div>
               </div>
 
             </div>
 
-            {/* Right Column: Narrative Story matching the mockup heading */}
+            {/* Right Column: Narrative Position Statement */}
             <div className="lg:col-span-6 flex flex-col items-start">
               
               <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
-                MY JOURNEY & VISION
+                ABOUT MUHAMMAD ANAS KHAN
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight leading-tight mb-6">
-                Read About My Life <br className="hidden sm:block" />
-                <span className="text-[#FF4D00]">Struggle & Engineering Story!</span>
+                Bridging Data Science, <br className="hidden sm:block" />
+                <span className="text-[#FF4D00]">AI Models & Production SaaS</span>
               </h2>
 
               <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
                 <p>
-                  From building my foundation in Computer Science at <strong className="text-white">Federal Urdu University, Karachi</strong>, to architecting multi-agent AI ecosystems for global businesses, my journey has been driven by one mission: turning complex machine learning algorithms into tangible, high-ROI business tools.
+                  I'm an AI & Data Science developer focused on building practical business solutions using data analytics, machine learning, and SaaS development.
                 </p>
                 <p>
-                  I've spent years diving deep into deep neural networks, Convolutional Neural Networks (CNNs), Long Short-Term Memory (LSTM) models, and modern LLM orchestration. When the AI revolution arrived, I transitioned from theoretical models to production-ready AI SaaS and automated workflows.
+                  Rather than treating AI as an isolated experiment, I build analytics dashboards, AI-powered applications, automation workflows, and custom SaaS tools that help businesses reduce manual work, understand their data, and make better decisions.
                 </p>
                 <p>
-                  Today, I help companies replace repetitive manual work with intelligent autonomous agents, custom RAG knowledge bases, and robust n8n pipelines that run 24/7 without friction.
+                  My primary focus is working with <strong className="text-white">e-commerce and SaaS businesses</strong> that want to turn raw transactional records into clear operational foresight.
                 </p>
               </div>
 
@@ -730,11 +587,11 @@ Detailed Project Portfolio:
               <div className="flex flex-wrap items-center gap-3">
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">EDUCATION</div>
-                  <div className="text-xs font-semibold text-white">BS Computer Science • Federal Urdu University</div>
+                  <div className="text-xs font-semibold text-white">BS Computer Science • Federal Urdu University, Karachi</div>
                 </div>
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
-                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">FOCUS</div>
-                  <div className="text-xs font-semibold text-white">AI, Deep Learning & Autonomous Systems</div>
+                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
+                  <div className="text-xs font-semibold text-white">AI & Data Solutions for E-commerce & SaaS</div>
                 </div>
               </div>
 
@@ -744,157 +601,27 @@ Detailed Project Portfolio:
 
         </section>
 
-
         {/* ========================================================================= */}
-        {/* PORTFOLIO SECTION ("Our Portfolio" matching mockup design) */}
+        {/* CONTACT / CTA SECTION */}
         {/* ========================================================================= */}
-        <section id="portfolio" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
-          
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
-              Our Portfolio
-            </h2>
-            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
-            <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-              Explore featured production software, autonomous workflows, and machine learning models.
-            </p>
-          </div>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10 select-none">
-            {(['ALL', 'AI SAAS', 'AGENTS & MCP', 'MACHINE LEARNING', 'DEEP LEARNING', 'DATA ANALYSIS'] as const).map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`text-[10px] sm:text-xs font-bold tracking-wider px-4 py-2 rounded-md uppercase transition-all duration-200 cursor-pointer ${
-                  activeFilter === filter
-                    ? 'bg-[#FF4D00] text-white shadow-md'
-                    : 'bg-[#121212] hover:bg-[#1A1A1A] text-neutral-400 hover:text-white border border-[#222222]'
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-
-          {/* Portfolio Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                className={`rounded-lg p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 min-h-[260px] relative group ${
-                  project.isHighlighted
-                    ? 'bg-[#FF4D00] text-white shadow-[0_8px_30px_rgba(255,77,0,0.35)]'
-                    : 'bg-[#121212] border border-[#222222] hover:border-[#FF4D00]/50 text-white'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded-sm ${
-                      project.isHighlighted
-                        ? 'bg-black/25 text-white'
-                        : 'bg-[#1A1A1A] text-[#FF4D00] border border-[#FF4D00]/20'
-                    }`}>
-                      {project.tag}
-                    </span>
-
-                    {project.isHighlighted && (
-                      <span className="text-[9px] uppercase font-bold tracking-widest bg-white text-[#FF4D00] px-2 py-0.5 rounded-sm">
-                        Featured
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="text-lg sm:text-xl font-bold font-syne tracking-tight mb-2.5">
-                    {project.title}
-                  </h3>
-
-                  <p className={`text-xs sm:text-sm leading-relaxed mb-6 ${
-                    project.isHighlighted ? 'text-white/90' : 'text-neutral-400'
-                  }`}>
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Card Actions */}
-                <div className={`pt-4 border-t flex items-center justify-between ${
-                  project.isHighlighted ? 'border-white/20' : 'border-[#222222]'
-                }`}>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors ${
-                      project.isHighlighted ? 'text-white hover:text-black' : 'text-neutral-400 hover:text-white'
-                    }`}
-                  >
-                    <Github size={13} />
-                    <span>Source Code</span>
-                  </a>
-
-                  {project.id === "spotify" ? (
-                    <button
-                      onClick={() => setIsSpotifyDashboardOpen(true)}
-                      className={`text-xs font-mono font-bold flex items-center gap-1 cursor-pointer transition-colors ${
-                        project.isHighlighted ? 'text-white hover:underline' : 'text-[#FF4D00] hover:text-[#FF7700]'
-                      }`}
-                    >
-                      <span>Interactive App</span>
-                      <ChevronRight size={14} />
-                    </button>
-                  ) : project.liveDemoUrl && (
-                    <a
-                      href={project.liveDemoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`text-xs font-mono font-bold flex items-center gap-1 transition-colors ${
-                        project.isHighlighted ? 'text-white hover:underline' : 'text-[#FF4D00] hover:text-[#FF7700]'
-                      }`}
-                    >
-                      <span>Live Preview</span>
-                      <ExternalLink size={13} />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* View All Button */}
-          <div className="flex justify-center mt-10">
-            <a
-              href="https://github.com/AnasKhan2310"
-              target="_blank"
-              rel="noreferrer"
-              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-8 py-3 rounded-md transition-all shadow-md flex items-center gap-2 cursor-pointer"
-            >
-              <span>View All on GitHub</span>
-              <Github size={14} />
-            </a>
-          </div>
-
-        </section>
-
-
-        {/* ========================================================================= */}
-        {/* CONTACT SECTION ("Contact Us" matching mockup) */}
-        {/* ========================================================================= */}
-        <section id="contact" className="py-16 lg:py-20 border-t border-[#1C1C1C]">
+        <section id="contact" className="py-16 lg:py-24 border-t border-[#1C1C1C] relative z-10">
           
           <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+              START A CONVERSATION
+            </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
-              Contact Us
+              Let's Work Together
             </h2>
             <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
             <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-              Have a project in mind, need to automate workflows, or launch an AI SaaS product? Let's talk.
+              Have a data analytics challenge, need an AI/ML model or want to build a custom SaaS tool? Let's discuss how we can solve it.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left Contact Info Cards (5 cols) */}
+            {/* Left Contact Cards */}
             <div className="lg:col-span-5 flex flex-col gap-4">
               
               <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
@@ -902,7 +629,7 @@ Detailed Project Portfolio:
                   <Mail size={20} />
                 </div>
                 <div>
-                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Email Address</span>
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Direct Email</span>
                   <a href="mailto:anaskhanz1980@gmail.com" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
                     anaskhanz1980@gmail.com
                   </a>
@@ -928,7 +655,7 @@ Detailed Project Portfolio:
                 <div>
                   <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Location</span>
                   <span className="text-white text-sm font-semibold mt-0.5 block">
-                    Karachi, Pakistan
+                    Karachi, Pakistan (Remote Worldwide)
                   </span>
                 </div>
               </div>
@@ -947,7 +674,7 @@ Detailed Project Portfolio:
 
             </div>
 
-            {/* Right Contact Form (7 cols) */}
+            {/* Right Contact Form */}
             <div className="lg:col-span-7 bg-[#121212] border border-[#222222] p-6 sm:p-8 rounded-lg shadow-xl">
               <form onSubmit={handleContactSubmit} className="flex flex-col gap-4">
                 
@@ -958,7 +685,7 @@ Detailed Project Portfolio:
                       type="text"
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
-                      placeholder="Mr. John Doe"
+                      placeholder="Jane Smith"
                       required
                       className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                     />
@@ -969,7 +696,7 @@ Detailed Project Portfolio:
                       type="email"
                       value={contactEmail}
                       onChange={(e) => setContactEmail(e.target.value)}
-                      placeholder="john@company.com"
+                      placeholder="jane@company.com"
                       required
                       className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                     />
@@ -977,24 +704,24 @@ Detailed Project Portfolio:
                 </div>
 
                 <div>
-                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Subject</label>
+                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Project Scope / Topic</label>
                   <input
                     type="text"
                     value={contactSubject}
                     onChange={(e) => setContactSubject(e.target.value)}
-                    placeholder="AI SaaS Development / Automation Project..."
+                    placeholder="E-commerce Analytics / Custom AI SaaS Solution / Forecasting..."
                     required
                     className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Message</label>
+                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Message & Requirements</label>
                   <textarea
                     rows={4}
                     value={contactMessage}
                     onChange={(e) => setContactMessage(e.target.value)}
-                    placeholder="Hi Anas, let's discuss building an AI agent system for our business..."
+                    placeholder="Hi Anas, let's discuss building an analytics dashboard or AI-powered solution for our business..."
                     required
                     className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors resize-none"
                   />
@@ -1034,7 +761,7 @@ Detailed Project Portfolio:
           <div className="flex items-center gap-2">
             <span className="font-syne font-extrabold text-white text-base">Cod<span className="text-[#FF4D00]">≡</span>r</span>
             <span className="text-neutral-700">|</span>
-            <span>Muhammad Anas Khan Portfolio</span>
+            <span>Muhammad Anas Khan • AI & Data Solutions</span>
           </div>
 
           {/* Social Links */}
@@ -1140,7 +867,7 @@ Detailed Project Portfolio:
             {/* Quick Prompts */}
             {messages.length === 1 && (
               <div className="px-3 py-2 border-t border-[#222222] bg-[#141414] flex flex-col gap-1 shrink-0">
-                <span className="text-[8.5px] text-neutral-500 font-bold uppercase tracking-wider font-mono">Suggested Questions</span>
+                <span className="text-[8.5px] text-neutral-500 font-bold uppercase tracking-wider font-mono">Suggested Inquiries</span>
                 <div className="flex flex-col gap-1">
                   {suggestions.map((prompt, sIdx) => (
                     <button 
@@ -1165,7 +892,7 @@ Detailed Project Portfolio:
                   if (e.key === 'Enter') handleSendMessage(inputMessage);
                 }}
                 disabled={isLoading}
-                placeholder="Ask Anas's AI Assistant..." 
+                placeholder="Ask about AI & Data Solutions..." 
                 className="flex-1 bg-[#1E1E1E] text-white text-xs border border-[#2D2D2D] focus:border-[#FF4D00] focus:outline-none rounded-lg px-3 py-2.5 transition-colors disabled:opacity-50"
               />
               <button 
@@ -1183,9 +910,16 @@ Detailed Project Portfolio:
 
       </div>
 
+      {/* Analytics & Modals */}
       <Analytics />
       <SpotifyDashboard isOpen={isSpotifyDashboardOpen} onClose={() => setIsSpotifyDashboardOpen(false)} />
       <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
+      <CaseStudyModal 
+        project={selectedCaseStudy} 
+        isOpen={isCaseStudyModalOpen} 
+        onClose={() => setIsCaseStudyModalOpen(false)} 
+        onOpenInteractivePreview={handleOpenInteractivePreview}
+      />
     </div>
   );
 }

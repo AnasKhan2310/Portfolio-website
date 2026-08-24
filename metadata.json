@@ -1,6 +1,6 @@
 {
   "name": "Anas Portfolio",
-  "description": "Portfolio website of Muhammad Anas Khan, an AI & Data Science Engineer featuring an interactive Gemini-powered AI Chatbot.",
+  "description": "Portfolio of Muhammad Anas Khan — AI & Data Solutions for E-commerce & SaaS, analytics dashboards, AI/ML models, and SaaS products.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

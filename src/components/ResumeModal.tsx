@@ -44,12 +44,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             .section-title { font-size: 14px; font-weight: 800; text-transform: uppercase; color: #ea580c; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 16px; margin-bottom: 8px; letter-spacing: 0.5px; }
             .job-title { font-weight: 700; font-size: 13px; color: #111827; }
             .company { font-weight: 600; color: #374151; font-size: 12px; }
-            .date { color: #6b7280; font-size: 11px; float: right; }
             .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 16px; font-size: 12px; }
             .skill-item { display: flex; align-items: center; gap: 6px; }
-            .bullet-list { margin: 4px 0 8px 16px; padding: 0; }
-            .bullet-list li { margin-bottom: 3px; font-size: 12px; color: #374151; }
-            .project-card { margin-bottom: 8px; }
             a { color: #ea580c; text-decoration: none; }
           </style>
         </head>
@@ -68,11 +64,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   };
 
   const handleDownloadDoc = () => {
-    // Generate formatted rich HTML / PDF-ready document download
     const resumeText = `
 =====================================================
-MUHAMMAD ANAS KHAN - RESUME
-AI Automation Engineer | Full-Stack AI Developer
+MUHAMMAD ANAS KHAN — CURRICULUM VITAE
+AI & Data Solutions for E-commerce & SaaS
 =====================================================
 Email: anaskhanz1980@gmail.com
 Phone/WhatsApp: +92 311 2813828
@@ -81,43 +76,35 @@ GitHub: https://github.com/AnasKhan2310
 LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
 PROFESSIONAL SUMMARY:
-Results-driven AI Automation Engineer and Full-Stack Developer specializing in building end-to-end autonomous agent systems, n8n workflow automations, RAG pipelines, and high-performance SaaS applications. Proven track record of architecting scalable web platforms and machine learning predictive models that eliminate manual operational bottlenecks.
+AI & Data Science developer focused on building practical business solutions using data analytics, machine learning, and SaaS development. Experienced in designing business intelligence dashboards, full-stack SaaS MVPs, and automated workflows that help e-commerce brands and SaaS companies understand their data, reduce manual friction, and make confident decisions.
 
-CORE TECHNICAL SKILLS:
-- Languages & Frameworks: Python, TypeScript, React, Next.js, FastAPI, Node.js, Tailwind CSS
-- AI & Automation: n8n, Model Context Protocol (MCP), LangChain, Multi-Agent Systems, OpenAI / Gemini LLMs, RAG Vector Search (Pinecone, Chroma)
-- Machine Learning & Deep Learning: PyTorch, TensorFlow, CNNs, LSTMs, Scikit-learn, Computer Vision
-- Database & Deployment: PostgreSQL, MongoDB, Cloud Run, Docker, Git, CI/CD
+CORE PILLARS & SKILLS:
+- Data Analytics: Python, SQL, Pandas, NumPy, Power BI, Streamlit, Business Dashboards, Cohort Retention, KPI Reporting
+- AI / Machine Learning: Scikit-learn, TensorFlow, XGBoost, Predictive Models, Document Intelligence (OCR/NLP), LLM Applications
+- SaaS Development: FastAPI, Next.js, React, TypeScript, PostgreSQL, REST APIs, Stripe Integration, Tailwind CSS
+- Supporting Automation: n8n workflows, Model Context Protocol (MCP), Autonomous Agents, API Integrations
 
-KEY PROJECTS:
-1. ZESTFIT - AI Fitness SaaS
-   Subscription fitness and nutrition tracking platform featuring personalized exercise logs and progress analytics.
-   Live Demo: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
+FEATURED PROJECTS:
+1. ZestFit / AI Fitness SaaS (Live SaaS)
+   Full-stack subscription SaaS with dynamic AI routine generators, caloric/macro calculation, and progress dashboards.
+   Live: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 
-2. AI Operations Manager (Autonomous Agent Architecture)
-   Enterprise agent orchestration platform coordinating autonomous tool execution, MCP protocols, and multi-agent workflows.
-   Live Demo: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/
+2. AI Operations Manager (Autonomous Agents)
+   Enterprise agent orchestration platform connecting Model Context Protocol (MCP) integrations and automated task routing.
+   Live: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/ | GitHub: https://github.com/AnasKhan2310/AI-Operations-Manager
 
-3. MediScan AI Healthcare
-   High-precision healthcare diagnostic model for early detection of cardiovascular risks using advanced machine learning.
-   Live Demo: https://medi-scan-ai-theta.vercel.app/
-
-4. AI Image Classifier Pro
-   Real-time computer vision classifier built on convolutional neural networks.
-   Live Demo: https://teachablemachice.netlify.app/
-
-5. Heart Disease Predictor
-   Supervised machine learning predictive model analyzing cardiovascular biomarkers.
-   Live Demo: https://heartdiseasepredictorai.netlify.app/
-
-6. Spotify Streaming Data Analytics
-   Large-scale consumer music trends and streaming behavioral analysis using Python and Pandas.
+3. Spotify Streaming Data Analytics (Data Science)
+   Exploratory data analysis across massive music datasets uncovering audio feature correlations and listener behavior.
    GitHub: https://github.com/AnasKhan2310/Spotify-Data-Analysis
+
+4. MediScan AI (Document Intelligence)
+   Clinical report OCR and biomarker extraction tool creating structured patient summaries.
+   Live: https://medi-scan-ai-theta.vercel.app/
 
 EDUCATION:
 - Bachelor of Science in Computer Science (BSCS)
   Federal Urdu University of Arts, Science and Technology, Karachi
-  Specialization: Artificial Intelligence, Data Science & Machine Learning
+  Focus: Artificial Intelligence, Data Science & Machine Learning
 =====================================================
     `.trim();
 
@@ -185,7 +172,7 @@ EDUCATION:
                 MUHAMMAD ANAS KHAN
               </h1>
               <p className="text-[#FF4D00] font-bold text-xs sm:text-sm uppercase tracking-wider mt-1">
-                AI Automation Engineer & Full-Stack AI Developer
+                AI & Data Solutions for E-commerce & SaaS
               </p>
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-3 text-xs text-neutral-600">
@@ -213,39 +200,31 @@ EDUCATION:
                 Professional Summary
               </h2>
               <p className="text-xs sm:text-[13px] text-neutral-700 leading-relaxed">
-                Results-driven AI Automation Engineer and Full-Stack Developer specializing in building end-to-end autonomous agent systems, n8n workflow automations, RAG pipelines, and high-performance SaaS applications. Proven track record of architecting scalable web platforms and machine learning predictive models that eliminate manual operational bottlenecks.
+                AI & Data Science developer focused on building practical business solutions across Data Analytics, Machine Learning, and SaaS Development. Experienced in architecting business intelligence dashboards, full-stack web applications, and automated workflows that empower e-commerce businesses and SaaS companies to make better decisions with their data.
               </p>
             </div>
 
             {/* Core Competencies */}
             <div className="mt-5">
               <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-syne">
-                Core Technical Skills
+                Core Pillars & Technical Stack
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-700">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>AI & Workflow Automation:</strong> n8n, MCP, Multi-Agent Teams</span>
+                  <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />
+                  <span><strong>Data Analytics:</strong> SQL, Pandas, NumPy, Power BI, Streamlit, KPI Dashboards</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>LLM Orchestration:</strong> LangChain, RAG, Pinecone, Chroma</span>
+                  <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />
+                  <span><strong>AI & Machine Learning:</strong> Scikit-learn, TensorFlow, Predictive Models, OCR, NLP</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>Backend & APIs:</strong> Python, FastAPI, Node.js, REST APIs</span>
+                  <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />
+                  <span><strong>SaaS Development:</strong> Next.js, React, TypeScript, FastAPI, PostgreSQL, Tailwind</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>Frontend Engineering:</strong> React, Next.js, TypeScript, Tailwind</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>Machine Learning:</strong> PyTorch, TensorFlow, CNNs, LSTMs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={12} className="text-[#FF4D00] flex-shrink-0" />
-                  <span><strong>Cloud & Databases:</strong> PostgreSQL, MongoDB, Docker, Git</span>
+                  <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />
+                  <span><strong>Supporting Automation:</strong> n8n workflows, MCP Protocol, Autonomous Agents</span>
                 </div>
               </div>
             </div>
@@ -253,36 +232,46 @@ EDUCATION:
             {/* Featured Projects */}
             <div className="mt-5">
               <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-3 font-syne">
-                Featured Projects
+                Key Solutions & Projects
               </h2>
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">ZESTFIT — AI Fitness & Nutrition SaaS</span>
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit — AI Fitness & Nutrition SaaS</span>
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Live SaaS</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
-                    Engineered subscription-ready SaaS platform with dynamic workout generation, nutrition calculation, and interactive client progress tracking.
+                    Engineered full-stack subscription platform with dynamic AI routine generators, macro calculation, and central client tracking.
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">AI Operations Manager — Multi-Agent Architecture</span>
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">AI Operations Manager — Autonomous Workflow Platform</span>
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Autonomous Agents</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
-                    Architected enterprise multi-agent workflow manager with autonomous context tracking, Model Context Protocol (MCP) integrations, and low-latency execution.
+                    Enterprise agent orchestration platform coordinating autonomous tool execution, MCP protocols, and multi-agent workflows.
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">MediScan AI — Predictive Healthcare Model</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Machine Learning</span>
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Spotify Streaming Data Analytics</span>
+                    <span className="text-[11px] text-[#FF4D00] font-semibold">Data Analytics</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
-                    Trained supervised diagnostic ML algorithms to detect early-stage cardiovascular risks with high confidence scores and responsive web visualization.
+                    Exploratory data analysis across massive music datasets uncovering audio feature correlations and listener behavior.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">MediScan AI — Clinical Document Intelligence</span>
+                    <span className="text-[11px] text-[#FF4D00] font-semibold">Document Intelligence</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">
+                    Clinical report OCR and biomarker extraction tool creating structured patient summaries.
                   </p>
                 </div>
               </div>
@@ -302,7 +291,7 @@ EDUCATION:
                     Federal Urdu University of Arts, Science & Technology, Karachi
                   </p>
                   <p className="text-[11px] text-neutral-500 mt-0.5">
-                    Focus: Artificial Intelligence, Data Science, Neural Networks & Deep Learning
+                    Specialization: Artificial Intelligence, Data Science & Machine Learning
                   </p>
                 </div>
               </div>
