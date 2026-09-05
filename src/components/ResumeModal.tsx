@@ -67,7 +67,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     const resumeText = `
 =====================================================
 MUHAMMAD ANAS KHAN: CURRICULUM VITAE
-AI & Data Solutions for E-commerce & SaaS
+Data Analysis, AI/ML & SaaS Development Backed by Real Projects
 =====================================================
 Email: anaskhanz.dev@gmail.com
 Phone/WhatsApp: +92 311 2813828
@@ -164,7 +164,7 @@ EDUCATION:
                 MUHAMMAD ANAS KHAN
               </h1>
               <p className="text-[#FF4D00] font-bold text-xs sm:text-sm uppercase tracking-wider mt-1">
-                AI & Data Solutions for E-commerce & SaaS
+                Data Analysis, AI/ML & SaaS Development • Backed by Real Projects
               </p>
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-3 text-xs text-neutral-600">
@@ -192,7 +192,7 @@ EDUCATION:
                 Professional Summary
               </h2>
               <p className="text-xs sm:text-[13px] text-neutral-700 leading-relaxed">
-                AI & Data Science developer focused on building practical business solutions across Data Analytics, Machine Learning, and SaaS Development. Experienced in architecting business intelligence dashboards, full-stack web applications, and automated workflows that empower e-commerce businesses and SaaS companies to make better decisions with their data.
+                AI & Data Science developer focused on building practical business solutions across Data Analysis, Machine Learning, and SaaS Development backed by real projects. Experienced in architecting business intelligence dashboards, full-stack web software, and automated workflows that empower businesses to make confident decisions with their data.
               </p>
             </div>
 
@@ -204,7 +204,7 @@ EDUCATION:
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />
-                  <span><strong>Data Analytics:</strong> SQL, Pandas, NumPy, Power BI, Streamlit, KPI Dashboards</span>
+                  <span><strong>Data Analysis:</strong> SQL, Pandas, NumPy, Power BI, EDA, Streamlit, KPI Dashboards</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0" />

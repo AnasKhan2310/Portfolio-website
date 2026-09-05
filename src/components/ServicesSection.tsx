@@ -5,17 +5,17 @@ export const ServicesSection: React.FC = () => {
   const services = [
     {
       id: 'analytics',
-      title: 'Data Analytics',
+      title: 'Data Analysis',
       pillarNumber: '01',
       icon: BarChart3,
-      tagline: 'Visibility & KPI Intelligence',
-      description: 'Transforming messy business records and raw transaction dumps into intuitive, decision-ready analytics dashboards.',
+      tagline: 'Insights & KPI Intelligence',
+      description: 'Transforming complex datasets and raw transaction records into structured pipelines, exploratory analysis, and decision-ready dashboards.',
       bullets: [
-        'Business dashboards',
-        'Sales analytics',
-        'KPI reporting',
-        'Customer analytics',
-        'Forecasting'
+        'Exploratory data analysis (EDA)',
+        'Executive & business dashboards',
+        'Sales & revenue intelligence',
+        'KPI reporting & automated pipelines',
+        'Customer analytics & forecasting'
       ],
       isHighlighted: false
     },
@@ -25,13 +25,13 @@ export const ServicesSection: React.FC = () => {
       pillarNumber: '02',
       icon: Brain,
       tagline: 'Predictive & Generative Intelligence',
-      description: 'Engineering high-accuracy predictive statistical models, document parsing pipelines, and customized LLM applications.',
+      description: 'Engineering high-accuracy statistical models, document parsing pipelines, and customized LLM applications validated on real benchmarks.',
       bullets: [
-        'Predictive models',
-        'AI-powered applications',
-        'LLM applications',
-        'Document intelligence',
-        'Classification & recommendation systems'
+        'Predictive statistical models',
+        'Document intelligence & OCR',
+        'LLM applications & smart agents',
+        'Classification & recommendation systems',
+        'Computer vision pipelines'
       ],
       isHighlighted: false
     },
@@ -41,29 +41,29 @@ export const ServicesSection: React.FC = () => {
       pillarNumber: '03',
       icon: Layers,
       tagline: 'Production Full-Stack Software',
-      description: 'Architecting scalable web software, internal administrative hubs, and AI-enabled software-as-a-service applications.',
+      description: 'Architecting scalable web applications, administrative hubs, and AI-enabled software products built for real users and production loads.',
       bullets: [
-        'AI SaaS MVPs',
-        'Internal business tools',
-        'Admin dashboards',
-        'AI-powered SaaS products',
-        'API-powered applications'
+        'Full-stack AI SaaS MVPs',
+        'Admin dashboards & internal portals',
+        'FastAPI & Next.js architectures',
+        'PostgreSQL database design',
+        'Stripe & authentication integrations'
       ],
       isHighlighted: true // Subtle signature orange highlight card
     },
     {
       id: 'automation',
-      title: 'Automation',
+      title: 'Workflow Automation',
       pillarNumber: '04',
       icon: Cpu,
       tagline: 'Supporting Capability',
-      description: 'Connecting disjointed SaaS platforms, webhooks, and autonomous agents to eliminate manual operational drag.',
+      description: 'Connecting disjointed software systems, event webhooks, and autonomous agents to eliminate manual operational bottlenecks.',
       bullets: [
-        'n8n workflows',
-        'Automated reporting',
-        'AI agents',
-        'API integrations',
-        'Repetitive workflow automation'
+        'n8n workflow automations',
+        'Autonomous multi-step AI agents',
+        'Custom API & webhook integrations',
+        'Automated reporting pipelines',
+        'Repetitive task elimination'
       ],
       isHighlighted: false
     }
@@ -82,7 +82,7 @@ export const ServicesSection: React.FC = () => {
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
         <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
-          Tailored engineering for e-commerce brands, early-stage SaaS ventures, and digital agencies seeking scalable data, AI, and software systems.
+          Production-tested engineering across Data Analysis, Machine Learning, and Full-Stack SaaS development — backed by real, deployed projects and scalable architectures.
         </p>
       </div>
 

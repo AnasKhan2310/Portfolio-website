@@ -4,29 +4,29 @@ import { Terminal, Database, Brain, Code, Cpu } from 'lucide-react';
 export const TechStackSection: React.FC = () => {
   const stackGroups = [
     {
-      category: 'Programming',
+      category: 'Languages',
       icon: Terminal,
-      skills: ['Python', 'SQL', 'TypeScript']
+      skills: ['Python', 'SQL', 'TypeScript', 'JavaScript']
     },
     {
-      category: 'Data',
+      category: 'Data Analysis',
       icon: Database,
-      skills: ['Pandas', 'NumPy', 'Power BI', 'Streamlit']
+      skills: ['Pandas', 'NumPy', 'Power BI', 'EDA & Stats', 'Streamlit']
     },
     {
       category: 'AI / ML',
       icon: Brain,
-      skills: ['Scikit-learn', 'TensorFlow', 'NLP', 'LLMs']
+      skills: ['Scikit-learn', 'TensorFlow', 'NLP', 'LLMs', 'OpenCV']
     },
     {
-      category: 'Development',
+      category: 'SaaS Dev',
       icon: Code,
-      skills: ['FastAPI', 'PostgreSQL', 'REST APIs', 'React / Next.js']
+      skills: ['React / Next.js', 'FastAPI', 'PostgreSQL', 'Tailwind CSS']
     },
     {
       category: 'Automation',
       icon: Cpu,
-      skills: ['n8n', 'AI APIs', 'Workflow Automation']
+      skills: ['n8n', 'AI Agents', 'REST APIs', 'Webhooks']
     }
   ];
 
@@ -44,7 +44,7 @@ export const TechStackSection: React.FC = () => {
             </h2>
           </div>
           <p className="text-xs text-neutral-400 max-w-md">
-            Selected battle-tested frameworks and libraries prioritized for high-performance data analytics, machine learning, and SaaS engineering.
+            Selected battle-tested frameworks and libraries prioritized for high-performance data analysis, machine learning models, and scalable SaaS development.
           </p>
         </div>
 

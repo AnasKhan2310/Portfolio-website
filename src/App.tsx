@@ -45,7 +45,7 @@ export default function App() {
     {
       role: 'assistant',
       parts: [{
-        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in AI & Data Solutions for E-commerce & SaaS, focusing on Data Analytics, AI/ML, and SaaS Development. How can I help you today?"
+        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in Data Analysis, AI/ML, and SaaS Development backed by real projects. How can I help you today?"
       }]
     }
   ]);
@@ -80,7 +80,7 @@ export default function App() {
   const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, an AI & Data Science developer.
 
 Primary Positioning:
-- Muhammad Anas Khan builds AI & Data Solutions for E-commerce & SaaS.
+- Muhammad Anas Khan specializes in Data Analysis, AI/ML & SaaS Development Backed by Real Projects.
 - Three Core Pillars:
   1. Data Analytics (Business dashboards, KPI reporting, analytics pipelines)
   2. AI / Machine Learning (Predictive models, document intelligence, classification & computer vision, LLM applications)
@@ -315,9 +315,10 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               </div>
 
               {/* Exact Repositioning Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-display tracking-[-0.02em] leading-[1.15] mb-4">
-                AI & Data Solutions for <br className="hidden sm:inline" />
-                <span className="text-[#FF4D00]">E-commerce & SaaS</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-display tracking-[-0.02em] leading-[1.18] mb-4">
+                Data Analysis, AI/ML & <br className="hidden md:inline" />
+                SaaS Development <br className="hidden sm:inline" />
+                <span className="text-[#FF4D00]">Backed by Real Projects</span>
               </h1>
 
               {/* Exact Repositioning Subheadline */}
@@ -329,7 +330,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               <div className="flex flex-wrap items-center gap-2 mb-7">
                 <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
                   <BarChart3 size={13} className="text-[#FF4D00]" />
-                  Data Analytics
+                  Data Analysis
                 </span>
                 <span className="text-neutral-600 font-mono">→</span>
                 <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
@@ -528,13 +529,13 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
 
               <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
                 <p>
-                  I'm an AI & Data Science developer focused on building practical business solutions using data analytics, machine learning, and SaaS development.
+                  I'm an AI & Data Science developer focused on building practical, high-impact business software using data analysis, machine learning, and SaaS development.
                 </p>
                 <p>
-                  Rather than treating AI as an isolated experiment, I build analytics dashboards, AI-powered applications, automation workflows, and custom SaaS tools that help businesses reduce manual work, understand their data, and make better decisions.
+                  Rather than treating AI as an isolated experiment, I engineer interactive analytics dashboards, machine learning applications, workflow automations, and scalable SaaS platforms that help businesses reduce manual work, understand their data, and make profitable decisions.
                 </p>
                 <p>
-                  My primary focus is working with <strong className="text-white">e-commerce and SaaS businesses</strong> that want to turn raw transactional records into clear operational foresight.
+                  Every solution is <strong className="text-white">backed by real, functional projects</strong> and designed for production reliability from day one.
                 </p>
               </div>
 
@@ -546,7 +547,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 </div>
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
-                  <div className="text-xs font-semibold text-white">AI & Data Solutions for E-commerce & SaaS</div>
+                  <div className="text-xs font-semibold text-white">Data Analysis, AI/ML & SaaS Development</div>
                 </div>
               </div>
 
