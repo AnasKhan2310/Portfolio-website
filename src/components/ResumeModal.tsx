@@ -160,7 +160,7 @@ EDUCATION:
             
             {/* Header */}
             <div className="border-b-2 border-[#FF4D00] pb-5">
-              <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-900 tracking-[-0.02em]">
+              <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-neutral-900 tracking-[-0.02em]">
                 MUHAMMAD ANAS KHAN
               </h1>
               <p className="text-[#FF4D00] font-bold text-xs sm:text-sm uppercase tracking-wider mt-1">

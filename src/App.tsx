@@ -204,13 +204,13 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           
           {/* Brand Logo */}
           <a href="#hero" className="flex items-center gap-2 group cursor-pointer">
-            <div className="text-lg sm:text-2xl font-bold font-display text-white tracking-[-0.02em] flex items-center">
+            <div className="text-lg sm:text-2xl font-extrabold font-display text-white tracking-[-0.02em] flex items-center">
               <span>Cod</span>
               <span className="text-[#FF4D00] font-black text-xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
               <span>r</span>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 pl-2 ml-2 border-l border-[#282828] text-[11px] font-mono text-neutral-400">
-              <span className="text-white font-semibold">Muhammad Anas Khan</span>
+              <span className="text-white font-medium">Muhammad Anas Khan</span>
             </div>
           </a>
 
@@ -227,9 +227,9 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 key={item.id}
                 href={item.href}
                 onClick={() => setActiveNav(item.id as any)}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all ${
+                className={`px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-all ${
                   activeNav === item.id 
-                    ? 'bg-[#FF4D00] text-white' 
+                    ? 'bg-[#FF4D00] text-white font-semibold' 
                     : 'text-neutral-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -279,9 +279,9 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                   setActiveNav(item.id as any);
                   setMobileMenuOpen(false);
                 }}
-                className={`px-3 py-2 rounded-md text-xs font-semibold ${
+                className={`px-3 py-2 rounded-md text-xs font-medium ${
                   activeNav === item.id 
-                    ? 'bg-[#FF4D00] text-white' 
+                    ? 'bg-[#FF4D00] text-white font-semibold' 
                     : 'text-neutral-300 hover:bg-white/5'
                 }`}
               >
@@ -309,13 +309,13 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               {/* Identity & Availability Pill */}
               <div className="inline-flex items-center gap-2 bg-[#161616] border border-[#2A2A2A] text-neutral-300 text-[11px] font-mono px-3 py-1 rounded-full mb-4">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-bold text-white">Muhammad Anas Khan</span>
+                <span className="font-extrabold text-white">Muhammad Anas Khan</span>
                 <span className="text-neutral-500">•</span>
                 <span className="text-[#FF4D00]">Available for Projects</span>
               </div>
 
               {/* Exact Repositioning Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white font-display tracking-[-0.02em] leading-[1.15] mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-display tracking-[-0.02em] leading-[1.15] mb-4">
                 AI & Data Solutions for <br className="hidden sm:inline" />
                 <span className="text-[#FF4D00]">E-commerce & SaaS</span>
               </h1>
@@ -413,7 +413,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-10 sm:mt-16">
             
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-bold text-white font-display tracking-[-0.02em]">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-display tracking-[-0.02em]">
                 03
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Core Pillars</span>
@@ -421,7 +421,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-bold text-white font-display tracking-[-0.02em]">
+              <span className="text-xl sm:text-3xl font-extrabold text-white font-display tracking-[-0.02em]">
                 Full-Stack
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Architecture</span>
@@ -429,7 +429,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-bold text-[#FF4D00] font-display tracking-[-0.02em]">
+              <span className="text-xl sm:text-3xl font-extrabold text-[#FF4D00] font-display tracking-[-0.02em]">
                 End-to-End
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Problem Solver</span>
@@ -437,7 +437,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-2xl font-bold text-white font-display tracking-[-0.02em]">
+              <span className="text-xl sm:text-2xl font-extrabold text-white font-display tracking-[-0.02em]">
                 Bachelor's
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Computer Science</span>

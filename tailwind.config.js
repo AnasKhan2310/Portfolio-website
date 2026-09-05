@@ -7,10 +7,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Cera CY"', '"Cera CY Bold"', 'sans-serif'],
-        body: ['"Cera CY"', 'sans-serif'],
-        sans: ['"Cera CY"', 'sans-serif'],
-        cera: ['"Cera CY"', '"Cera CY Bold"', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+        cera: ['Poppins', 'sans-serif'],
       },
     },
   },

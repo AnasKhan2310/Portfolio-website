@@ -1,96 +1,50 @@
-/* Cera CY Typeface Declarations */
-@font-face {
-  font-family: 'Cera CY';
-  src: url('/fonts/CeraCY-Regular.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/a1ab9bebae84d82fbcfe930c4643de7a.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cera CY';
-  src: url('/fonts/CeraCY-Medium.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/016fd4c12289f583508ddace56765513.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cera CY';
-  src: url('/fonts/CeraCY-Bold.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/6a28a1fb5b77054a12626d0c23c92aa2.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cera CY';
-  src: url('/fonts/CeraCY-Bold.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/6a28a1fb5b77054a12626d0c23c92aa2.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cera CY Bold';
-  src: url('/fonts/CeraCY-Bold.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/6a28a1fb5b77054a12626d0c23c92aa2.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
 @theme {
-  --font-heading: 'Cera CY', 'Cera CY Bold', 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Cera CY', 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-cera: 'Cera CY', 'Cera CY Bold', sans-serif;
-  --font-clash: 'Cera CY', 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Cera CY', 'Cera CY Bold', 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-syne: 'Cera CY', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-general: 'Cera CY', 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sans: 'Cera CY', 'General Sans', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-outfit: 'Cera CY', 'Outfit', sans-serif;
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-cera: 'Poppins', sans-serif;
+  --font-clash: 'Poppins', sans-serif;
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-syne: 'Poppins', sans-serif;
+  --font-general: 'Poppins', sans-serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-outfit: 'Poppins', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-handwriting: 'Caveat', cursive;
 }
 
 :root {
-  font-family: 'Cera CY', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color-scheme: dark;
 }
 
 body {
   background-color: #0A0A0A;
   color: #FFFFFF;
-  font-family: 'Cera CY', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Headings typography: Cera CY geometric bold */
+/* Headings typography: Poppins */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cera CY', 'Cera CY Bold', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.02em;
 }
 
-.font-heading, .font-clash, .font-display, .font-syne, .font-cera {
-  font-family: 'Cera CY', 'Cera CY Bold', -apple-system, BlinkMacSystemFont, sans-serif;
+.font-heading, .font-clash, .font-display, .font-syne, .font-cera, .font-poppins {
+  font-family: 'Poppins', sans-serif;
 }
 
 .font-body, .font-general, .font-sans {
-  font-family: 'Cera CY', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .font-outfit {
-  font-family: 'Cera CY', 'Outfit', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .font-handwriting {
