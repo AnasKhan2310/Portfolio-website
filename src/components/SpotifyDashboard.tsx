@@ -9,7 +9,7 @@ import {
   Pause, 
   TrendingUp, 
   Headphones, 
-  Sparkles, 
+  Bookmark, 
   Volume2, 
   Share2, 
   Database,
@@ -94,16 +94,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
   const [sortField, setSortField] = useState<'streams' | 'monthly' | 'rating'>('streams');
   const [sortAscending, setSortAscending] = useState(false);
   const [isPlaying, setIsPlaying] = useState<number | null>(null);
-  const [liveStreamCounter, setLiveStreamCounter] = useState(54231842);
-
-  // Live simulation of stream increments
-  useEffect(() => {
-    if (!isOpen) return;
-    const interval = setInterval(() => {
-      setLiveStreamCounter(prev => prev + Math.floor(Math.random() * 4) + 1);
-    }, 1200);
-    return () => clearInterval(interval);
-  }, [isOpen]);
+  const liveStreamCounter = 54231842;
 
   useEffect(() => {
     if (isOpen) {
@@ -157,11 +148,11 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/90 backdrop-blur-md overflow-y-auto p-0 md:p-6 font-sans">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/90 overflow-y-auto p-0 md:p-6 font-sans">
       
       {/* Main Container */}
       <div 
-        className="relative bg-[#0d0d0f] text-neutral-200 w-full max-w-7xl md:rounded-3xl border border-neutral-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] flex flex-col h-full md:h-[90vh] overflow-hidden"
+        className="relative bg-[#0d0d0f] text-neutral-200 w-full max-w-7xl md:rounded-xl border border-neutral-800 shadow-2xl flex flex-col h-full md:h-[90vh] overflow-hidden"
       >
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-800 bg-[#111114] select-none shrink-0">
@@ -177,7 +168,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
 
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-full text-[11px] font-bold text-neutral-400">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
+              <span className="h-2 w-2 rounded-full bg-emerald-500 inline-block"></span>
               Live Pipeline Connected
             </div>
             <button 
@@ -197,7 +188,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* Metric 1 */}
-            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-xl flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-black">TOTAL PIPELINE STREAMS</span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-mono mt-2 tracking-tight">
@@ -211,7 +202,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
             </div>
 
             {/* Metric 2 */}
-            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-xl flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-black">MONTHLY ACTIVE LISTENERS</span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-mono mt-2 tracking-tight">
@@ -225,7 +216,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
             </div>
 
             {/* Metric 3 */}
-            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-xl flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-black">TOTAL SAVES & LIKES</span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-mono mt-2 tracking-tight">
@@ -233,13 +224,13 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
                 </h3>
               </div>
               <div className="flex items-center gap-2 text-xs text-amber-500 font-bold mt-4 font-mono">
-                <Sparkles size={14} />
+                <Bookmark size={14} />
                 <span>77.2% Saving Ratio</span>
               </div>
             </div>
 
             {/* Metric 4 */}
-            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-5 rounded-xl flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest font-black">AVERAGE DANCEABILITY</span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-mono mt-2 tracking-tight">
@@ -258,7 +249,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             
             {/* Main Interactive Recharts Graph Panel */}
-            <div className="lg:col-span-8 bg-[#121215] border border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px]">
+            <div className="lg:col-span-8 bg-[#121215] border border-neutral-800 rounded-xl p-6 flex flex-col justify-between min-h-[380px]">
               
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 select-none">
                 <div>
@@ -337,7 +328,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
             </div>
 
             {/* Demographics / Device distribution Panel */}
-            <div className="lg:col-span-4 bg-[#121215] border border-neutral-800 rounded-2xl p-6 flex flex-col justify-between min-h-[380px]">
+            <div className="lg:col-span-4 bg-[#121215] border border-neutral-800 rounded-xl p-6 flex flex-col justify-between min-h-[380px]">
               
               <div>
                 <h3 className="text-base font-bold text-white tracking-tight mb-5 select-none">Listener Demographics</h3>
@@ -401,7 +392,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Audio Profile Radar Chart */}
-            <div className="bg-[#121215] border border-neutral-800 p-6 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-6 rounded-xl flex flex-col justify-between">
               
               <div className="mb-4 select-none">
                 <h3 className="text-base font-bold text-white tracking-tight">Audio Features Signature</h3>
@@ -444,7 +435,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
             </div>
 
             {/* Device and User Flow stats */}
-            <div className="bg-[#121215] border border-neutral-800 p-6 rounded-2xl flex flex-col justify-between">
+            <div className="bg-[#121215] border border-neutral-800 p-6 rounded-xl flex flex-col justify-between">
               
               <div className="mb-6 select-none">
                 <h3 className="text-base font-bold text-white tracking-tight">Playback Environment</h3>
@@ -483,7 +474,7 @@ export default function SpotifyDashboard({ isOpen, onClose }: SpotifyDashboardPr
           </div>
 
           {/* Interactive Track Performance Table Panel */}
-          <div className="bg-[#121215] border border-neutral-800 rounded-2xl overflow-hidden p-6 space-y-4">
+          <div className="bg-[#121215] border border-neutral-800 rounded-xl overflow-hidden p-6 space-y-4">
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
               <div>

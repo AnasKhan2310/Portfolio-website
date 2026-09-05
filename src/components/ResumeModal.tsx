@@ -66,10 +66,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   const handleDownloadDoc = () => {
     const resumeText = `
 =====================================================
-MUHAMMAD ANAS KHAN — CURRICULUM VITAE
+MUHAMMAD ANAS KHAN: CURRICULUM VITAE
 AI & Data Solutions for E-commerce & SaaS
 =====================================================
-Email: anaskhanz1980@gmail.com
+Email: anaskhanz.dev@gmail.com
 Phone/WhatsApp: +92 311 2813828
 Location: Karachi, Pakistan
 GitHub: https://github.com/AnasKhan2310
@@ -116,15 +116,15 @@ EDUCATION:
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 overflow-y-auto animate-fade-in">
+      <div className="relative w-full max-w-4xl bg-[#141414] border border-[#2A2A2A] rounded-xl shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
         
         {/* Modal Top Bar */}
         <div className="bg-[#1C1C1C] border-b border-[#2A2A2A] px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="h-3 w-3 rounded-full bg-[#FF4D00]" />
             <h2 className="text-white font-syne font-bold text-sm sm:text-base">
-              Curriculum Vitae — Muhammad Anas Khan
+              Curriculum Vitae: Muhammad Anas Khan
             </h2>
           </div>
 
@@ -173,7 +173,7 @@ EDUCATION:
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-3 text-xs text-neutral-600">
                 <span className="flex items-center gap-1">
-                  <Mail size={12} className="text-[#FF4D00]" /> anaskhanz1980@gmail.com
+                  <Mail size={12} className="text-[#FF4D00]" /> anaskhanz.dev@gmail.com
                 </span>
                 <span className="flex items-center gap-1">
                   <Phone size={12} className="text-[#FF4D00]" /> +92 311 2813828
@@ -233,7 +233,7 @@ EDUCATION:
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit — AI Fitness & Nutrition SaaS</span>
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit: AI Fitness & Nutrition SaaS</span>
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Live SaaS</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
@@ -253,7 +253,7 @@ EDUCATION:
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">MediScan AI — Clinical Document Intelligence</span>
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">MediScan AI: Clinical Document Intelligence</span>
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Document Intelligence</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">

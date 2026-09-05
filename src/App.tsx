@@ -9,7 +9,6 @@ import { ProcessSection } from './components/ProcessSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { TechStackSection } from './components/TechStackSection';
 import NetworkBackground from './components/NetworkBackground';
-import GlowingCursor from './components/GlowingCursor';
 import TerminalTyping from './components/TerminalTyping';
 import picImage from './pic.png';
 import { ProjectItem } from './data/projectsData';
@@ -47,7 +46,7 @@ export default function App() {
     {
       role: 'assistant',
       parts: [{
-        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in AI & Data Solutions for E-commerce & SaaS — focusing on Data Analytics, AI/ML, and SaaS Development. How can I help you today?"
+        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in AI & Data Solutions for E-commerce & SaaS, focusing on Data Analytics, AI/ML, and SaaS Development. How can I help you today?"
       }]
     }
   ]);
@@ -97,7 +96,7 @@ Contact & Profile:
 - Name: Muhammad Anas Khan
 - Location: Karachi, Pakistan
 - Degree: BS in Computer Science from Federal Urdu University, Karachi
-- Email: anaskhanz1980@gmail.com
+- Email: anaskhanz.dev@gmail.com
 - Phone / WhatsApp: +92 311 2813828
 - GitHub: https://github.com/AnasKhan2310
 - LinkedIn: https://www.linkedin.com/in/anas-khan1290/
@@ -202,14 +201,11 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
       {/* Interactive Network Background */}
       <NetworkBackground />
 
-      {/* Glowing Cursor Trail */}
-      <GlowingCursor />
-
       {/* ========================================================================= */}
       {/* HEADER / NAVIGATION BAR */}
       {/* ========================================================================= */}
       <header className="relative z-40 w-full max-w-7xl mx-auto pt-3 sm:pt-6 px-3 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111]/95 backdrop-blur-md border border-[#222222] rounded-lg">
+        <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111] border border-[#222222] rounded-lg shadow-sm">
           
           {/* Brand Logo */}
           <a href="#hero" className="flex items-center gap-2 group cursor-pointer">
@@ -238,7 +234,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 onClick={() => setActiveNav(item.id as any)}
                 className={`px-3 py-1.5 rounded-md text-xs font-semibold tracking-wide transition-all ${
                   activeNav === item.id 
-                    ? 'bg-[#FF4D00] text-white shadow-sm' 
+                    ? 'bg-[#FF4D00] text-white' 
                     : 'text-neutral-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -251,7 +247,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#contact"
-              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-md transition-all duration-200 shadow-[0_4px_15px_rgba(255,77,0,0.3)] hover:shadow-[0_4px_20px_rgba(255,77,0,0.5)] cursor-pointer"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-md transition-colors cursor-pointer"
             >
               Let's Talk
             </a>
@@ -307,7 +303,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
       <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 overflow-x-hidden">
         
         {/* ========================================================================= */}
-        {/* HERO SECTION — Repositioned for AI & Data Solutions for E-commerce & SaaS */}
+        {/* HERO SECTION: Repositioned for AI & Data Solutions for E-commerce & SaaS */}
         {/* ========================================================================= */}
         <section id="hero" className="relative pt-8 sm:pt-14 pb-12 lg:pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
@@ -370,7 +366,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
                 <a
                   href="#projects"
-                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-8 py-3 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-8 py-3 rounded-md transition-colors flex items-center gap-2 cursor-pointer"
                 >
                   <span>View Projects</span>
                   <ArrowRight size={14} />
@@ -399,16 +395,13 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10 mt-4 lg:mt-0">
               
               <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group max-w-full">
-                
-                {/* Subtle ambient back-glow behind portrait */}
-                <div className="absolute inset-0 bg-radial from-[#FF4D00]/20 via-[#FF4D00]/5 to-transparent blur-2xl pointer-events-none" />
 
                 {/* Portrait Photo with seamless bottom fade */}
                 <div className="relative w-full h-full flex items-end justify-center overflow-visible">
                   <img 
                     src={picImage} 
                     alt="Muhammad Anas Khan - AI & Data Solutions Developer" 
-                    className="w-full h-full object-cover object-top relative z-10 filter contrast-105 group-hover:scale-105 transition-transform duration-500 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
+                    className="w-full h-full object-cover object-top relative z-10 filter contrast-105 transition-all duration-300 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
                   />
                 </div>
 
@@ -450,12 +443,12 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">FastAPI & Next.js</span>
             </div>
 
-            <div className="bg-[#FF4D00] text-white p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center shadow-[0_8px_25px_rgba(255,77,0,0.3)] transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-3xl font-extrabold text-[#FF4D00] font-syne tracking-tight">
                 End-to-End
               </span>
-              <span className="text-[11px] sm:text-xs text-white/90 font-bold tracking-wide mt-1">Problem Solver</span>
-              <span className="text-[10px] text-white/80 font-mono mt-0.5">Discover → Deploy</span>
+              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Problem Solver</span>
+              <span className="text-[10px] text-neutral-500 font-mono mt-0.5">Discover → Deploy</span>
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
@@ -601,7 +594,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               
               {/* Direct Email */}
               <a 
-                href="mailto:anaskhanz1980@gmail.com"
+                href="mailto:anaskhanz.dev@gmail.com"
                 className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 hover:bg-[#161616] transition-all group"
               >
                 <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 group-hover:scale-105 transition-transform">
@@ -610,7 +603,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 <div className="min-w-0">
                   <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Direct Email</span>
                   <span className="text-white group-hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block truncate">
-                    anaskhanz1980@gmail.com
+                    anaskhanz.dev@gmail.com
                   </span>
                   <span className="text-[11px] text-neutral-500 mt-0.5 block">Send project requirements or inquiries</span>
                 </div>
@@ -676,14 +669,14 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 href="https://wa.me/923112813828"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+                className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
               >
                 <Phone size={15} />
                 <span>Chat on WhatsApp</span>
               </a>
               <a
-                href="mailto:anaskhanz1980@gmail.com"
-                className="bg-[#1A1A1A] hover:bg-[#222222] text-neutral-200 hover:text-white border border-[#333333] font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg transition-all flex items-center gap-2 cursor-pointer"
+                href="mailto:anaskhanz.dev@gmail.com"
+                className="bg-[#1A1A1A] hover:bg-[#222222] text-neutral-200 hover:text-white border border-[#333333] font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
               >
                 <Mail size={15} />
                 <span>Send Direct Email</span>
@@ -716,7 +709,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             <a href="https://github.com/AnasKhan2310" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
               <Github size={16} />
             </a>
-            <a href="mailto:anaskhanz1980@gmail.com" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
+            <a href="mailto:anaskhanz.dev@gmail.com" className="text-neutral-400 hover:text-[#FF4D00] transition-colors">
               <Mail size={16} />
             </a>
           </div>
@@ -737,15 +730,15 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           <button 
             id="chatbot-trigger-bubble"
             onClick={() => setIsChatOpen(true)}
-            className="h-12 w-12 sm:h-13 sm:w-13 rounded-full bg-[#FF4D00] hover:bg-[#E04400] border-2 border-white/20 text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110 active:scale-95 duration-300 group cursor-pointer"
+            className="h-12 w-12 rounded-full bg-[#FF4D00] hover:bg-[#E04400] text-white flex items-center justify-center shadow-lg transition-colors cursor-pointer"
             title="Ask Anas's AI Assistant"
             aria-label="Open AI Assistant Chat"
           >
-            <Bot size={22} className="text-white group-hover:rotate-12 transition-transform duration-300 sm:w-6 sm:h-6" />
-            <span className="absolute top-0 right-0 h-3 w-3 bg-emerald-500 border border-[#0A0A0A] rounded-full animate-pulse" />
+            <Bot size={22} className="text-white" />
+            <span className="absolute top-0 right-0 h-3 w-3 bg-emerald-500 border-2 border-[#0A0A0A] rounded-full" />
           </button>
         ) : (
-          <div className="w-[calc(100vw-32px)] sm:w-[370px] max-w-[370px] h-[480px] max-h-[calc(100vh-90px)] bg-[#121212] border border-[#2A2A2A] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative animate-fade-in">
+          <div className="w-[calc(100vw-32px)] sm:w-[370px] max-w-[370px] h-[480px] max-h-[calc(100vh-90px)] bg-[#121212] border border-[#2A2A2A] rounded-xl shadow-xl flex flex-col overflow-hidden relative">
             
             {/* Header */}
             <div className="bg-[#1A1A1A] px-4 py-3.5 border-b border-[#262626] flex items-center justify-between text-white">

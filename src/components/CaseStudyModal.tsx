@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ExternalLink, Github, CheckCircle2, ArrowRight, Layers, Cpu, Database, BarChart3, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Github, CheckCircle2, ArrowRight, Layers, Cpu, Database, BarChart3 } from 'lucide-react';
 import { ProjectItem } from '../data/projectsData';
 
 interface CaseStudyModalProps {
@@ -18,8 +18,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   if (!isOpen || !project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-[#121212] border border-[#262626] rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 overflow-y-auto animate-fade-in">
+      <div className="relative w-full max-w-4xl bg-[#121212] border border-[#262626] rounded-xl shadow-2xl overflow-hidden flex flex-col my-auto max-h-[92vh]">
         
         {/* Top Header Bar */}
         <div className="bg-[#1A1A1A] border-b border-[#2A2A2A] px-5 sm:px-7 py-4 flex items-center justify-between">
@@ -99,7 +99,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           {project.caseStudy.workflowSteps && project.caseStudy.workflowSteps.length > 0 && (
             <div className="bg-[#181818] border border-[#282828] p-5 rounded-xl">
               <h3 className="text-xs font-mono font-bold uppercase text-[#FF4D00] tracking-widest mb-3.5 flex items-center gap-2">
-                <Sparkles size={14} />
+                <Layers size={14} />
                 System Engineering Workflow
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">

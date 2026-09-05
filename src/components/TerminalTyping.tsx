@@ -47,7 +47,7 @@ export default function TerminalTyping() {
   }, [currentText, isDeleting, phraseIdx, typingSpeed]);
 
   return (
-    <div className="w-full bg-[#121212] border border-[#222222] rounded-2xl overflow-hidden font-mono text-sm shadow-[0_15px_35px_rgba(0,0,0,0.5)] select-none">
+    <div className="w-full bg-[#121212] border border-[#222222] rounded-xl overflow-hidden font-mono text-sm shadow-xl select-none">
       {/* Terminal Title Bar */}
       <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#222222]">
         <div className="flex items-center gap-1.5">

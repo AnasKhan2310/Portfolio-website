@@ -93,16 +93,16 @@ export const ServicesSection: React.FC = () => {
           return (
             <div
               key={srv.id}
-              className={`p-6 sm:p-7 rounded-xl flex flex-col justify-between transition-all duration-300 relative group min-h-[340px] ${
+              className={`p-6 sm:p-7 rounded-xl flex flex-col justify-between transition-colors relative group min-h-[340px] ${
                 srv.isHighlighted
-                  ? 'bg-[#141414] border-2 border-[#FF4D00] shadow-[0_8px_30px_rgba(255,77,0,0.18)]'
+                  ? 'bg-[#141414] border border-[#FF4D00]/60'
                   : 'bg-[#121212] border border-[#222222] hover:border-[#383838]'
               }`}
             >
               <div>
                 {/* Card Top */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="h-11 w-11 rounded-lg bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00] group-hover:scale-105 transition-transform">
+                  <div className="h-11 w-11 rounded-lg bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00]">
                     <Icon size={20} />
                   </div>
                   <span className="text-[11px] font-mono font-bold text-neutral-500">

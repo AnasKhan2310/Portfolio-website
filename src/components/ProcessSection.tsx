@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, LineChart, Code2, Rocket, ArrowRight } from 'lucide-react';
+import { Search, LineChart, Code2, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const ProcessSection: React.FC = () => {
   const steps = [
@@ -27,8 +27,8 @@ export const ProcessSection: React.FC = () => {
     {
       number: '04',
       title: 'Deploy',
-      action: 'Launch & Refine',
-      icon: Rocket,
+      action: 'Launch & Verify',
+      icon: CheckCircle2,
       description: 'Deploy to scalable cloud infrastructure, integrate API webhooks, verify system accuracy, and continuously refine performance.'
     }
   ];
@@ -70,7 +70,7 @@ export const ProcessSection: React.FC = () => {
               <div>
                 {/* Step Top */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="h-10 w-10 rounded-lg bg-[#181818] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00] group-hover:scale-105 transition-transform">
+                  <div className="h-10 w-10 rounded-lg bg-[#181818] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00]">
                     <Icon size={18} />
                   </div>
                   <span className="text-xl font-mono font-extrabold text-neutral-600 group-hover:text-[#FF4D00] transition-colors">

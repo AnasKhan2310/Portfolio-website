@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, BarChart3, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, BarChart3, BookOpen, Layers } from 'lucide-react';
 import { FEATURED_PROJECTS, OTHER_PROJECTS, ProjectItem } from '../data/projectsData';
 
 interface ProjectsSectionProps {
@@ -71,7 +71,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       {filteredFeatured.length > 0 && (
         <div className="space-y-8 mb-16">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#FF4D00]">
-            <Sparkles size={14} />
+            <Layers size={14} />
             <span>Core Flagship Case Studies</span>
           </div>
 
@@ -79,7 +79,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             {filteredFeatured.map((project) => (
               <div
                 key={project.id}
-                className="bg-[#121212] border border-[#222222] hover:border-[#383838] rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 group shadow-lg"
+                className="bg-[#121212] border border-[#222222] hover:border-[#383838] rounded-xl p-6 sm:p-8 flex flex-col justify-between transition-colors group"
               >
                 <div>
                   

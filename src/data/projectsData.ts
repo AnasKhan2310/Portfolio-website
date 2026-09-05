@@ -92,7 +92,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
   },
   {
     id: "mediscan",
-    title: "MediScan AI — Document Intelligence",
+    title: "MediScan AI: Document Intelligence",
     category: "AI / ML",
     tag: "Document Intelligence",
     statusBadge: "Document Intelligence",
