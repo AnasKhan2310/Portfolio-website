@@ -77,7 +77,7 @@ export const ServicesSection: React.FC = () => {
         <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
           WHAT I BUILD & DELIVER
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
           Core Solutions & Capabilities
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
@@ -110,7 +110,7 @@ export const ServicesSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold font-syne text-white tracking-tight mb-1">
+                <h3 className="text-lg font-semibold font-display text-white tracking-[-0.02em] mb-1">
                   {srv.title}
                 </h3>
                 <span className="text-[10.5px] font-mono text-[#FF4D00] uppercase tracking-wider block mb-3">

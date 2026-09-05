@@ -39,7 +39,7 @@ export const TechStackSection: React.FC = () => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#FF4D00]">
               CORE TOOLING & ARCHITECTURE
             </span>
-            <h2 className="text-xl sm:text-2xl font-bold font-syne text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-semibold font-display text-white tracking-[-0.02em]">
               Focused Technical Stack
             </h2>
           </div>

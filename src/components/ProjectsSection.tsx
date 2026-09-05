@@ -4,7 +4,7 @@ import { FEATURED_PROJECTS, OTHER_PROJECTS, ProjectItem } from '../data/projects
 
 interface ProjectsSectionProps {
   onOpenCaseStudy: (project: ProjectItem) => void;
-  onOpenInteractivePreview: (type: 'spotify') => void;
+  onOpenInteractivePreview?: (type: string) => void;
 }
 
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
@@ -39,7 +39,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
           PROVEN SOLUTIONS & CASE STUDIES
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
           Featured Projects & Architecture
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
@@ -100,7 +100,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </div>
 
                   {/* Title & Tagline */}
-                  <h3 className="text-xl sm:text-2xl font-bold font-syne text-white tracking-tight mb-1">
+                  <h3 className="text-xl sm:text-2xl font-semibold font-display text-white tracking-[-0.02em] mb-1">
                     {project.title}
                   </h3>
                   <span className="text-xs font-mono text-[#FF4D00] block mb-4">
@@ -157,7 +157,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                   <div className="flex items-center gap-2">
                     {/* In-app Interactive preview button */}
-                    {project.hasInteractivePreview && project.previewType && (
+                    {project.hasInteractivePreview && project.previewType && onOpenInteractivePreview && (
                       <button
                         type="button"
                         onClick={() => onOpenInteractivePreview(project.previewType!)}
@@ -233,7 +233,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </span>
                   </div>
 
-                  <h4 className="text-base font-bold font-syne text-white tracking-tight mb-2">
+                  <h4 className="text-base font-semibold font-display text-white tracking-[-0.02em] mb-2">
                     {project.title}
                   </h4>
 
@@ -261,16 +261,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   </button>
 
                   <div className="flex items-center gap-2">
-                    {project.id === 'spotify' ? (
-                      <button
-                        type="button"
-                        onClick={() => onOpenInteractivePreview('spotify')}
-                        className="text-xs font-mono font-bold text-[#FF4D00] hover:underline cursor-pointer flex items-center gap-1"
-                      >
-                        <span>Interactive App</span>
-                        <ArrowRight size={12} />
-                      </button>
-                    ) : project.liveDemoUrl ? (
+                    {project.liveDemoUrl ? (
                       <a
                         href={project.liveDemoUrl}
                         target="_blank"

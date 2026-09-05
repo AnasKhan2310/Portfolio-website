@@ -89,11 +89,7 @@ FEATURED PROJECTS:
    Full-stack subscription SaaS with dynamic AI routine generators, caloric/macro calculation, and progress dashboards.
    Live: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 
-2. Spotify Streaming Data Analytics (Data Science)
-   Exploratory data analysis across massive music datasets uncovering audio feature correlations and listener behavior.
-   GitHub: https://github.com/AnasKhan2310/Spotify-Data-Analysis
-
-3. MediScan AI (Document Intelligence)
+2. MediScan AI (Document Intelligence)
    Clinical report OCR and biomarker extraction tool creating structured patient summaries.
    Live: https://medi-scan-ai-theta.vercel.app/
 
@@ -123,7 +119,7 @@ EDUCATION:
         <div className="bg-[#1C1C1C] border-b border-[#2A2A2A] px-4 sm:px-6 py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="h-3 w-3 rounded-full bg-[#FF4D00]" />
-            <h2 className="text-white font-syne font-bold text-sm sm:text-base">
+            <h2 className="text-white font-display font-semibold text-sm sm:text-base tracking-[-0.02em]">
               Curriculum Vitae: Muhammad Anas Khan
             </h2>
           </div>
@@ -164,7 +160,7 @@ EDUCATION:
             
             {/* Header */}
             <div className="border-b-2 border-[#FF4D00] pb-5">
-              <h1 className="text-2xl sm:text-3xl font-extrabold font-syne text-neutral-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold font-display text-neutral-900 tracking-[-0.02em]">
                 MUHAMMAD ANAS KHAN
               </h1>
               <p className="text-[#FF4D00] font-bold text-xs sm:text-sm uppercase tracking-wider mt-1">
@@ -192,7 +188,7 @@ EDUCATION:
 
             {/* Summary */}
             <div className="mt-5">
-              <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-syne">
+              <h2 className="text-xs sm:text-sm font-semibold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-display">
                 Professional Summary
               </h2>
               <p className="text-xs sm:text-[13px] text-neutral-700 leading-relaxed">
@@ -202,7 +198,7 @@ EDUCATION:
 
             {/* Core Competencies */}
             <div className="mt-5">
-              <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-syne">
+              <h2 className="text-xs sm:text-sm font-semibold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-display">
                 Core Pillars & Technical Stack
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-neutral-700">
@@ -227,7 +223,7 @@ EDUCATION:
 
             {/* Featured Projects */}
             <div className="mt-5">
-              <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-3 font-syne">
+              <h2 className="text-xs sm:text-sm font-semibold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-3 font-display">
                 Key Solutions & Projects
               </h2>
               <div className="space-y-3">
@@ -238,16 +234,6 @@ EDUCATION:
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Engineered full-stack subscription platform with dynamic AI routine generators, macro calculation, and central client tracking.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Spotify Streaming Data Analytics</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Data Analytics</span>
-                  </div>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    Exploratory data analysis across massive music datasets uncovering audio feature correlations and listener behavior.
                   </p>
                 </div>
 
@@ -265,7 +251,7 @@ EDUCATION:
 
             {/* Education */}
             <div className="mt-5">
-              <h2 className="text-xs sm:text-sm font-extrabold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-syne">
+              <h2 className="text-xs sm:text-sm font-semibold uppercase text-[#FF4D00] tracking-wider border-b border-neutral-200 pb-1 mb-2 font-display">
                 Education
               </h2>
               <div className="flex items-start justify-between">

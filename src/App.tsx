@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
-import SpotifyDashboard from './components/SpotifyDashboard';
 import { ResumeModal } from './components/ResumeModal';
 import { CaseStudyModal } from './components/CaseStudyModal';
 import { ServicesSection } from './components/ServicesSection';
@@ -54,7 +53,6 @@ export default function App() {
   const [chatError, setChatError] = useState<string | null>(null);
 
   // Modals state
-  const [isSpotifyDashboardOpen, setIsSpotifyDashboardOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<ProjectItem | null>(null);
   const [isCaseStudyModalOpen, setIsCaseStudyModalOpen] = useState(false);
@@ -74,10 +72,8 @@ export default function App() {
   };
 
   // Open Interactive Previews
-  const handleOpenInteractivePreview = (type: 'spotify') => {
-    if (type === 'spotify') {
-      setIsSpotifyDashboardOpen(true);
-    }
+  const handleOpenInteractivePreview = (_type?: string) => {
+    // Reserved for future interactive applet demos
   };
 
   // System instruction for Gemini chatbot
@@ -103,8 +99,7 @@ Contact & Profile:
 
 Featured Projects:
 1. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
-2. Spotify Streaming Data Analytics (Interactive Data Science App) - Python, Pandas, React, Recharts.
-3. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
+2. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
 
 Style: Be professional, concise, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture and problem-solving.`;
 
@@ -209,7 +204,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           
           {/* Brand Logo */}
           <a href="#hero" className="flex items-center gap-2 group cursor-pointer">
-            <div className="text-lg sm:text-2xl font-black font-syne text-white tracking-tight flex items-center">
+            <div className="text-lg sm:text-2xl font-bold font-display text-white tracking-[-0.02em] flex items-center">
               <span>Cod</span>
               <span className="text-[#FF4D00] font-black text-xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
               <span>r</span>
@@ -320,7 +315,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               </div>
 
               {/* Exact Repositioning Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-syne tracking-tight leading-[1.15] mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white font-display tracking-[-0.02em] leading-[1.15] mb-4">
                 AI & Data Solutions for <br className="hidden sm:inline" />
                 <span className="text-[#FF4D00]">E-commerce & SaaS</span>
               </h1>
@@ -350,16 +345,6 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 <span className="bg-[#141414] text-neutral-400 border border-[#242424] text-[11px] font-mono px-2.5 py-1 rounded-md">
                   + Automation
                 </span>
-              </div>
-
-              {/* Target Audience Bar */}
-              <div className="bg-[#121212] border border-[#222222] px-3.5 py-2 rounded-lg mb-8 text-xs text-neutral-400 font-mono flex flex-wrap items-center gap-2">
-                <span className="text-[#FF4D00] font-bold uppercase text-[10px]">Target Clients:</span>
-                <span>Shopify & E-commerce Brands</span>
-                <span className="text-neutral-600">•</span>
-                <span>Early-Stage SaaS</span>
-                <span className="text-neutral-600">•</span>
-                <span>Digital Agencies</span>
               </div>
 
               {/* Action Buttons */}
@@ -428,7 +413,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-10 sm:mt-16">
             
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+              <span className="text-xl sm:text-3xl font-bold text-white font-display tracking-[-0.02em]">
                 03
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Core Pillars</span>
@@ -436,7 +421,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
+              <span className="text-xl sm:text-3xl font-bold text-white font-display tracking-[-0.02em]">
                 Full-Stack
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Architecture</span>
@@ -444,7 +429,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-[#FF4D00] font-syne tracking-tight">
+              <span className="text-xl sm:text-3xl font-bold text-[#FF4D00] font-display tracking-[-0.02em]">
                 End-to-End
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Problem Solver</span>
@@ -452,8 +437,8 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-syne tracking-tight">
-                BS CS
+              <span className="text-xl sm:text-2xl font-bold text-white font-display tracking-[-0.02em]">
+                Bachelor's
               </span>
               <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Computer Science</span>
               <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Federal Urdu University</span>
@@ -536,7 +521,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 ABOUT MUHAMMAD ANAS KHAN
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight leading-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] leading-tight mb-6">
                 Bridging Data Science, <br className="hidden sm:block" />
                 <span className="text-[#FF4D00]">AI Models & Production SaaS</span>
               </h2>
@@ -557,7 +542,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               <div className="flex flex-wrap items-center gap-3">
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">EDUCATION</div>
-                  <div className="text-xs font-semibold text-white">BS Computer Science • Federal Urdu University, Karachi</div>
+                  <div className="text-xs font-semibold text-white">Bachelor's in Computer Science • Federal Urdu University, Karachi</div>
                 </div>
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
@@ -580,7 +565,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
               START A CONVERSATION
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
               Let's Work Together
             </h2>
             <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
@@ -662,26 +647,6 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               </div>
 
             </div>
-
-            {/* Quick action buttons */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href="https://wa.me/923112813828"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-colors flex items-center gap-2 cursor-pointer shadow-sm"
-              >
-                <Phone size={15} />
-                <span>Chat on WhatsApp</span>
-              </a>
-              <a
-                href="mailto:anaskhanz.dev@gmail.com"
-                className="bg-[#1A1A1A] hover:bg-[#222222] text-neutral-200 hover:text-white border border-[#333333] font-bold text-xs uppercase tracking-wider py-3 px-6 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
-              >
-                <Mail size={15} />
-                <span>Send Direct Email</span>
-              </a>
-            </div>
           </div>
 
         </section>
@@ -696,7 +661,7 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
           
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <span className="font-syne font-extrabold text-white text-base">Cod<span className="text-[#FF4D00]">≡</span>r</span>
+            <span className="font-display font-bold text-white text-base">Cod<span className="text-[#FF4D00]">≡</span>r</span>
             <span className="text-neutral-700">|</span>
             <span>Muhammad Anas Khan • AI & Data Solutions</span>
           </div>
@@ -849,7 +814,6 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
 
       {/* Analytics & Modals */}
       <Analytics />
-      <SpotifyDashboard isOpen={isSpotifyDashboardOpen} onClose={() => setIsSpotifyDashboardOpen(false)} />
       <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
       <CaseStudyModal 
         project={selectedCaseStudy} 

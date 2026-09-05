@@ -12,7 +12,7 @@ export interface ProjectItem {
   githubUrl?: string;
   liveDemoUrl?: string;
   hasInteractivePreview?: boolean;
-  previewType?: 'spotify';
+  previewType?: string;
   isFeatured: boolean;
   order: number;
   caseStudy: {
@@ -59,38 +59,6 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     }
   },
   {
-    id: "spotify",
-    title: "Spotify Streaming Data Analytics",
-    category: "Data Analytics",
-    tag: "Data Science & Insights",
-    statusBadge: "Data Science",
-    shortDescription: "Interactive analytics project exploring streaming patterns, content trends and listener behavior to generate actionable insights from large-scale Spotify data.",
-    problem: "Uncovering actionable patterns from massive multi-dimensional streaming metrics requires deep exploratory analysis, audio feature clustering, and clear visual communication.",
-    solution: "Processed and analyzed extensive Spotify music datasets using Python and Pandas, uncovering key correlations between audio attributes (danceability, energy, acousticness) and popularity trajectories.",
-    technologies: ["Python", "Pandas", "Matplotlib", "Seaborn", "React", "Recharts"],
-    outcome: "Provides interactive exploration of audio feature distributions, artist popularity curves, and track longevity analysis through an embedded React analytics dashboard.",
-    githubUrl: "https://github.com/AnasKhan2310/Spotify-Data-Analysis",
-    hasInteractivePreview: true,
-    previewType: "spotify",
-    isFeatured: true,
-    order: 2,
-    caseStudy: {
-      businessProblem: "Music producers and marketing agencies need data-backed insights on which audio characteristics and release timings correlate with viral streaming performance.",
-      approach: "Applied exploratory data analysis (EDA), multi-variable correlation heatmaps, and outlier detection across thousands of Spotify tracks.",
-      architectureSolution: "Python ETL script generating structured analytics JSON fed directly into an interactive in-browser dashboard with dynamic chart filters.",
-      keyFeatures: [
-        "Audio feature correlation matrix (Tempo vs Energy vs Danceability)",
-        "Decade-by-decade streaming trend and track duration evolution analysis",
-        "Genre-based popularity distributions with interactive percentile sliders",
-        "Embedded interactive dashboard for real-time dataset exploration"
-      ],
-      capabilities: [
-        "Large-scale tabular data manipulation using vectorised Pandas operations",
-        "Custom interactive charting with responsive tooltips and metric switching"
-      ]
-    }
-  },
-  {
     id: "mediscan",
     title: "MediScan AI: Document Intelligence",
     category: "AI / ML",
@@ -104,7 +72,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/AnasKhan2310",
     liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
     isFeatured: true,
-    order: 3,
+    order: 2,
     caseStudy: {
       businessProblem: "Unstructured physical paper lab reports cause friction during digital triage and patient intake workflows.",
       approach: "Combines high-accuracy optical character recognition (OCR) with regex biomarker parsing and LLM summarization.",

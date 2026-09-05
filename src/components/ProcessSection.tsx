@@ -41,7 +41,7 @@ export const ProcessSection: React.FC = () => {
         <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
           HOW I OPERATE
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-syne tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
           My Engineering Process
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
@@ -78,7 +78,7 @@ export const ProcessSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold font-syne text-white tracking-tight mb-1">
+                <h3 className="text-base sm:text-lg font-semibold font-display text-white tracking-[-0.02em] mb-1">
                   {step.title}
                 </h3>
                 <span className="text-[11px] font-mono text-[#FF4D00] font-medium block mb-3">

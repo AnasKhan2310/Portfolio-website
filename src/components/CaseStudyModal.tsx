@@ -6,7 +6,7 @@ interface CaseStudyModalProps {
   project: ProjectItem | null;
   isOpen: boolean;
   onClose: () => void;
-  onOpenInteractivePreview?: (type: 'spotify') => void;
+  onOpenInteractivePreview?: (type: string) => void;
 }
 
 export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
@@ -46,7 +46,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           
           {/* Title & Overview */}
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-syne tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
               {project.title}
             </h2>
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-3xl">
@@ -126,7 +126,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                 <div className="h-2 w-2 rounded-full bg-red-500" />
                 <span>The Problem Statement</span>
               </div>
-              <h4 className="text-sm sm:text-base font-bold text-white font-syne mb-2">
+              <h4 className="text-sm sm:text-base font-semibold text-white font-display tracking-[-0.02em] mb-2">
                 What friction does this solve?
               </h4>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
@@ -140,7 +140,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
                 <Cpu size={14} />
                 <span>Data & Engineering Approach</span>
               </div>
-              <h4 className="text-sm sm:text-base font-bold text-white font-syne mb-2">
+              <h4 className="text-sm sm:text-base font-semibold text-white font-display tracking-[-0.02em] mb-2">
                 How is the solution designed?
               </h4>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
@@ -156,7 +156,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               <Layers size={14} />
               <span>What Was Built & Delivered</span>
             </div>
-            <h4 className="text-sm sm:text-base font-bold text-white font-syne mb-2">
+            <h4 className="text-sm sm:text-base font-semibold text-white font-display tracking-[-0.02em] mb-2">
               System Architecture & Implementation
             </h4>
             <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
@@ -166,7 +166,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
           {/* Key Features */}
           <div>
-            <h3 className="text-sm sm:text-base font-extrabold uppercase text-white tracking-wider mb-3.5 font-syne flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-semibold uppercase text-white tracking-wider mb-3.5 font-display flex items-center gap-2">
               <span className="w-1.5 h-3.5 bg-[#FF4D00] rounded-sm" />
               Key Features & Modules
             </h3>
@@ -184,7 +184,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
           {/* Real Capabilities & Verified Outcomes */}
           <div>
-            <h3 className="text-sm sm:text-base font-extrabold uppercase text-white tracking-wider mb-3.5 font-syne flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-semibold uppercase text-white tracking-wider mb-3.5 font-display flex items-center gap-2">
               <span className="w-1.5 h-3.5 bg-[#FF4D00] rounded-sm" />
               Real Capabilities & Business Outcomes
             </h3>
