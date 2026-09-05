@@ -82,7 +82,7 @@ export default function App() {
 Primary Positioning:
 - Muhammad Anas Khan specializes in Data Analysis, AI/ML & SaaS Development Backed by Real Projects.
 - Three Core Pillars:
-  1. Data Analytics (Business dashboards, KPI reporting, analytics pipelines)
+  1. Data Analysis (Business dashboards, KPI reporting, analytics pipelines)
   2. AI / Machine Learning (Predictive models, document intelligence, classification & computer vision, LLM applications)
   3. SaaS Development (AI SaaS MVPs, internal business tools, admin dashboards, full-stack software)
 - Supporting Capability: Automation (n8n workflows, AI agents, API integrations)

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const phrases = [
-  'Building AI Agents...',
-  'Automating Workflows...',
-  'Launching AI SaaS...',
-  'Connecting APIs...'
+  'Analyzing Complex Datasets...',
+  'Training Machine Learning Models...',
+  'Architecting AI SaaS Platforms...',
+  'Automating End-to-End Workflows...'
 ];
 
 export default function TerminalTyping() {
@@ -68,7 +68,7 @@ export default function TerminalTyping() {
             <span>System: neural-pipeline-v4.2 online</span>
           </div>
           <div className="text-[#FF5500] text-xs font-bold">
-            $ execute ai_agent_daemon --model=gemini-2.5
+            $ execute ai_engine_daemon --model=gemini-3.8
           </div>
           <div className="text-white/50 text-xs">
             {`> compiling RAG vectors & MCP toolchains...`}

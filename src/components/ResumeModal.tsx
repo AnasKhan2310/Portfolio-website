@@ -25,11 +25,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         <head>
           <title>Muhammad Anas Khan - Resume</title>
           <meta charset="utf-8">
-          <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
           <style>
             @page { size: A4; margin: 12mm 15mm; }
             body { 
-              font-family: 'Plus Jakarta Sans', sans-serif; 
+              font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
               color: #111827; 
               background: #ffffff; 
               line-height: 1.45;
@@ -37,7 +37,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               margin: 0;
               padding: 10px;
             }
-            h1, h2, h3 { margin: 0; font-family: 'Syne', sans-serif; }
+            h1, h2, h3 { margin: 0; font-family: 'Poppins', sans-serif; }
             h1 { font-size: 26px; color: #111827; }
             .tagline { color: #ea580c; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
             .header-contacts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 12px; color: #4b5563; border-bottom: 2px solid #ea580c; padding-bottom: 12px; }
@@ -76,10 +76,10 @@ GitHub: https://github.com/AnasKhan2310
 LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
 PROFESSIONAL SUMMARY:
-AI & Data Science developer focused on building practical business solutions using data analytics, machine learning, and SaaS development. Experienced in designing business intelligence dashboards, full-stack SaaS MVPs, and automated workflows that help e-commerce brands and SaaS companies understand their data, reduce manual friction, and make confident decisions.
+AI & Data Science developer focused on building practical business solutions using data analysis, machine learning, and SaaS development. Experienced in designing business intelligence dashboards, full-stack SaaS MVPs, and automated workflows that help businesses understand their data, reduce manual friction, and make confident decisions.
 
 CORE PILLARS & SKILLS:
-- Data Analytics: Python, SQL, Pandas, NumPy, Power BI, Streamlit, Business Dashboards, Cohort Retention, KPI Reporting
+- Data Analysis: Python, SQL, Pandas, NumPy, Power BI, EDA, Streamlit, Business Dashboards, Cohort Retention, KPI Reporting
 - AI / Machine Learning: Scikit-learn, TensorFlow, XGBoost, Predictive Models, Document Intelligence (OCR/NLP), LLM Applications
 - SaaS Development: FastAPI, Next.js, React, TypeScript, PostgreSQL, REST APIs, Stripe Integration, Tailwind CSS
 - Supporting Automation: n8n workflows, Model Context Protocol (MCP), Autonomous Agents, API Integrations
