@@ -89,15 +89,11 @@ FEATURED PROJECTS:
    Full-stack subscription SaaS with dynamic AI routine generators, caloric/macro calculation, and progress dashboards.
    Live: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 
-2. AI Operations Manager (Autonomous Agents)
-   Enterprise agent orchestration platform connecting Model Context Protocol (MCP) integrations and automated task routing.
-   Live: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/ | GitHub: https://github.com/AnasKhan2310/AI-Operations-Manager
-
-3. Spotify Streaming Data Analytics (Data Science)
+2. Spotify Streaming Data Analytics (Data Science)
    Exploratory data analysis across massive music datasets uncovering audio feature correlations and listener behavior.
    GitHub: https://github.com/AnasKhan2310/Spotify-Data-Analysis
 
-4. MediScan AI (Document Intelligence)
+3. MediScan AI (Document Intelligence)
    Clinical report OCR and biomarker extraction tool creating structured patient summaries.
    Live: https://medi-scan-ai-theta.vercel.app/
 
@@ -242,16 +238,6 @@ EDUCATION:
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Engineered full-stack subscription platform with dynamic AI routine generators, macro calculation, and central client tracking.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">AI Operations Manager — Autonomous Workflow Platform</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Autonomous Agents</span>
-                  </div>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    Enterprise agent orchestration platform coordinating autonomous tool execution, MCP protocols, and multi-agent workflows.
                   </p>
                 </div>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
 import SpotifyDashboard from './components/SpotifyDashboard';
@@ -20,7 +20,6 @@ import {
   Github, 
   Linkedin, 
   Mail, 
-  CheckCircle, 
   Menu,
   Phone, 
   MapPin, 
@@ -64,13 +63,6 @@ export default function App() {
   // Message scroll reference
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // Contact form states
-  const [contactName, setContactName] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [contactSubject, setContactSubject] = useState('');
-  const [contactMessage, setContactMessage] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
   // Auto scroll to chatbot message updates
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -87,20 +79,6 @@ export default function App() {
     if (type === 'spotify') {
       setIsSpotifyDashboardOpen(true);
     }
-  };
-
-  // Handle contact form submission
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!contactName || !contactEmail || !contactMessage) return;
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setContactName('');
-      setContactEmail('');
-      setContactSubject('');
-      setContactMessage('');
-    }, 4000);
   };
 
   // System instruction for Gemini chatbot
@@ -126,15 +104,14 @@ Contact & Profile:
 
 Featured Projects:
 1. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
-2. AI Operations Manager (Autonomous Agents: https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/) - LangChain, MCP Protocol, FastAPI, n8n, React.
-3. Spotify Streaming Data Analytics (Interactive Data Science App) - Python, Pandas, React, Recharts.
-4. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
+2. Spotify Streaming Data Analytics (Interactive Data Science App) - Python, Pandas, React, Recharts.
+3. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
 
 Style: Be professional, concise, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture and problem-solving.`;
 
   const suggestions = [
     "Tell me about your E-commerce & SaaS solutions",
-    "How does the AI Operations Manager work?",
+    "How does the ZestFit AI SaaS platform work?",
     "What tech stack do you use for SaaS MVPs?"
   ];
 
@@ -619,132 +596,99 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Left Contact Cards */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               
-              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
-                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
-                  <Mail size={20} />
+              {/* Direct Email */}
+              <a 
+                href="mailto:anaskhanz1980@gmail.com"
+                className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 hover:bg-[#161616] transition-all group"
+              >
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Mail size={22} />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Direct Email</span>
-                  <a href="mailto:anaskhanz1980@gmail.com" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
+                  <span className="text-white group-hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block truncate">
                     anaskhanz1980@gmail.com
-                  </a>
+                  </span>
+                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Send project requirements or inquiries</span>
                 </div>
-              </div>
+              </a>
 
-              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
-                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
-                  <Phone size={20} />
+              {/* WhatsApp & Phone */}
+              <a 
+                href="https://wa.me/923112813828" 
+                target="_blank" 
+                rel="noreferrer"
+                className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 hover:bg-[#161616] transition-all group"
+              >
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Phone size={22} />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">WhatsApp & Phone</span>
-                  <a href="tel:+923112813828" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
+                  <span className="text-white group-hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
                     +92 311 2813828
-                  </a>
+                  </span>
+                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Quick chat & consultation calls</span>
                 </div>
-              </div>
+              </a>
 
-              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
-                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
-                  <MapPin size={20} />
+              {/* LinkedIn Profile */}
+              <a 
+                href="https://www.linkedin.com/in/anas-khan1290/" 
+                target="_blank" 
+                rel="noreferrer"
+                className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 hover:bg-[#161616] transition-all group"
+              >
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Linkedin size={22} />
                 </div>
-                <div>
+                <div className="min-w-0">
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">LinkedIn Profile</span>
+                  <span className="text-white group-hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block truncate">
+                    linkedin.com/in/anas-khan1290
+                  </span>
+                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Professional network & recommendations</span>
+                </div>
+              </a>
+
+              {/* Location */}
+              <div className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
+                  <MapPin size={22} />
+                </div>
+                <div className="min-w-0">
                   <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Location</span>
                   <span className="text-white text-sm font-semibold mt-0.5 block">
-                    Karachi, Pakistan (Remote Worldwide)
+                    Karachi, Pakistan
                   </span>
-                </div>
-              </div>
-
-              <div className="bg-[#121212] border border-[#222222] p-5 rounded-lg flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
-                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
-                  <Linkedin size={20} />
-                </div>
-                <div>
-                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">LinkedIn Profile</span>
-                  <a href="https://www.linkedin.com/in/anas-khan1290/" target="_blank" rel="noreferrer" className="text-white hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block">
-                    linkedin.com/in/anas-khan1290
-                  </a>
+                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Available for Remote Worldwide contracts</span>
                 </div>
               </div>
 
             </div>
 
-            {/* Right Contact Form */}
-            <div className="lg:col-span-7 bg-[#121212] border border-[#222222] p-6 sm:p-8 rounded-lg shadow-xl">
-              <form onSubmit={handleContactSubmit} className="flex flex-col gap-4">
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Your Name</label>
-                    <input
-                      type="text"
-                      value={contactName}
-                      onChange={(e) => setContactName(e.target.value)}
-                      placeholder="Jane Smith"
-                      required
-                      className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Your Email</label>
-                    <input
-                      type="email"
-                      value={contactEmail}
-                      onChange={(e) => setContactEmail(e.target.value)}
-                      placeholder="jane@company.com"
-                      required
-                      className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Project Scope / Topic</label>
-                  <input
-                    type="text"
-                    value={contactSubject}
-                    onChange={(e) => setContactSubject(e.target.value)}
-                    placeholder="E-commerce Analytics / Custom AI SaaS Solution / Forecasting..."
-                    required
-                    className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-neutral-400 text-xs font-mono font-semibold block mb-1.5">Message & Requirements</label>
-                  <textarea
-                    rows={4}
-                    value={contactMessage}
-                    onChange={(e) => setContactMessage(e.target.value)}
-                    placeholder="Hi Anas, let's discuss building an analytics dashboard or AI-powered solution for our business..."
-                    required
-                    className="w-full bg-[#181818] border border-[#282828] focus:border-[#FF4D00] text-white text-xs sm:text-sm rounded-md px-4 py-3 focus:outline-none transition-colors resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-8 rounded-md transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center justify-center gap-2 cursor-pointer self-start mt-2"
-                >
-                  <span>Send Message</span>
-                  <Send size={14} />
-                </button>
-
-                {isSubmitted && (
-                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-md text-xs flex items-center gap-2 animate-fade-in font-mono mt-2">
-                    <CheckCircle size={15} />
-                    <span>Message received! Anas will get back to you shortly.</span>
-                  </div>
-                )}
-
-              </form>
+            {/* Quick action buttons */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/923112813828"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#FF4D00] hover:bg-[#E04400] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg transition-all shadow-[0_4px_15px_rgba(255,77,0,0.35)] flex items-center gap-2 cursor-pointer"
+              >
+                <Phone size={15} />
+                <span>Chat on WhatsApp</span>
+              </a>
+              <a
+                href="mailto:anaskhanz1980@gmail.com"
+                className="bg-[#1A1A1A] hover:bg-[#222222] text-neutral-200 hover:text-white border border-[#333333] font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <Mail size={15} />
+                <span>Send Direct Email</span>
+              </a>
             </div>
-
           </div>
 
         </section>

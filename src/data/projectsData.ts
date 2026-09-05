@@ -59,38 +59,6 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     }
   },
   {
-    id: "ai-operations-manager",
-    title: "AI Operations Manager",
-    category: "Automation",
-    tag: "AI + Automation Business Solution",
-    statusBadge: "Autonomous Agents",
-    shortDescription: "AI-powered operations platform that automates repetitive business workflows and connects intelligent agents with operational processes.",
-    problem: "Operational teams waste substantial daily bandwidth manually triaging customer requests, routing tickets between disjointed SaaS tools, and executing repetitive API workflows.",
-    solution: "Engineered an intelligent enterprise orchestration platform that connects autonomous AI agents, Model Context Protocol (MCP) integrations, and multi-step automated workflows to streamline operations.",
-    technologies: ["Python", "LangChain", "Model Context Protocol (MCP)", "FastAPI", "n8n", "React"],
-    outcome: "Enables autonomous context tracking, intelligent task execution, and unified monitoring across cross-platform business workflows.",
-    githubUrl: "https://github.com/AnasKhan2310/AI-Operations-Manager",
-    liveDemoUrl: "https://ais-pre-ww4f45uamngffnxonvsnb5-307342142062.asia-east1.run.app/",
-    isFeatured: true,
-    order: 2,
-    caseStudy: {
-      businessProblem: "Modern SaaS and e-commerce companies suffer from operational silos where manual data transfer between CRM, support desks, and databases creates latency and human error.",
-      approach: "Leveraged LangChain agent orchestration with Model Context Protocol (MCP) standard tool interfaces, creating persistent agent memory and verified execution loops.",
-      architectureSolution: "Event-driven asynchronous backend routing agent requests to specific tool endpoints with structured output validation and status telemetry.",
-      keyFeatures: [
-        "Autonomous agent delegation for multi-step operational tasks and data routing",
-        "Model Context Protocol (MCP) tool integration for unified database & API access",
-        "Automated n8n webhook triggers for scheduled and event-driven tasks",
-        "Real-time execution dashboard with task traceability and log inspection"
-      ],
-      capabilities: [
-        "Reliable multi-agent coordination without infinite hallucination loops",
-        "Standardized API connectivity for legacy enterprise systems and modern cloud apps",
-        "Continuous background workflow execution with error notification fallbacks"
-      ]
-    }
-  },
-  {
     id: "spotify",
     title: "Spotify Streaming Data Analytics",
     category: "Data Analytics",
@@ -105,7 +73,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     hasInteractivePreview: true,
     previewType: "spotify",
     isFeatured: true,
-    order: 3,
+    order: 2,
     caseStudy: {
       businessProblem: "Music producers and marketing agencies need data-backed insights on which audio characteristics and release timings correlate with viral streaming performance.",
       approach: "Applied exploratory data analysis (EDA), multi-variable correlation heatmaps, and outlier detection across thousands of Spotify tracks.",
@@ -136,7 +104,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/AnasKhan2310",
     liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
     isFeatured: true,
-    order: 4,
+    order: 3,
     caseStudy: {
       businessProblem: "Unstructured physical paper lab reports cause friction during digital triage and patient intake workflows.",
       approach: "Combines high-accuracy optical character recognition (OCR) with regex biomarker parsing and LLM summarization.",

@@ -15,18 +15,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const categories = [
     'ALL',
-    'DATA ANALYTICS',
-    'AI / ML',
     'AI & SAAS',
-    'AUTOMATION'
+    'DATA ANALYTICS',
+    'AI / ML'
   ];
 
   const filterProject = (p: ProjectItem) => {
     if (activeCategory === 'ALL') return true;
+    if (activeCategory === 'AI & SAAS') return p.category === 'AI & SaaS';
     if (activeCategory === 'DATA ANALYTICS') return p.category === 'Data Analytics';
     if (activeCategory === 'AI / ML') return p.category === 'AI / ML';
-    if (activeCategory === 'AI & SAAS') return p.category === 'AI & SaaS';
-    if (activeCategory === 'AUTOMATION') return p.category === 'Automation';
     return true;
   };
 
@@ -46,7 +44,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
         <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
-          Production SaaS platforms, autonomous agent workflows, data analytics pipelines, and document intelligence tools built to solve operational problems.
+          Production SaaS platforms, interactive data science dashboards, and document intelligence applications built to solve operational problems.
         </p>
 
         {/* Filter Pills */}
