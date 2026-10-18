@@ -85,11 +85,15 @@ CORE PILLARS & SKILLS:
 - Supporting Automation: n8n workflows, Model Context Protocol (MCP), Autonomous Agents, API Integrations
 
 FEATURED PROJECTS:
-1. ZestFit / AI Fitness SaaS (Live SaaS)
+1. Ecommerce Sales Intelligence Dashboard (Executive BI & Analytics)
+   Executive intelligence dashboard analyzing £10.64M revenue across 524k+ orders, RFM customer cohorts, and exportable data ledgers.
+   Live: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
+
+2. ZestFit / AI Fitness SaaS (Live SaaS)
    Full-stack subscription SaaS with dynamic AI routine generators, caloric/macro calculation, and progress dashboards.
    Live: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 
-2. MediScan AI (Document Intelligence)
+3. MediScan AI (Document Intelligence)
    Clinical report OCR and biomarker extraction tool creating structured patient summaries.
    Live: https://medi-scan-ai-theta.vercel.app/
 
@@ -227,6 +231,16 @@ EDUCATION:
                 Key Solutions & Projects
               </h2>
               <div className="space-y-3">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Ecommerce Sales Intelligence: Executive BI Dashboard</span>
+                    <span className="text-[11px] text-[#FF4D00] font-semibold">Executive BI</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">
+                    Analyzed £10.64M revenue and 524,000+ orders with Python data modeling, RFM customer segmentation, multi-country drill-downs, and dynamic exportable ledgers.
+                  </p>
+                </div>
+
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit: AI Fitness & Nutrition SaaS</span>

@@ -27,6 +27,39 @@ export interface ProjectItem {
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
   {
+    id: "ecommerce-intelligence",
+    title: "Ecommerce Sales Intelligence Dashboard",
+    category: "Data Analytics",
+    tag: "Executive BI & Sales Analytics",
+    statusBadge: "Data Science",
+    shortDescription: "Executive BI and analytics dashboard analyzing £10.64M in transactions across 524,000+ orders, 4,338 customers, and 38 countries from the UK Online Retail dataset.",
+    problem: "Retail executives struggle to extract fast, actionable insights from raw transactional databases, obscuring customer lifetime value, market revenue concentration, and seasonal churn trends.",
+    solution: "Built an interactive executive sales intelligence platform that transforms 524,000+ clean transactional logs into multi-dimensional KPI cards, dual-wave growth charts, RFM customer cohorts, and dynamic exportable ledgers.",
+    technologies: ["TypeScript", "React", "Tailwind CSS", "Recharts", "Python", "Pandas", "UCI Retail Data"],
+    outcome: "Delivers sub-second analytics across £10.64M revenue and 524k items sold, enabling granular discovery of peak sales months (£1.5M Nov surge) and customer segment distribution across 38 global markets.",
+    githubUrl: "https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard",
+    liveDemoUrl: "https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/",
+    isFeatured: true,
+    order: 1,
+    caseStudy: {
+      businessProblem: "Retail and e-commerce enterprises generate hundreds of thousands of order logs across international markets. Without dedicated BI architecture, identifying cohort churn, seasonal demand peaks, and high-value customer accounts requires slow manual spreadsheet querying.",
+      approach: "Extracted and sanitized 524,878 clean transaction logs from the UCI Online Retail dataset via a Colab/Python pipeline. Calculated core retail metrics (AOV, MoM growth rates, RFM score distributions), and architected a responsive client-side dashboard with instant multi-criteria filtering.",
+      architectureSolution: "Engineered high-performance stateful filtering across country, month, category, and keyword search. Built custom interactive charts (Recharts dual-wave revenue curves, circular gauge targets, and grouped category bars) paired with an on-the-fly CSV exportable ledger.",
+      keyFeatures: [
+        "Executive KPI Wave Cards: Live metrics for £10.64M gross revenue, 524k+ units sold, 23.1k orders, and £460.50 Average Order Value (AOV)",
+        "Multi-Facet Filter Pipeline: Instant slicing across 38 international markets, 13 operating months, and 6 merchandise categories",
+        "Customer RFM Segmentation: Automated cohort classification (Enterprise Whales, High-Value Repeat, Core Customers, and Occasional)",
+        "Interactive Product & Revenue Analytics: Top-performing inventory tracking, category unit distributions, and seasonal growth surge detection",
+        "Dynamic Data Explorer: In-browser searchable transaction ledger with column sorting and instantaneous CSV export"
+      ],
+      capabilities: [
+        "Python data aggregation and ETL modeling of 500k+ transactional rows",
+        "Sub-second interactive client-side filtering without server bottlenecks",
+        "Executive-grade UI/UX with responsive charts and financial precision"
+      ]
+    }
+  },
+  {
     id: "zestfit",
     title: "ZestFit / AI Fitness SaaS",
     category: "AI & SaaS",
@@ -40,7 +73,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT",
     liveDemoUrl: "https://zestfitmanagement.vercel.app/",
     isFeatured: true,
-    order: 1,
+    order: 2,
     caseStudy: {
       businessProblem: "Fitness professionals and gyms lose up to 15 hours weekly creating individualized diet & training regimens across disjointed spreadsheets and messaging apps.",
       approach: "Built a modular Next.js frontend paired with a high-speed FastAPI backend that structures client metadata into personalized workout parameters and nutrition macros.",
@@ -72,7 +105,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/AnasKhan2310",
     liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
     isFeatured: true,
-    order: 2,
+    order: 3,
     caseStudy: {
       businessProblem: "Unstructured physical paper lab reports cause friction during digital triage and patient intake workflows.",
       approach: "Combines high-accuracy optical character recognition (OCR) with regex biomarker parsing and LLM summarization.",

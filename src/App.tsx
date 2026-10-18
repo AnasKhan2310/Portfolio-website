@@ -98,15 +98,16 @@ Contact & Profile:
 - LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
 Featured Projects:
-1. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
-2. MediScan AI (Healthcare Document Intelligence) - OCR, NLP, FastAPI, React.
+1. Ecommerce Sales Intelligence Dashboard (Executive BI & Analytics: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard) - £10.64M revenue & 524k transactions analyzed, Python ETL, React, TypeScript, Recharts, RFM segmentation, interactive data ledger.
+2. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
+3. MediScan AI (Healthcare Document Intelligence: https://medi-scan-ai-theta.vercel.app/) - OCR, NLP, FastAPI, React.
 
 Style: Be professional, concise, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture and problem-solving.`;
 
   const suggestions = [
-    "Tell me about your E-commerce & SaaS solutions",
+    "Tell me about the Ecommerce Sales Intelligence Dashboard",
     "How does the ZestFit AI SaaS platform work?",
-    "What tech stack do you use for SaaS MVPs?"
+    "What tech stack do you use for SaaS MVPs & Analytics?"
   ];
 
   // Send message to Server

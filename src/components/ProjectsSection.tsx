@@ -75,7 +75,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <span>Core Flagship Case Studies</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className={`grid grid-cols-1 gap-6 sm:gap-7 ${
+            filteredFeatured.length === 1 
+              ? 'max-w-2xl mx-auto w-full' 
+              : filteredFeatured.length === 2 
+                ? 'lg:grid-cols-2' 
+                : 'md:grid-cols-2 lg:grid-cols-3'
+          }`}>
             {filteredFeatured.map((project) => (
               <div
                 key={project.id}
