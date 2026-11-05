@@ -262,10 +262,9 @@ export const InteractiveHeroPortrait: React.FC<InteractiveHeroPortraitProps> = (
       {/* ========================================================================= */}
       <div className="relative z-30 w-full max-w-5xl mx-auto text-center px-4 -mt-16 sm:-mt-20 md:-mt-24">
         
-        {/* Name in Berghan / Editorial Display Font */}
-        <div className="font-berghan text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-white leading-tight mb-3">
-          <span>Muhammad </span>
-          <span className="italic font-serif-display font-light text-neutral-200">Anas Khan</span>
+        {/* Name in Berghan - Bold & Straight (Non-Italic) */}
+        <div className="font-berghan text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black not-italic tracking-tight text-white leading-tight mb-3">
+          Muhammad Anas Khan
         </div>
 
         {/* Primary Professional Headline in Berghan */}
