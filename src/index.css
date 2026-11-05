@@ -1,15 +1,24 @@
+@font-face {
+  font-family: 'Berghan';
+  src: url('/fonts/Berghan-Regular.otf') format('opentype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
 @theme {
+  --font-berghan: 'Berghan', 'Poppins', sans-serif;
   --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Berghan', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-cera: 'Poppins', sans-serif;
   --font-clash: 'Poppins', sans-serif;
-  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Berghan', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-syne: 'Poppins', sans-serif;
   --font-general: 'Poppins', sans-serif;
   --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -17,6 +26,10 @@
   --font-mono: 'JetBrains Mono', monospace;
   --font-handwriting: 'Caveat', cursive;
   --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-berghan {
+  font-family: 'Berghan', 'Poppins', sans-serif;
 }
 
 .font-serif-display {

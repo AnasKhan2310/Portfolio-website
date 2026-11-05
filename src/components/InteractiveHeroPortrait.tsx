@@ -218,28 +218,18 @@ export const InteractiveHeroPortrait: React.FC<InteractiveHeroPortraitProps> = (
   const canvasOpacity = Math.min(1, scrollProgress * 1.6);
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center select-none pt-2 pb-6">
+    <div className="relative w-full flex flex-col items-center justify-center select-none pt-4 pb-12">
 
       {/* ========================================================================= */}
-      {/* 1. COMPACT PORTRAIT CONTAINER (REDUCED LENGTH & EXACT #0A0A0A MATCH) */}
+      {/* 1. ENLARGED PORTRAIT CONTAINER (CLEAN PURE BLACK BACKGROUND, NO YELLOW/AMBER GLOW) */}
       {/* ========================================================================= */}
       <div 
-        className="relative w-full max-w-[270px] sm:max-w-[310px] md:max-w-[340px] aspect-[660/800] mx-auto flex flex-col items-center justify-center group"
+        className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[460px] lg:max-w-[500px] aspect-[660/800] mx-auto flex flex-col items-center justify-center group"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         aria-label="Portrait with gentle particle dispersion on scroll"
       >
-        {/* Soft amber-orange ambient rim glow behind right shoulder & hair */}
-        <div 
-          className="absolute top-1/4 right-1/4 w-44 sm:w-56 h-44 sm:h-56 rounded-full pointer-events-none blur-[90px] bg-[#FF8800]/25 transition-all duration-700 z-0" 
-        />
-
-        {/* Soft cool key light glow behind left face */}
-        <div 
-          className="absolute top-1/4 left-1/4 w-36 sm:w-48 h-36 sm:h-48 rounded-full pointer-events-none blur-[80px] bg-neutral-800/30 z-0" 
-        />
-
-        {/* The 100% Real Studio Portrait Photo (Solid State with exact transparent edges) */}
+        {/* The 100% Real Studio Portrait Photo (Clean transparent edges, no yellow rim/shade) */}
         <motion.div 
           className="absolute inset-0 w-full h-full flex items-center justify-center z-10 pointer-events-none overflow-hidden"
           animate={{
@@ -268,23 +258,23 @@ export const InteractiveHeroPortrait: React.FC<InteractiveHeroPortraitProps> = (
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. EDITORIAL NAME TYPOGRAPHY & HEADLINE */}
+      {/* 2. ENLARGED EDITORIAL NAME & HEADLINE (BERGHAN FONT & BOLD CONTRAST) */}
       {/* ========================================================================= */}
-      <div className="relative z-30 w-full max-w-4xl mx-auto text-center px-4 -mt-12 sm:-mt-16 md:-mt-20">
+      <div className="relative z-30 w-full max-w-5xl mx-auto text-center px-4 -mt-16 sm:-mt-20 md:-mt-24">
         
-        {/* Name in Classic Editorial Serif */}
-        <div className="font-serif-display text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white/90 leading-tight mb-2">
-          <span className="font-normal">Muhammad </span>
-          <span className="italic font-normal">Anas Khan</span>
+        {/* Name in Berghan / Editorial Display Font */}
+        <div className="font-berghan text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-white leading-tight mb-3">
+          <span>Muhammad </span>
+          <span className="italic font-serif-display font-light text-neutral-200">Anas Khan</span>
         </div>
 
-        {/* Primary Professional Headline */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-4 sm:mb-5 font-display max-w-3xl mx-auto">
+        {/* Primary Professional Headline in Berghan */}
+        <h1 className="font-berghan text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-5 sm:mb-6 max-w-4xl mx-auto">
           I Help Businesses <span className="text-[#FF4D00]">Turn Data Into AI Solutions</span>
         </h1>
 
         {/* Supporting Text */}
-        <p className="text-neutral-300 text-sm sm:text-base md:text-lg font-normal max-w-2xl mx-auto leading-relaxed mb-7 sm:mb-9">
+        <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10">
           I build data analytics dashboards, machine learning models, and practical AI applications that help businesses understand data, solve problems, and make better decisions.
         </p>
 
@@ -292,27 +282,27 @@ export const InteractiveHeroPortrait: React.FC<InteractiveHeroPortraitProps> = (
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
           <a
             href="#projects"
-            className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-sans font-bold px-6 py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(255,77,0,0.35)] hover:shadow-[0_0_25px_rgba(255,77,0,0.5)] flex items-center gap-2 cursor-pointer"
+            className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-sm sm:text-base font-berghan font-bold px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all shadow-[0_0_25px_rgba(255,77,0,0.4)] hover:shadow-[0_0_30px_rgba(255,77,0,0.55)] flex items-center gap-2.5 cursor-pointer"
           >
             <span>View My Projects</span>
-            <ArrowDown size={14} className="animate-bounce" />
+            <ArrowDown size={16} className="animate-bounce" />
           </a>
 
           <a
             href="#contact"
-            className="bg-[#121212] hover:bg-[#1A1A1A] text-white border border-[#2E2E2E] hover:border-neutral-400 text-xs sm:text-sm font-sans font-semibold px-6 py-3 rounded-xl transition-all flex items-center gap-2 cursor-pointer group"
+            className="bg-[#121212] hover:bg-[#1A1A1A] text-white border border-[#2E2E2E] hover:border-neutral-400 text-sm sm:text-base font-berghan font-semibold px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all flex items-center gap-2.5 cursor-pointer group"
           >
             <span>Let's Work Together</span>
-            <ArrowUpRight size={15} className="text-[#FF4D00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight size={17} className="text-[#FF4D00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
 
           {onOpenResume && (
             <button
               type="button"
               onClick={onOpenResume}
-              className="bg-[#141414] hover:bg-[#1C1C1C] text-neutral-300 hover:text-white border border-[#262626] hover:border-neutral-500 text-xs sm:text-sm font-sans font-medium px-5 py-3 rounded-xl transition-all flex items-center gap-2 cursor-pointer group"
+              className="bg-[#141414] hover:bg-[#1C1C1C] text-neutral-300 hover:text-white border border-[#262626] hover:border-neutral-500 text-sm sm:text-base font-berghan font-medium px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all flex items-center gap-2 cursor-pointer group"
             >
-              <Download size={14} className="text-[#FF4D00] group-hover:scale-110 transition-transform" />
+              <Download size={16} className="text-[#FF4D00] group-hover:scale-110 transition-transform" />
               <span>Download Resume</span>
             </button>
           )}
