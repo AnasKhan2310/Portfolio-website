@@ -52,8 +52,8 @@ export default function TerminalTyping() {
       <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#222222]">
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-[#FF4D00]" />
-          <span className="w-3 h-3 rounded-full bg-amber-400/80" />
-          <span className="w-3 h-3 rounded-full bg-emerald-400/80" />
+          <span className="w-3 h-3 rounded-full bg-[#2A2A2A]" />
+          <span className="w-3 h-3 rounded-full bg-[#222222]" />
         </div>
         <div className="text-[10px] text-white/50 font-bold uppercase tracking-wider">
           anas@agent: ~/ai-pipeline

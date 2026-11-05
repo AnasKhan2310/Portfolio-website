@@ -152,7 +152,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
           {/* The Solution & Architecture */}
           <div className="bg-[#161616] border border-[#242424] p-5 sm:p-6 rounded-xl">
-            <div className="flex items-center gap-2 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider mb-2.5">
+            <div className="flex items-center gap-2 text-[#FF4D00] text-xs font-mono font-bold uppercase tracking-wider mb-2.5">
               <Layers size={14} />
               <span>What Was Built & Delivered</span>
             </div>

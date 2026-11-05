@@ -147,7 +147,7 @@ export const TechStackSection: React.FC = () => {
                 </div>
 
                 <div className="mt-5 pt-3 border-t border-[#1C1C1C] flex items-center gap-1.5 text-[10px] font-mono text-neutral-500">
-                  <CheckCircle2 size={12} className="text-emerald-500" />
+                  <CheckCircle2 size={12} className="text-[#FF4D00]" />
                   <span>Production & Project Tested</span>
                 </div>
               </div>

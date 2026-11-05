@@ -669,7 +669,7 @@ Style: Be professional, articulate, and honest. Avoid marketing hype or fake met
             aria-label="Open AI Assistant Chat"
           >
             <Bot size={22} className="text-white" />
-            <span className="absolute top-0 right-0 h-3 w-3 bg-emerald-500 border-2 border-[#0A0A0A] rounded-full" />
+            <span className="absolute top-0 right-0 h-3 w-3 bg-[#FF4D00] border-2 border-[#0A0A0A] rounded-full" />
           </button>
         ) : (
           <div className="w-[calc(100vw-32px)] sm:w-[370px] max-w-[370px] h-[480px] max-h-[calc(100vh-90px)] bg-[#121212] border border-[#2A2A2A] rounded-xl shadow-xl flex flex-col overflow-hidden relative">
@@ -683,8 +683,8 @@ Style: Be professional, articulate, and honest. Avoid marketing hype or fake met
                 <div>
                   <h3 className="font-bold text-xs tracking-wider uppercase font-mono text-white">ANAS'S AI ASSISTANT</h3>
                   <div className="flex items-center gap-1 mt-0.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block animate-ping" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block -ml-2.5" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#FF4D00] inline-block animate-ping" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#FF4D00] inline-block -ml-2.5" />
                     <span className="text-[8px] font-bold text-neutral-400 uppercase tracking-widest font-mono">ONLINE</span>
                   </div>
                 </div>

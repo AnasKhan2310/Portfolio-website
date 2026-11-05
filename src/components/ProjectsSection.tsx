@@ -62,8 +62,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     </div>
 
                     {project.liveDemoUrl && (
-                      <span className="text-[10px] text-emerald-400 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[10px] text-[#FF4D00] flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00] animate-pulse" />
                         <span>Online</span>
                       </span>
                     )}
@@ -90,7 +90,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                         </div>
                         <div className="p-1.5 rounded bg-[#181818] border border-[#222222]">
                           <div className="text-[9.5px] font-mono text-neutral-400">Billing</div>
-                          <div className="text-xs font-bold text-emerald-400 mt-0.5">Stripe</div>
+                          <div className="text-xs font-bold text-white mt-0.5">Stripe</div>
                         </div>
                       </div>
                     </div>
@@ -100,19 +100,19 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     <div className="rounded-lg bg-[#141414] border border-[#262626] p-3 text-xs">
                       <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222222]">
                         <div className="flex items-center gap-2">
-                          <FileSearch size={14} className="text-[#38BDF8]" />
+                          <FileSearch size={14} className="text-[#FF4D00]" />
                           <span className="font-semibold text-white text-[11.5px]">MediScan Clinical AI</span>
                         </div>
-                        <span className="text-[10px] font-mono text-emerald-400">OCR: 99.2%</span>
+                        <span className="text-[10px] font-mono text-[#FF4D00]">OCR: 99.2%</span>
                       </div>
                       <div className="bg-[#101010] p-2 rounded border border-[#222222] font-mono text-[10px] text-neutral-300 space-y-1">
                         <div className="flex justify-between">
                           <span>FASTING GLUCOSE:</span>
-                          <span className="text-amber-400 font-bold">112 mg/dL (ELEVATED)</span>
+                          <span className="text-[#FF4D00] font-bold">112 mg/dL (ELEVATED)</span>
                         </div>
                         <div className="flex justify-between">
                           <span>TOTAL CHOLESTEROL:</span>
-                          <span className="text-emerald-400 font-bold">178 mg/dL (NORMAL)</span>
+                          <span className="text-neutral-200 font-bold">178 mg/dL (NORMAL)</span>
                         </div>
                       </div>
                     </div>
@@ -153,8 +153,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
                     {/* Problem Section */}
                     <div className="mb-3.5 bg-[#0F0F0F] border border-[#202020] rounded-lg p-3">
-                      <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 mb-1">
-                        <AlertCircle size={12} className="shrink-0" />
+                      <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400 mb-1">
+                        <AlertCircle size={12} className="shrink-0 text-neutral-400" />
                         <span>The Problem</span>
                       </div>
                       <p className="text-xs text-neutral-300 leading-relaxed">
@@ -165,7 +165,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                     {/* Solution Section */}
                     <div className="mb-4 bg-[#0F0F0F] border border-[#202020] rounded-lg p-3">
                       <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF4D00] mb-1">
-                        <CheckCircle2 size={12} className="shrink-0" />
+                        <CheckCircle2 size={12} className="shrink-0 text-[#FF4D00]" />
                         <span>How It Solves It</span>
                       </div>
                       <p className="text-xs text-neutral-300 leading-relaxed">
