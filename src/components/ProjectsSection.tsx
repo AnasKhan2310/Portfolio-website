@@ -1,315 +1,251 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, ArrowRight, BarChart3, BookOpen, Layers } from 'lucide-react';
-import { FEATURED_PROJECTS, OTHER_PROJECTS, ProjectItem } from '../data/projectsData';
+import React from 'react';
+import { ProjectItem, FEATURED_PROJECTS } from '../data/projectsData';
+import { TeachableMachineClassifier } from './TeachableMachineClassifier';
+import { 
+  ExternalLink, 
+  Github, 
+  FileText, 
+  TrendingUp, 
+  Dumbbell, 
+  ArrowUpRight,
+  FileSearch,
+  CheckCircle2
+} from 'lucide-react';
 
 interface ProjectsSectionProps {
+  projects?: ProjectItem[];
   onOpenCaseStudy: (project: ProjectItem) => void;
-  onOpenInteractivePreview?: (type: string) => void;
+  onOpenInteractivePreview?: (type?: string) => void;
 }
 
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+  projects = FEATURED_PROJECTS,
   onOpenCaseStudy,
-  onOpenInteractivePreview
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('ALL');
-
-  const categories = [
-    'ALL',
-    'AI & SAAS',
-    'DATA ANALYTICS',
-    'AI / ML'
-  ];
-
-  const filterProject = (p: ProjectItem) => {
-    if (activeCategory === 'ALL') return true;
-    if (activeCategory === 'AI & SAAS') return p.category === 'AI & SaaS';
-    if (activeCategory === 'DATA ANALYTICS') return p.category === 'Data Analytics';
-    if (activeCategory === 'AI / ML') return p.category === 'AI / ML';
-    return true;
-  };
-
-  const filteredFeatured = FEATURED_PROJECTS.filter(filterProject);
-  const filteredOther = OTHER_PROJECTS.filter(filterProject);
-
   return (
     <section id="projects" className="py-16 lg:py-24 border-t border-[#1C1C1C] relative z-10">
-      
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
-          PROVEN SOLUTIONS & CASE STUDIES
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
-          Featured Projects & Architecture
-        </h2>
-        <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
-        <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
-          Production SaaS platforms, interactive data science dashboards, and document intelligence applications built to solve operational problems.
-        </p>
-
-        {/* Filter Pills */}
-        <div className="flex flex-wrap justify-center gap-2 mt-8 select-none">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`text-xs font-mono font-bold tracking-wider px-3.5 py-1.5 rounded-md uppercase transition-all duration-200 cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-[#FF4D00] text-white shadow-md'
-                  : 'bg-[#121212] hover:bg-[#1A1A1A] text-neutral-400 hover:text-white border border-[#222222]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* FEATURED PROJECTS (Main 4 Highlights) */}
-      {/* ========================================================================= */}
-      {filteredFeatured.length > 0 && (
-        <div className="space-y-8 mb-16">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#FF4D00]">
-            <Layers size={14} />
-            <span>Core Flagship Case Studies</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+            CURATED PORTFOLIO
           </div>
+          <h2 className="text-3xl sm:text-4xl font-semibold font-display text-white tracking-[-0.02em] mb-3">
+            Featured Projects & Working Prototypes
+          </h2>
+          <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
+          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+            Production web applications, computer vision models, document intelligence systems, and business analytics dashboards with live working demos.
+          </p>
+        </div>
 
-          <div className={`grid grid-cols-1 gap-6 sm:gap-7 ${
-            filteredFeatured.length === 1 
-              ? 'max-w-2xl mx-auto w-full' 
-              : filteredFeatured.length === 2 
-                ? 'lg:grid-cols-2' 
-                : 'md:grid-cols-2 lg:grid-cols-3'
-          }`}>
-            {filteredFeatured.map((project) => (
-              <div
-                key={project.id}
-                className="bg-[#121212] border border-[#222222] hover:border-[#383838] rounded-xl p-6 sm:p-8 flex flex-col justify-between transition-colors group"
-              >
-                <div>
+        {/* Balanced 2x2 Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className="bg-[#121212] border border-[#222222] hover:border-[#383838] rounded-xl flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group"
+            >
+              <div>
+                
+                {/* 1. Project Visual Preview Header */}
+                <div className="p-4 sm:p-5 bg-[#0D0D0D] border-b border-[#1E1E1E]">
                   
-                  {/* Top Badges */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                  {/* Status & Category Metadata (Unboxed typography) */}
+                  <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FF4D00]/15 text-[#FF4D00] border border-[#FF4D00]/30 px-2.5 py-0.5 rounded-sm">
-                        {project.category}
-                      </span>
-                      <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider bg-[#1A1A1A] border border-[#2A2A2A] px-2.5 py-0.5 rounded-sm">
-                        {project.statusBadge}
-                      </span>
+                      <span className="text-[#FF4D00] font-bold">0{index + 1}.</span>
+                      <span className="text-neutral-300 font-medium">{project.category}</span>
+                      <span aria-hidden="true" className="text-neutral-600">·</span>
+                      <span className="text-neutral-400">{project.statusBadge}</span>
                     </div>
 
-                    <span className="text-[11px] font-mono text-neutral-500 font-bold">
-                      0{project.order}
-                    </span>
+                    {project.liveDemoUrl && (
+                      <span className="text-[10px] text-emerald-400 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>Online</span>
+                      </span>
+                    )}
                   </div>
 
-                  {/* Title & Tagline */}
-                  <h3 className="text-xl sm:text-2xl font-semibold font-display text-white tracking-[-0.02em] mb-1">
+                  {/* Dynamic Visual UI Previews for each project */}
+                  {project.previewVisualType === 'saas-platform' && (
+                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-3 text-xs">
+                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222222]">
+                        <div className="flex items-center gap-2">
+                          <Dumbbell size={14} className="text-[#FF4D00]" />
+                          <span className="font-semibold text-white text-[11.5px]">ZestFit Workspace Hub</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-neutral-500">FastAPI & PostgreSQL</span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div className="p-2 rounded bg-[#181818] border border-[#222222]">
+                          <div className="text-[10px] font-mono text-neutral-400">Members</div>
+                          <div className="text-sm font-bold text-white mt-0.5">142</div>
+                        </div>
+                        <div className="p-2 rounded bg-[#181818] border border-[#222222]">
+                          <div className="text-[10px] font-mono text-neutral-400">Regimens</div>
+                          <div className="text-sm font-bold text-[#FF4D00] mt-0.5">38 AI</div>
+                        </div>
+                        <div className="p-2 rounded bg-[#181818] border border-[#222222]">
+                          <div className="text-[10px] font-mono text-neutral-400">MRR Billing</div>
+                          <div className="text-sm font-bold text-emerald-400 mt-0.5">Stripe</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {project.previewVisualType === 'document-qa' && (
+                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-3 text-xs">
+                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222222]">
+                        <div className="flex items-center gap-2">
+                          <FileSearch size={14} className="text-[#38BDF8]" />
+                          <span className="font-semibold text-white text-[11.5px]">MediScan AI Clinical Intelligence</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-emerald-400">OCR Conf: 99.2%</span>
+                      </div>
+                      <div className="bg-[#101010] p-2 rounded border border-[#222222] font-mono text-[10px] text-neutral-300 space-y-1">
+                        <div className="flex justify-between">
+                          <span>FASTING GLUCOSE:</span>
+                          <span className="text-amber-400 font-bold">112 mg/dL (ELEVATED)</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>TOTAL CHOLESTEROL:</span>
+                          <span className="text-emerald-400 font-bold">178 mg/dL (OPTIMAL)</span>
+                        </div>
+                        <div className="text-neutral-500 text-[9.5px] pt-1 border-t border-[#1E1E1E]">
+                          Q&A: "What does this mean for diet?" → LLM instant contextual summary.
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {project.previewVisualType === 'teachable-machine' && (
+                    <TeachableMachineClassifier />
+                  )}
+
+                  {project.previewVisualType === 'bi-dashboard' && (
+                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-3 text-xs">
+                      <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222222]">
+                        <div className="flex items-center gap-2">
+                          <TrendingUp size={14} className="text-[#FF4D00]" />
+                          <span className="font-semibold text-white text-[11.5px]">520K+ Records ETL Dashboard</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-neutral-400">Power BI / Recharts</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-center mb-2">
+                        <div className="p-1.5 rounded bg-[#181818] border border-[#222222]">
+                          <div className="text-[9.5px] font-mono text-neutral-400">Net Processed Revenue</div>
+                          <div className="text-xs font-bold text-white">£10.64M</div>
+                        </div>
+                        <div className="p-1.5 rounded bg-[#181818] border border-[#222222]">
+                          <div className="text-[9.5px] font-mono text-neutral-400">Average Order Value</div>
+                          <div className="text-xs font-bold text-[#FF4D00]">£486.20</div>
+                        </div>
+                      </div>
+                      <div className="h-6 bg-[#181818] rounded flex items-center px-2 justify-between text-[9.5px] font-mono text-neutral-400">
+                        <span>Cohort RFM: Champions (32%) · At-Risk (18%)</span>
+                        <span className="text-emerald-400">+14.2% MoM</span>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+
+                {/* 2. Project Card Content */}
+                <div className="p-5 sm:p-6">
+                  
+                  {/* Project Title */}
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-white tracking-tight mb-2 group-hover:text-[#FF4D00] transition-colors">
                     {project.title}
                   </h3>
-                  <span className="text-xs font-mono text-[#FF4D00] block mb-4">
-                    {project.tag}
-                  </span>
 
-                  {/* Problem & Solution Accordion-like visual block */}
-                  <div className="space-y-3 mb-5">
-                    <div className="bg-[#171717] border border-[#242424] p-3.5 rounded-lg">
-                      <span className="text-[10.5px] font-mono font-bold uppercase text-red-400 block mb-1">
-                        The Problem:
-                      </span>
-                      <p className="text-xs text-neutral-400 leading-relaxed">
-                        {project.problem}
-                      </p>
-                    </div>
-
-                    <div className="bg-[#171717] border border-[#242424] p-3.5 rounded-lg">
-                      <span className="text-[10.5px] font-mono font-bold uppercase text-emerald-400 block mb-1">
-                        Solution & Outcome:
-                      </span>
-                      <p className="text-xs text-neutral-300 leading-relaxed">
-                        {project.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Tech Stack Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {project.technologies.map((tech, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[11px] font-mono bg-[#181818] text-neutral-300 border border-[#2A2A2A] px-2 py-0.5 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom Actions Row */}
-                <div className="pt-4 border-t border-[#202020] flex flex-wrap items-center justify-between gap-3">
-                  
-                  {/* Case Study Trigger */}
-                  <button
-                    type="button"
-                    onClick={() => onOpenCaseStudy(project)}
-                    className="text-xs font-mono font-bold text-white hover:text-[#FF4D00] flex items-center gap-1.5 transition-colors cursor-pointer"
-                  >
-                    <BookOpen size={14} className="text-[#FF4D00]" />
-                    <span>View Full Case Study</span>
-                    <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-                  </button>
-
-                  <div className="flex items-center gap-2">
-                    {/* In-app Interactive preview button */}
-                    {project.hasInteractivePreview && project.previewType && onOpenInteractivePreview && (
-                      <button
-                        type="button"
-                        onClick={() => onOpenInteractivePreview(project.previewType!)}
-                        className="bg-[#1E1E1E] hover:bg-[#282828] text-white text-xs font-mono font-semibold px-3 py-1.5 rounded-md border border-[#333333] flex items-center gap-1.5 transition-colors cursor-pointer"
-                      >
-                        <BarChart3 size={13} className="text-[#FF4D00]" />
-                        <span>Interactive Demo</span>
-                      </button>
-                    )}
-
-                    {/* Live Demo Link */}
-                    {project.liveDemoUrl && (
-                      <a
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-md transition-all flex items-center gap-1.5 shadow-sm"
-                      >
-                        <span>Live Demo</span>
-                        <ExternalLink size={12} />
-                      </a>
-                    )}
-
-                    {/* GitHub Link */}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bg-[#181818] hover:bg-[#242424] text-neutral-300 hover:text-white p-2 rounded-md border border-[#2A2A2A] transition-colors"
-                        title="View Source on GitHub"
-                      >
-                        <Github size={14} />
-                      </a>
-                    )}
-                  </div>
-
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* SECONDARY PROJECTS ("Additional AI & Data Projects") */}
-      {/* ========================================================================= */}
-      {filteredOther.length > 0 && (
-        <div className="space-y-6 pt-6 border-t border-[#1C1C1C]">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-neutral-400">
-              <Layers size={14} className="text-[#FF4D00]" />
-              <span>Additional AI & Data Science Projects</span>
-            </div>
-            <span className="text-[11px] font-mono text-neutral-500">
-              {filteredOther.length} Projects
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {filteredOther.map((project) => (
-              <div
-                key={project.id}
-                className="bg-[#121212] border border-[#222222] hover:border-[#333333] rounded-xl p-5 flex flex-col justify-between transition-all group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-bold uppercase bg-[#181818] text-[#FF4D00] border border-[#2A2A2A] px-2 py-0.5 rounded-sm">
-                      {project.statusBadge}
-                    </span>
-                    <span className="text-[10px] font-mono text-neutral-500">
-                      0{project.order}
-                    </span>
-                  </div>
-
-                  <h4 className="text-base font-semibold font-display text-white tracking-[-0.02em] mb-2">
-                    {project.title}
-                  </h4>
-
-                  <p className="text-xs text-neutral-400 leading-relaxed mb-4">
+                  {/* Concise 1-Sentence Overview */}
+                  <p className="text-xs sm:text-[13px] text-neutral-300 leading-relaxed mb-4">
                     {project.shortDescription}
                   </p>
 
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech, idx) => (
-                      <span key={idx} className="text-[10px] font-mono bg-[#161616] text-neutral-400 px-1.5 py-0.5 rounded">
-                        {tech}
-                      </span>
+                  {/* 3 Crisp Highlight Bullet Points */}
+                  <div className="space-y-1.5 mb-5 pb-4 border-b border-[#1E1E1E]">
+                    {project.keyHighlights.map((highlight, hIdx) => {
+                      const [label, desc] = highlight.split(': ');
+                      return (
+                        <div key={hIdx} className="flex items-start gap-2 text-[11px] leading-relaxed">
+                          <CheckCircle2 size={12} className="text-[#FF4D00] shrink-0 mt-0.5" />
+                          <span className="text-neutral-300">
+                            <strong className="text-white font-medium">{label}:</strong> {desc}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Unboxed Technologies Metadata */}
+                  <div className="text-[11px] font-mono text-neutral-400 flex flex-wrap items-center gap-x-2 gap-y-1 mb-2">
+                    <span className="text-neutral-500 font-semibold">Stack:</span>
+                    {project.technologies.map((tech, tIdx) => (
+                      <React.Fragment key={tIdx}>
+                        <span className="hover:text-white transition-colors">{tech}</span>
+                        {tIdx < project.technologies.length - 1 && (
+                          <span aria-hidden="true" className="text-neutral-600">·</span>
+                        )}
+                      </React.Fragment>
                     ))}
                   </div>
-                </div>
 
-                {/* Bottom Links */}
-                <div className="pt-3 border-t border-[#1E1E1E] flex items-center justify-between text-xs">
-                  <button
-                    type="button"
-                    onClick={() => onOpenCaseStudy(project)}
-                    className="text-xs font-mono text-neutral-400 hover:text-[#FF4D00] transition-colors cursor-pointer"
-                  >
-                    Details
-                  </button>
-
-                  <div className="flex items-center gap-2">
-                    {project.liveDemoUrl ? (
-                      <a
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-xs font-mono font-bold text-[#FF4D00] hover:underline flex items-center gap-1"
-                      >
-                        <span>Live Demo</span>
-                        <ExternalLink size={12} />
-                      </a>
-                    ) : (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-xs font-mono text-neutral-400 hover:text-white flex items-center gap-1"
-                      >
-                        <Github size={13} />
-                        <span>Code</span>
-                      </a>
-                    )}
-                  </div>
                 </div>
 
               </div>
-            ))}
-          </div>
+
+              {/* 3. Bottom Action Buttons */}
+              <div className="p-4 sm:p-5 bg-[#0E0E0E] border-t border-[#1C1C1C] flex flex-wrap items-center justify-between gap-2.5">
+                
+                <div className="flex items-center gap-2">
+                  {project.liveDemoUrl && (
+                    <a
+                      href={project.liveDemoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11.5px] font-bold px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(255,77,0,0.3)] cursor-pointer"
+                    >
+                      <span>Live Demo</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  )}
+
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#181818] hover:bg-[#222222] text-neutral-300 hover:text-white border border-[#2A2A2A] text-[11.5px] font-medium px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Github size={12} />
+                      <span>Code</span>
+                    </a>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => onOpenCaseStudy(project)}
+                  className="text-neutral-400 hover:text-white text-[11.5px] font-medium flex items-center gap-1 transition-colors cursor-pointer group/btn ml-auto"
+                >
+                  <FileText size={12} className="text-[#FF4D00]" />
+                  <span>Case Study</span>
+                  <ArrowUpRight size={12} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                </button>
+
+              </div>
+
+            </div>
+          ))}
         </div>
-      )}
 
-      {/* GitHub Call to Action */}
-      <div className="flex justify-center mt-12">
-        <a
-          href="https://github.com/AnasKhan2310"
-          target="_blank"
-          rel="noreferrer"
-          className="bg-[#181818] hover:bg-[#222222] text-white text-xs font-mono font-bold uppercase tracking-wider px-6 py-3 rounded-lg border border-[#2D2D2D] hover:border-[#FF4D00]/50 transition-all flex items-center gap-2 shadow-sm"
-        >
-          <Github size={15} className="text-[#FF4D00]" />
-          <span>Explore All Open-Source Repositories on GitHub</span>
-        </a>
       </div>
-
     </section>
   );
 };
+
+export default ProjectsSection;

@@ -9,7 +9,7 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { TechStackSection } from './components/TechStackSection';
 import NetworkBackground from './components/NetworkBackground';
 import TerminalTyping from './components/TerminalTyping';
-import picImage from './pic.png';
+import InteractiveHeroPortrait from './components/InteractiveHeroPortrait';
 import { ProjectItem } from './data/projectsData';
 import { 
   Send, 
@@ -20,9 +20,6 @@ import {
   Mail, 
   Menu,
   Phone, 
-  MapPin, 
-  ArrowRight, 
-  Download,
   BarChart3,
   Brain,
   Layers
@@ -77,37 +74,39 @@ export default function App() {
   };
 
   // System instruction for Gemini chatbot
-  const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, an AI & Data Science developer.
+  const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, a versatile AI/ML Developer, Data Analytics Professional, and AI Applications Developer.
 
 Primary Positioning:
-- Muhammad Anas Khan specializes in Data Analysis, AI/ML & SaaS Development Backed by Real Projects.
-- Three Core Pillars:
-  1. Data Analysis (Business dashboards, KPI reporting, analytics pipelines)
-  2. AI / Machine Learning (Predictive models, document intelligence, classification & computer vision, LLM applications)
-  3. SaaS Development (AI SaaS MVPs, internal business tools, admin dashboards, full-stack software)
-- Supporting Capability: Automation (n8n workflows, AI agents, API integrations)
-- Target Clients: E-commerce & Shopify businesses, Early-stage SaaS companies, Marketing & Digital agencies.
+- Professional Headline: "I Help Businesses Turn Data Into AI Solutions | Python | Machine Learning | AI Applications"
+- Core Capabilities:
+  1. Data Analytics & Visualization (Interactive dashboards, KPI reporting, statistical exploratory analysis in Python, Pandas, Power BI)
+  2. Machine Learning & Predictive Modeling (Supervised classification, regression, customer churn prediction, recommendation systems using Scikit-learn, XGBoost)
+  3. AI Applications & Chatbots (Document Q&A, OCR text extraction, LLM applications using OpenAI/Gemini/Anthropic, LangChain)
+  4. Web Applications & SaaS Development (Full-stack architectures using FastAPI, Next.js, PostgreSQL, Tailwind CSS)
+  5. Workflow Automation (n8n automations, event webhooks, autonomous agents)
+- Target Clients: Organizations and businesses across diverse industries (SaaS, Healthcare, Financial Services, Retail, Logistics, Enterprise Operations).
+- Key Principle: Muhammad Anas Khan does NOT specialize in a single niche; he builds tailored AI, ML, and data solutions for different business domains.
 
 Contact & Profile:
 - Name: Muhammad Anas Khan
-- Location: Karachi, Pakistan
-- Degree: BS in Computer Science from Federal Urdu University, Karachi
+- Degree: BS in Computer Science from Federal Urdu University
 - Email: anaskhanz.dev@gmail.com
 - Phone / WhatsApp: +92 311 2813828
 - GitHub: https://github.com/AnasKhan2310
 - LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
 Featured Projects:
-1. Ecommerce Sales Intelligence Dashboard (Executive BI & Analytics: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard) - £10.64M revenue & 524k transactions analyzed, Python ETL, React, TypeScript, Recharts, RFM segmentation, interactive data ledger.
-2. ZestFit / AI Fitness SaaS (Live SaaS: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT) - Next.js, TypeScript, FastAPI, PostgreSQL, Tailwind, Stripe.
-3. MediScan AI (Healthcare Document Intelligence: https://medi-scan-ai-theta.vercel.app/) - OCR, NLP, FastAPI, React.
+1. ZestFit: AI Health & Gym Management SaaS (Next.js, TypeScript, FastAPI, PostgreSQL, Stripe) - Live Demo: https://zestfitmanagement.vercel.app/
+2. MediScan AI: Document Q&A & Clinical Intelligence (Python, LLMs, LangChain, OCR, FastAPI, React) - Live Demo: https://medi-scan-ai-theta.vercel.app/
+3. Teachable Machine: Vision AI Classifier (Python, TensorFlow.js, Transfer Learning, Canvas API) - Interactive in-browser vision model.
+4. Executive BI & Ecommerce Sales Intelligence Dashboard (Python, Pandas, Power BI / Recharts, SQL) - Live Demo: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/
 
-Style: Be professional, concise, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture and problem-solving.`;
+Style: Be professional, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture, clean code, and working project links.`;
 
   const suggestions = [
-    "Tell me about the Ecommerce Sales Intelligence Dashboard",
-    "How does the ZestFit AI SaaS platform work?",
-    "What tech stack do you use for SaaS MVPs & Analytics?"
+    "What kind of AI & ML solutions can Anas build for my business?",
+    "Tell me about the 4 featured projects and working demos",
+    "How can we collaborate on an AI or data project?"
   ];
 
   // Send message to Server
@@ -198,60 +197,96 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
       <NetworkBackground />
 
       {/* ========================================================================= */}
-      {/* HEADER / NAVIGATION BAR */}
+      {/* HEADER / NAVIGATION BAR (EXACT MATCH TO REFERENCE) */}
       {/* ========================================================================= */}
       <header className="relative z-40 w-full max-w-7xl mx-auto pt-3 sm:pt-6 px-3 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111] border border-[#222222] rounded-lg shadow-sm">
+        <nav className="flex items-center justify-between py-2.5 sm:py-3 px-3 sm:px-6 bg-[#111111] border border-[#222222] rounded-xl shadow-lg">
           
-          {/* Brand Logo */}
-          <a href="#hero" className="flex items-center gap-2 group cursor-pointer">
-            <div className="text-lg sm:text-2xl font-extrabold font-display text-white tracking-[-0.02em] flex items-center">
+          {/* Brand Logo - Coder with orange triple-bar + Muhammad Anas Khan */}
+          <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 group cursor-pointer">
+            <div className="flex items-center text-xl sm:text-2xl font-black text-white font-display tracking-tight">
               <span>Cod</span>
-              <span className="text-[#FF4D00] font-black text-xl sm:text-3xl leading-none inline-block mx-0.5">≡</span>
+              <span className="text-[#FF4D00] font-black text-2xl sm:text-3xl leading-none inline-block mx-0.5 tracking-tighter">≡</span>
               <span>r</span>
             </div>
-            <div className="hidden sm:flex items-center gap-1.5 pl-2 ml-2 border-l border-[#282828] text-[11px] font-mono text-neutral-400">
-              <span className="text-white font-medium">Muhammad Anas Khan</span>
-            </div>
+            <div className="h-4 w-[1px] bg-[#333333] hidden sm:block" />
+            <span className="hidden sm:inline-block text-xs sm:text-[13px] font-bold text-white tracking-normal whitespace-nowrap">
+              Muhammad Anas Khan
+            </span>
           </a>
 
           {/* Center Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 sm:gap-2">
-            {[
-              { id: 'hero', label: 'Home', href: '#hero' },
-              { id: 'solutions', label: 'Solutions', href: '#solutions' },
-              { id: 'projects', label: 'Featured Projects', href: '#projects' },
-              { id: 'about', label: 'About', href: '#about' },
-              { id: 'contact', label: 'Contact', href: '#contact' }
-            ].map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={() => setActiveNav(item.id as any)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-all ${
-                  activeNav === item.id 
-                    ? 'bg-[#FF4D00] text-white font-semibold' 
-                    : 'text-neutral-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="hidden md:flex items-center gap-1.5 lg:gap-2">
+            <a
+              href="#hero"
+              onClick={() => setActiveNav('hero')}
+              className={`text-xs sm:text-[13px] font-bold px-4 py-1.5 rounded-lg transition-all ${
+                activeNav === 'hero'
+                  ? 'bg-[#FF4D00] text-white shadow-sm'
+                  : 'text-neutral-300 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              Home
+            </a>
+
+            <a
+              href="#solutions"
+              onClick={() => setActiveNav('solutions')}
+              className={`text-xs sm:text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-colors ${
+                activeNav === 'solutions'
+                  ? 'bg-[#FF4D00] text-white font-bold'
+                  : 'text-neutral-300 hover:text-white'
+              }`}
+            >
+              Solutions
+            </a>
+
+            <a
+              href="#projects"
+              onClick={() => setActiveNav('projects')}
+              className={`text-xs sm:text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-colors ${
+                activeNav === 'projects'
+                  ? 'bg-[#FF4D00] text-white font-bold'
+                  : 'text-neutral-300 hover:text-white'
+              }`}
+            >
+              Featured Projects
+            </a>
+
+            <a
+              href="#about"
+              onClick={() => setActiveNav('about')}
+              className={`text-xs sm:text-[13px] font-medium px-3.5 py-1.5 rounded-lg transition-colors ${
+                activeNav === 'about'
+                  ? 'bg-[#FF4D00] text-white font-bold'
+                  : 'text-neutral-300 hover:text-white'
+              }`}
+            >
+              About
+            </a>
+
+            <a
+              href="#contact"
+              onClick={() => setActiveNav('contact')}
+              className="border border-white/90 hover:border-white text-white hover:bg-white/10 text-xs sm:text-[13px] font-medium px-4 py-1.5 rounded-lg transition-all"
+            >
+              Contact
+            </a>
           </div>
 
-          {/* Right Action Button - Let's Talk */}
+          {/* Right Action Button - LET'S TALK */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#contact"
-              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-md transition-colors cursor-pointer"
+              className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-[13px] font-black uppercase tracking-wider px-4 sm:px-5 py-2 rounded-lg transition-all shadow-[0_0_15px_rgba(255,77,0,0.35)] cursor-pointer"
             >
-              Let's Talk
+              LET'S TALK
             </a>
 
             {/* Mobile menu hamburger toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-1.5 sm:p-2 text-neutral-300 hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] rounded-md transition-colors"
+              className="md:hidden p-1.5 sm:p-2 text-neutral-300 hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -301,141 +336,63 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
         {/* ========================================================================= */}
         {/* HERO SECTION: Repositioned for AI & Data Solutions for E-commerce & SaaS */}
         {/* ========================================================================= */}
-        <section id="hero" className="relative pt-8 sm:pt-14 pb-12 lg:pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
-            
-            {/* Left Hero Content */}
-            <div className="lg:col-span-8 flex flex-col items-start text-left z-20">
-              
-              {/* Identity & Availability Pill */}
-              <div className="inline-flex items-center gap-2 bg-[#161616] border border-[#2A2A2A] text-neutral-300 text-[11px] font-mono px-3 py-1 rounded-full mb-4">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-extrabold text-white">Muhammad Anas Khan</span>
-                <span className="text-neutral-500">•</span>
-                <span className="text-[#FF4D00]">Available for Projects</span>
-              </div>
+        {/* ========================================================================= */}
+        {/* HERO SECTION: Exact Reference 1 & 2 Editorial Studio Layout */}
+        {/* ========================================================================= */}
+        <section id="hero" className="relative pt-4 sm:pt-6 pb-12 lg:pb-16">
+          
+          {/* Centerpiece Visual & Editorial Typography */}
+          <div className="relative z-10 w-full flex flex-col items-center justify-center">
+            <InteractiveHeroPortrait onOpenResume={() => setIsResumeModalOpen(true)} />
+          </div>
 
-              {/* Exact Repositioning Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-white font-display tracking-[-0.02em] leading-[1.18] mb-4">
-                Data Analysis, AI/ML & <br className="hidden md:inline" />
-                SaaS Development <br className="hidden sm:inline" />
-                <span className="text-[#FF4D00]">Backed by Real Projects</span>
-              </h1>
-
-              {/* Exact Repositioning Subheadline */}
-              <p className="text-neutral-300 text-sm sm:text-base md:text-lg font-normal mb-6 max-w-2xl leading-relaxed">
-                I build analytics dashboards, AI/ML solutions and SaaS products that help businesses automate repetitive work, understand their data and make better decisions.
-              </p>
-
-              {/* 3 Core Pillars + Supporting Automation Pill */}
-              <div className="flex flex-wrap items-center gap-2 mb-7">
-                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
-                  <BarChart3 size={13} className="text-[#FF4D00]" />
-                  Data Analysis
-                </span>
-                <span className="text-neutral-600 font-mono">→</span>
-                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
-                  <Brain size={13} className="text-[#FF4D00]" />
-                  AI / Machine Learning
-                </span>
-                <span className="text-neutral-600 font-mono">→</span>
-                <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3 py-1 rounded-md flex items-center gap-1.5">
-                  <Layers size={13} className="text-[#FF4D00]" />
-                  SaaS Development
-                </span>
-                <span className="text-neutral-600 font-mono">|</span>
-                <span className="bg-[#141414] text-neutral-400 border border-[#242424] text-[11px] font-mono px-2.5 py-1 rounded-md">
-                  + Automation
-                </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-                <a
-                  href="#projects"
-                  className="bg-[#FF4D00] hover:bg-[#E04400] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 sm:px-8 py-3 rounded-md transition-colors flex items-center gap-2 cursor-pointer"
-                >
-                  <span>View Projects</span>
-                  <ArrowRight size={14} />
-                </a>
-
-                <a
-                  href="#contact"
-                  className="bg-transparent hover:bg-white/5 text-white border border-[#333333] hover:border-neutral-400 text-xs sm:text-sm font-semibold uppercase tracking-wider px-5 sm:px-7 py-3 rounded-md transition-all cursor-pointer"
-                >
-                  Let's Work Together
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => setIsResumeModalOpen(true)}
-                  className="bg-[#161616] hover:bg-[#202020] text-neutral-300 hover:text-white border border-[#282828] text-xs sm:text-sm font-mono font-medium px-4 py-3 rounded-md transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Download size={14} />
-                  <span>CV</span>
-                </button>
-              </div>
-
-            </div>
-
-            {/* Right Hero Visual - Compact portrait with polygonal overlay */}
-            <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center z-10 mt-4 lg:mt-0">
-              
-              <div className="relative w-48 sm:w-56 md:w-64 lg:w-72 aspect-[4/5] flex items-center justify-center group max-w-full">
-
-                {/* Portrait Photo with seamless bottom fade */}
-                <div className="relative w-full h-full flex items-end justify-center overflow-visible">
-                  <img 
-                    src={picImage} 
-                    alt="Muhammad Anas Khan - AI & Data Solutions Developer" 
-                    className="w-full h-full object-cover object-top relative z-10 filter contrast-105 transition-all duration-300 [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]"
-                  />
-                </div>
-
-                {/* SVG Polygonal Wireframe Lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-20 stroke-[#FF4D00]/60" viewBox="0 0 300 375" fill="none">
-                  <polygon points="150,20 270,120 30,120" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-                  <polygon points="150,60 250,140 50,140" strokeWidth="1.2" opacity="0.8" />
-                  <line x1="150" y1="20" x2="150" y2="350" strokeWidth="0.8" strokeDasharray="4 4" opacity="0.3" />
-                  <polygon points="150,160 280,220 150,280 20,220" strokeWidth="1" opacity="0.7" />
-                  <polygon points="150,180 260,230 150,340 40,230" strokeWidth="1.2" opacity="0.85" />
-                  <circle cx="150" cy="20" r="3" fill="#FF4D00" />
-                  <circle cx="280" cy="220" r="3" fill="#FF4D00" />
-                  <circle cx="20" cy="220" r="3" fill="#FF4D00" />
-                  <circle cx="150" cy="340" r="3" fill="#FF4D00" />
-                </svg>
-
-              </div>
-
-            </div>
-
+          {/* 3 Core Pillars + Supporting Automation Pill */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-4 sm:mt-6">
+            <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3.5 py-1.5 rounded-md flex items-center gap-1.5 shadow-sm">
+              <BarChart3 size={13} className="text-[#FF4D00]" />
+              Data Analytics & BI
+            </span>
+            <span className="text-neutral-600 font-mono">→</span>
+            <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3.5 py-1.5 rounded-md flex items-center gap-1.5 shadow-sm">
+              <Brain size={13} className="text-[#FF4D00]" />
+              Machine Learning & Prediction
+            </span>
+            <span className="text-neutral-600 font-mono">→</span>
+            <span className="bg-[#141414] text-white border border-[#2C2C2C] text-xs font-mono px-3.5 py-1.5 rounded-md flex items-center gap-1.5 shadow-sm">
+              <Layers size={13} className="text-[#FF4D00]" />
+              AI Applications & SaaS
+            </span>
+            <span className="text-neutral-600 font-mono">|</span>
+            <span className="bg-[#141414] text-neutral-400 border border-[#242424] text-[11px] font-mono px-2.5 py-1.5 rounded-md">
+              + Automation
+            </span>
           </div>
 
           {/* Grounded & Honest Metric / Capability Pillars */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mt-10 sm:mt-16">
             
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-display tracking-[-0.02em]">
-                03
-              </span>
-              <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Core Pillars</span>
-              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Data • AI • SaaS</span>
-            </div>
-
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
-              <span className="text-xl sm:text-3xl font-extrabold text-white font-display tracking-[-0.02em]">
-                Full-Stack
-              </span>
-              <span className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide mt-1">Architecture</span>
-              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">FastAPI & Next.js</span>
-            </div>
-
-            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
               <span className="text-xl sm:text-3xl font-extrabold text-[#FF4D00] font-display tracking-[-0.02em]">
-                End-to-End
+                06
               </span>
-              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Problem Solver</span>
-              <span className="text-[10px] text-neutral-500 font-mono mt-0.5">Discover → Deploy</span>
+              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Featured Projects</span>
+              <span className="text-[10px] text-neutral-500 font-mono mt-0.5">BI • ML • LLMs • SaaS</span>
+            </div>
+
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-2xl font-extrabold text-white font-display tracking-[-0.02em]">
+                Cross-Industry
+              </span>
+              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Client Solutions</span>
+              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Fintech • Health • Ops • SaaS</span>
+            </div>
+
+            <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
+              <span className="text-xl sm:text-2xl font-extrabold text-white font-display tracking-[-0.02em]">
+                Python & SQL
+              </span>
+              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Core Tech Stack</span>
+              <span className="text-[10px] text-[#FF4D00] font-mono mt-0.5">Scikit-learn • FastAPI • Next.js</span>
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
@@ -524,19 +481,19 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] leading-tight mb-6">
-                Bridging Data Science, <br className="hidden sm:block" />
-                <span className="text-[#FF4D00]">AI Models & Production SaaS</span>
+                Turning Raw Data Into <br className="hidden sm:block" />
+                <span className="text-[#FF4D00]">Actionable AI Solutions</span>
               </h2>
 
               <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
                 <p>
-                  I'm an AI & Data Science developer focused on building practical, high-impact business software using data analysis, machine learning, and SaaS development.
+                  I'm a versatile <strong className="text-white">AI/ML Developer, Data Analytics professional, and AI Applications Developer</strong> dedicated to helping businesses across different industries unlock the full value of their data.
                 </p>
                 <p>
-                  Rather than treating AI as an isolated experiment, I engineer interactive analytics dashboards, machine learning applications, workflow automations, and scalable SaaS platforms that help businesses reduce manual work, understand their data, and make profitable decisions.
+                  Rather than treating AI as an abstract experiment, I engineer interactive data analytics dashboards, machine learning prediction models, and practical AI applications that solve concrete business challenges, eliminate manual bottlenecks, and empower better strategic decisions.
                 </p>
                 <p>
-                  Every solution is <strong className="text-white">backed by real, functional projects</strong> and designed for production reliability from day one.
+                  Whether you need executive business intelligence dashboards, predictive customer churn modeling, recommendation algorithms, or full-stack AI SaaS applications, every solution is <strong className="text-white">grounded in production-ready code, transparent architectures, and measurable results</strong>.
                 </p>
               </div>
 
@@ -544,11 +501,11 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
               <div className="flex flex-wrap items-center gap-3">
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">EDUCATION</div>
-                  <div className="text-xs font-semibold text-white">Bachelor's in Computer Science • Federal Urdu University, Karachi</div>
+                  <div className="text-xs font-semibold text-white">Bachelor's in Computer Science • Federal Urdu University</div>
                 </div>
                 <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
                   <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
-                  <div className="text-xs font-semibold text-white">Data Analysis, AI/ML & SaaS Development</div>
+                  <div className="text-xs font-semibold text-white">AI/ML Development • Data Analytics • AI Web Applications</div>
                 </div>
               </div>
 
@@ -634,19 +591,24 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
                 </div>
               </a>
 
-              {/* Location */}
-              <div className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 transition-all">
-                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0">
-                  <MapPin size={22} />
+              {/* GitHub Code */}
+              <a 
+                href="https://github.com/AnasKhan2310" 
+                target="_blank" 
+                rel="noreferrer"
+                className="bg-[#121212] border border-[#222222] p-6 rounded-xl flex items-center gap-4 hover:border-[#FF4D00]/50 hover:bg-[#161616] transition-all group"
+              >
+                <div className="h-12 w-12 rounded-lg bg-[#FF4D00]/10 border border-[#FF4D00]/20 flex items-center justify-center text-[#FF4D00] shrink-0 group-hover:scale-105 transition-transform">
+                  <Github size={22} />
                 </div>
                 <div className="min-w-0">
-                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">Location</span>
-                  <span className="text-white text-sm font-semibold mt-0.5 block">
-                    Karachi, Pakistan
+                  <span className="text-[10px] text-neutral-400 font-mono font-bold uppercase tracking-wider block">GitHub Code</span>
+                  <span className="text-white group-hover:text-[#FF4D00] text-sm font-semibold transition-colors mt-0.5 block truncate">
+                    github.com/AnasKhan2310
                   </span>
-                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Available for Remote Worldwide contracts</span>
+                  <span className="text-[11px] text-neutral-500 mt-0.5 block">Open-source projects & model pipelines</span>
                 </div>
-              </div>
+              </a>
 
             </div>
           </div>
@@ -666,6 +628,12 @@ Style: Be professional, concise, articulate, and honest. Avoid marketing hype or
             <span className="font-display font-bold text-white text-base">Cod<span className="text-[#FF4D00]">≡</span>r</span>
             <span className="text-neutral-700">|</span>
             <span>Muhammad Anas Khan • AI & Data Solutions</span>
+          </div>
+
+          {/* Clean Expertise Pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#242424] text-[11px] font-mono text-neutral-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00]" />
+            <span>Data Analytics · Machine Learning · AI Applications</span>
           </div>
 
           {/* Social Links */}

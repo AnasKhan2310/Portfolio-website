@@ -16,6 +16,11 @@
   --font-outfit: 'Poppins', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-handwriting: 'Caveat', cursive;
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-serif-display {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
 }
 
 :root {
@@ -91,5 +96,17 @@ code, pre {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ff7722;
+}
+
+/* Luminous Architectural Typography */
+.stroke-text {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .stroke-text {
+    color: rgba(255, 255, 255, 0.12);
+  }
 }
 

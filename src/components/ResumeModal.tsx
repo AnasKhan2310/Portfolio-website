@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Printer, X, Mail, Phone, MapPin, Github, Linkedin, CheckCircle2 } from 'lucide-react';
+import { Download, Printer, X, Mail, Phone, Github, Linkedin, CheckCircle2 } from 'lucide-react';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -71,7 +71,6 @@ Data Analysis, AI/ML & SaaS Development Backed by Real Projects
 =====================================================
 Email: anaskhanz.dev@gmail.com
 Phone/WhatsApp: +92 311 2813828
-Location: Karachi, Pakistan
 GitHub: https://github.com/AnasKhan2310
 LinkedIn: https://www.linkedin.com/in/anas-khan1290/
 
@@ -85,21 +84,25 @@ CORE PILLARS & SKILLS:
 - Supporting Automation: n8n workflows, Model Context Protocol (MCP), Autonomous Agents, API Integrations
 
 FEATURED PROJECTS:
-1. Ecommerce Sales Intelligence Dashboard (Executive BI & Analytics)
-   Executive intelligence dashboard analyzing £10.64M revenue across 524k+ orders, RFM customer cohorts, and exportable data ledgers.
-   Live: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
-
-2. ZestFit / AI Fitness SaaS (Live SaaS)
-   Full-stack subscription SaaS with dynamic AI routine generators, caloric/macro calculation, and progress dashboards.
+1. ZestFit: AI Health & Gym Management SaaS
+   Full-stack subscription SaaS with dynamic AI workout generation, macro calculations, and Stripe billing.
    Live: https://zestfitmanagement.vercel.app/ | GitHub: https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT
 
-3. MediScan AI (Document Intelligence)
-   Clinical report OCR and biomarker extraction tool creating structured patient summaries.
+2. MediScan AI: Document Q&A & Clinical Intelligence
+   Document intelligence application using OCR and LLMs for clinical biomarker parsing and conversational Q&A.
    Live: https://medi-scan-ai-theta.vercel.app/
+
+3. Teachable Machine: Vision AI Classifier
+   Interactive client-side computer vision transfer-learning classifier for real-time object and gesture recognition.
+   GitHub: https://github.com/AnasKhan2310
+
+4. Executive BI & Ecommerce Sales Intelligence Dashboard
+   Executive business intelligence dashboard analyzing £10.64M revenue across 524k+ orders, RFM customer cohorts, and exportable ledgers.
+   Live: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
 
 EDUCATION:
 - Bachelor of Science in Computer Science (BSCS)
-  Federal Urdu University of Arts, Science and Technology, Karachi
+  Federal Urdu University of Arts, Science and Technology
   Focus: Artificial Intelligence, Data Science & Machine Learning
 =====================================================
     `.trim();
@@ -179,9 +182,6 @@ EDUCATION:
                   <Phone size={12} className="text-[#FF4D00]" /> +92 311 2813828
                 </span>
                 <span className="flex items-center gap-1">
-                  <MapPin size={12} className="text-[#FF4D00]" /> Karachi, Pakistan
-                </span>
-                <span className="flex items-center gap-1">
                   <Github size={12} className="text-[#FF4D00]" /> github.com/AnasKhan2310
                 </span>
                 <span className="flex items-center gap-1">
@@ -233,16 +233,6 @@ EDUCATION:
               <div className="space-y-3">
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Ecommerce Sales Intelligence: Executive BI Dashboard</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Executive BI</span>
-                  </div>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    Analyzed £10.64M revenue and 524,000+ orders with Python data modeling, RFM customer segmentation, multi-country drill-downs, and dynamic exportable ledgers.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit: AI Fitness & Nutrition SaaS</span>
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Live SaaS</span>
                   </div>
@@ -257,7 +247,27 @@ EDUCATION:
                     <span className="text-[11px] text-[#FF4D00] font-semibold">Document Intelligence</span>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
-                    Clinical report OCR and biomarker extraction tool creating structured patient summaries.
+                    Clinical report OCR and biomarker extraction tool creating structured patient summaries and contextual Q&A.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Teachable Machine: Vision AI Classifier</span>
+                    <span className="text-[11px] text-[#FF4D00] font-semibold">Interactive Vision</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">
+                    Interactive client-side computer vision transfer-learning classifier for real-time object and gesture recognition.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Executive BI & Sales Intelligence Dashboard</span>
+                    <span className="text-[11px] text-[#FF4D00] font-semibold">Executive BI</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">
+                    Analyzed £10.64M revenue and 524,000+ orders with Python data modeling, RFM customer segmentation, multi-country drill-downs, and dynamic exportable ledgers.
                   </p>
                 </div>
               </div>
@@ -274,7 +284,7 @@ EDUCATION:
                     Bachelor of Science in Computer Science (BSCS)
                   </p>
                   <p className="text-xs text-neutral-600">
-                    Federal Urdu University of Arts, Science & Technology, Karachi
+                    Federal Urdu University of Arts, Science & Technology
                   </p>
                   <p className="text-[11px] text-neutral-500 mt-0.5">
                     Specialization: Artificial Intelligence, Data Science & Machine Learning

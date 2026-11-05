@@ -13,6 +13,8 @@ export default {
         sans: ['Poppins', 'sans-serif'],
         display: ['Poppins', 'sans-serif'],
         cera: ['Poppins', 'sans-serif'],
+        editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
       },
     },
   },

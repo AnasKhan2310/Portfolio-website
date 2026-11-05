@@ -1,69 +1,69 @@
 import React from 'react';
-import { BarChart3, Brain, Layers, Cpu, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BarChart3, Brain, Sparkles, Globe } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
   const services = [
     {
       id: 'analytics',
-      title: 'Data Analysis',
+      title: 'Data Analytics & BI',
       pillarNumber: '01',
       icon: BarChart3,
-      tagline: 'Insights & KPI Intelligence',
-      description: 'Transforming complex datasets and raw transaction records into structured pipelines, exploratory analysis, and decision-ready dashboards.',
+      tagline: 'Executive Dashboards & Insights',
+      description: 'Transforming complex datasets and raw operational records into structured analytical pipelines, automated KPI reporting, and decision-ready dashboards.',
       bullets: [
-        'Exploratory data analysis (EDA)',
-        'Executive & business dashboards',
-        'Sales & revenue intelligence',
-        'KPI reporting & automated pipelines',
-        'Customer analytics & forecasting'
+        'Executive & operational KPI dashboards',
+        'Exploratory data analysis (EDA) in Python',
+        'Statistical distribution & cohort analysis',
+        'Automated ETL pipelines & data cleaning',
+        'Power BI, Recharts & interactive visuals'
       ],
       isHighlighted: false
     },
     {
-      id: 'ai-ml',
-      title: 'AI / Machine Learning',
+      id: 'ml-prediction',
+      title: 'Machine Learning & Prediction',
       pillarNumber: '02',
       icon: Brain,
-      tagline: 'Predictive & Generative Intelligence',
-      description: 'Engineering high-accuracy statistical models, document parsing pipelines, and customized LLM applications validated on real benchmarks.',
+      tagline: 'Predictive Models & Algorithms',
+      description: 'Engineering practical classification, regression, and recommendation systems that evaluate risk factors, forecast trends, and personalize experiences.',
       bullets: [
-        'Predictive statistical models',
-        'Document intelligence & OCR',
-        'LLM applications & smart agents',
-        'Classification & recommendation systems',
-        'Computer vision pipelines'
+        'Customer churn & lead risk scoring models',
+        'Personalized recommendation engines',
+        'Scikit-learn, XGBoost & statistical algorithms',
+        'Feature engineering & ROC-AUC calibration',
+        'FastAPI microservice inference endpoints'
       ],
       isHighlighted: false
     },
     {
-      id: 'saas',
-      title: 'SaaS Development',
+      id: 'gen-ai',
+      title: 'Generative AI & LLM Apps',
       pillarNumber: '03',
-      icon: Layers,
-      tagline: 'Production Full-Stack Software',
-      description: 'Architecting scalable web applications, administrative hubs, and AI-enabled software products built for real users and production loads.',
+      icon: Sparkles,
+      tagline: 'Document Intelligence & Q&A',
+      description: 'Developing practical AI applications that automate unstructured document parsing, contextual question answering, and intelligent conversational workflows.',
       bullets: [
-        'Full-stack AI SaaS MVPs',
-        'Admin dashboards & internal portals',
-        'FastAPI & Next.js architectures',
-        'PostgreSQL database design',
-        'Stripe & authentication integrations'
+        'Document Q&A & intelligent OCR extraction',
+        'OpenAI, Claude & Gemini API integrations',
+        'Retrieval-Augmented Generation (RAG) pipelines',
+        'Structured entity recognition from PDFs & scans',
+        'Domain-specific AI chatbots & assistants'
       ],
-      isHighlighted: true // Subtle signature orange highlight card
+      isHighlighted: true // Signature orange border
     },
     {
-      id: 'automation',
-      title: 'Workflow Automation',
+      id: 'saas-web',
+      title: 'Web Applications & SaaS',
       pillarNumber: '04',
-      icon: Cpu,
-      tagline: 'Supporting Capability',
-      description: 'Connecting disjointed software systems, event webhooks, and autonomous agents to eliminate manual operational bottlenecks.',
+      icon: Globe,
+      tagline: 'Full-Stack Software Architecture',
+      description: 'Architecting scalable web applications, internal tools, and AI-enabled software products built for cross-industry clients and real production users.',
       bullets: [
-        'n8n workflow automations',
-        'Autonomous multi-step AI agents',
-        'Custom API & webhook integrations',
-        'Automated reporting pipelines',
-        'Repetitive task elimination'
+        'FastAPI & Next.js full-stack applications',
+        'PostgreSQL relational database modeling',
+        'JWT authentication & access control',
+        'Stripe subscription billing & webhook pipelines',
+        'Cloud deployment & containerized workflows'
       ],
       isHighlighted: false
     }
@@ -75,14 +75,14 @@ export const ServicesSection: React.FC = () => {
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14">
         <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
-          WHAT I BUILD & DELIVER
+          CROSS-INDUSTRY EXPERTISE
         </div>
         <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
-          Core Solutions & Capabilities
+          How I Help Businesses Solve Problems
         </h2>
         <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
-        <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
-          Production-tested engineering across Data Analysis, Machine Learning, and Full-Stack SaaS development — backed by real, deployed projects and scalable architectures.
+        <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+          Tailored engineering across Data Analytics, Machine Learning, and Full-Stack AI Applications — designed to help businesses understand data, automate workflows, and make better decisions.
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export const ServicesSection: React.FC = () => {
           return (
             <div
               key={srv.id}
-              className={`p-6 sm:p-7 rounded-xl flex flex-col justify-between transition-colors relative group min-h-[340px] ${
+              className={`p-6 sm:p-7 rounded-xl flex flex-col justify-between transition-all duration-300 relative group min-h-[380px] hover:shadow-[0_4px_30px_rgba(0,0,0,0.5)] ${
                 srv.isHighlighted
                   ? 'bg-[#141414] border border-[#FF4D00]/60'
                   : 'bg-[#121212] border border-[#222222] hover:border-[#383838]'
@@ -102,7 +102,7 @@ export const ServicesSection: React.FC = () => {
               <div>
                 {/* Card Top */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="h-11 w-11 rounded-lg bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00]">
+                  <div className="h-11 w-11 rounded-lg bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#FF4D00] group-hover:scale-105 transition-transform">
                     <Icon size={20} />
                   </div>
                   <span className="text-[11px] font-mono font-bold text-neutral-500">
@@ -122,24 +122,24 @@ export const ServicesSection: React.FC = () => {
                 </p>
 
                 {/* Bullets */}
-                <ul className="space-y-2 pt-3 border-t border-[#222222]">
-                  {srv.bullets.map((bullet, bIdx) => (
-                    <li key={bIdx} className="flex items-center gap-2 text-xs text-neutral-300">
-                      <CheckCircle2 size={13} className="text-[#FF4D00] shrink-0" />
-                      <span>{bullet}</span>
+                <ul className="space-y-2 pt-2 border-t border-[#1C1C1C]">
+                  {srv.bullets.map((b, bIdx) => (
+                    <li key={bIdx} className="text-[11px] text-neutral-300 flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00] mt-1 shrink-0" />
+                      <span>{b}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Bottom CTA anchor */}
-              <div className="pt-5 mt-4 border-t border-[#1E1E1E]">
+              {/* Bottom Action Link */}
+              <div className="pt-5 mt-4 border-t border-[#1C1C1C]">
                 <a
-                  href="#projects"
-                  className="text-xs font-mono font-bold text-neutral-400 hover:text-white flex items-center gap-1.5 transition-colors group-hover:text-[#FF4D00]"
+                  href="#contact"
+                  className="text-xs font-mono font-semibold text-neutral-400 hover:text-white flex items-center gap-1.5 group/link transition-colors cursor-pointer"
                 >
-                  <span>Explore Relevant Work</span>
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  <span>Discuss Your Project</span>
+                  <span className="text-[#FF4D00] group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
               </div>
             </div>
@@ -150,3 +150,5 @@ export const ServicesSection: React.FC = () => {
     </section>
   );
 };
+
+export default ServicesSection;
