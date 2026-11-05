@@ -98,14 +98,13 @@ Contact & Profile:
 Featured Projects:
 1. ZestFit: AI Health & Gym Management SaaS (Next.js, TypeScript, FastAPI, PostgreSQL, Stripe) - Live Demo: https://zestfitmanagement.vercel.app/
 2. MediScan AI: Document Q&A & Clinical Intelligence (Python, LLMs, LangChain, OCR, FastAPI, React) - Live Demo: https://medi-scan-ai-theta.vercel.app/
-3. Teachable Machine: Vision AI Classifier (Python, TensorFlow.js, Transfer Learning, Canvas API) - Interactive in-browser vision model.
-4. Executive BI & Ecommerce Sales Intelligence Dashboard (Python, Pandas, Power BI / Recharts, SQL) - Live Demo: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/
+3. Executive BI & Ecommerce Sales Intelligence Dashboard (Python, Pandas, Power BI / Recharts, SQL) - Live Demo: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/
 
 Style: Be professional, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture, clean code, and working project links.`;
 
   const suggestions = [
     "What kind of AI & ML solutions can Anas build for my business?",
-    "Tell me about the 4 featured projects and working demos",
+    "Tell me about the 3 featured projects and working demos",
     "How can we collaborate on an AI or data project?"
   ];
 
@@ -373,10 +372,10 @@ Style: Be professional, articulate, and honest. Avoid marketing hype or fake met
             
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">
               <span className="text-xl sm:text-3xl font-extrabold text-[#FF4D00] font-display tracking-[-0.02em]">
-                06
+                03
               </span>
-              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Featured Projects</span>
-              <span className="text-[10px] text-neutral-500 font-mono mt-0.5">BI • ML • LLMs • SaaS</span>
+              <span className="text-[11px] sm:text-xs text-neutral-300 font-medium tracking-wide mt-1">Featured Solutions</span>
+              <span className="text-[10px] text-neutral-500 font-mono mt-0.5">SaaS • AI Document • BI</span>
             </div>
 
             <div className="bg-[#121212] border border-[#222222] hover:border-[#333333] p-4 sm:p-6 rounded-xl text-center flex flex-col justify-center items-center transition-all">

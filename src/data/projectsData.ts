@@ -1,22 +1,19 @@
 export interface ProjectItem {
   id: string;
   title: string;
-  category: 'SaaS Platform' | 'Generative AI' | 'Computer Vision' | 'Data Analytics';
+  category: 'SaaS Platform' | 'Generative AI' | 'Data Analytics';
   tag: string;
   statusBadge: string;
-  shortDescription: string;
   problem: string;
   solution: string;
   technologies: string[];
-  keyHighlights: string[];
-  outcome: string;
   githubUrl?: string;
   liveDemoUrl?: string;
   hasInteractivePreview?: boolean;
   previewType?: string;
   isFeatured: boolean;
   order: number;
-  previewVisualType: 'saas-platform' | 'document-qa' | 'teachable-machine' | 'bi-dashboard';
+  previewVisualType: 'saas-platform' | 'document-qa' | 'bi-dashboard';
   caseStudy: {
     businessProblem: string;
     approach: string;
@@ -32,21 +29,13 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     id: "zestfit-saas",
     title: "ZestFit: AI Health & Gym Management SaaS",
     category: "SaaS Platform",
-    tag: "Full-Stack SaaS · Next.js · FastAPI · PostgreSQL",
-    statusBadge: "Live SaaS Application",
-    shortDescription: "Full-stack SaaS platform automating member management, AI-driven workout routine generation, and recurring Stripe subscriptions.",
-    problem: "Fitness clubs and independent trainers struggle with fragmented tools for program building, client logging, and membership billing.",
-    solution: "Engineered an end-to-end multi-tenant application connecting a Next.js interface with a FastAPI backend and PostgreSQL database, featuring automated routine generation and Stripe billing.",
-    technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "Tailwind CSS", "Stripe API"],
-    keyHighlights: [
-      "AI Workout Engine: Generates personalized multi-week regimes based on equipment and goals",
-      "Stripe Subscription Pipeline: Full membership lifecycle with webhook tier gating",
-      "Member Activity Hub: Real-time workout logging, macro tracking, and attendance analytics"
-    ],
-    outcome: "Eliminates administrative bottlenecks with automated billing and instant program generation.",
+    tag: "Next.js · FastAPI · PostgreSQL · Stripe",
+    statusBadge: "Live SaaS App",
+    problem: "Gym owners and independent trainers waste hours juggling separate tools for client logging, workout planning, and monthly subscription billing.",
+    solution: "Built a full-stack SaaS platform combining automated AI workout generation, client progress tracking, and seamless recurring Stripe payments in one unified workspace.",
+    technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "Stripe API"],
     githubUrl: "https://github.com/AnasKhan2310/ZESTFIT-GYM-MANAGEMENT",
     liveDemoUrl: "https://zestfitmanagement.vercel.app/",
-    hasInteractivePreview: false,
     isFeatured: true,
     order: 1,
     previewVisualType: 'saas-platform',
@@ -69,23 +58,15 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
   },
   {
     id: "mediscan-document-qa",
-    title: "MediScan AI: Document Q&A & Clinical Intelligence",
+    title: "MediScan AI: Clinical Document Intelligence",
     category: "Generative AI",
-    tag: "Document Intelligence · OCR · LLMs · FastAPI",
-    statusBadge: "Document Intelligence Demo",
-    shortDescription: "AI document analysis application that scans complex reports, extracts clinical biomarkers, and answers contextual user questions.",
-    problem: "Unstructured diagnostic reports, lab summaries, and invoices require tedious manual transcription and error-prone interpretation.",
-    solution: "Built a document intelligence pipeline combining OCR text parsing, regex biomarker extraction, and LLM-powered context querying for instant report understanding.",
-    technologies: ["Python", "OCR (Tesseract)", "NLP", "LLMs (OpenAI / Gemini)", "FastAPI", "React", "Tailwind CSS"],
-    keyHighlights: [
-      "High-Accuracy OCR Extraction: Digitizes text from mobile phone camera scans and multi-page PDFs",
-      "Biomarker Flagging: Automatically highlights out-of-range clinical indicators like Glucose and Cholesterol",
-      "Conversational Document Q&A: Natural language questioning grounded strictly in uploaded documents"
-    ],
-    outcome: "Enables instant report scanning and plain-language answers with strict factual grounding.",
+    tag: "OCR · LLMs · FastAPI · React",
+    statusBadge: "Live AI App",
+    problem: "Medical lab reports and health records are unstructured and hard for non-specialists to read quickly, causing delays in understanding key health markers.",
+    solution: "Engineered an OCR and LLM pipeline that extracts clinical biomarkers (e.g. Glucose, Cholesterol), flags abnormal values, and answers patient questions in plain language.",
+    technologies: ["Python", "OCR (Tesseract)", "LLMs (Gemini/OpenAI)", "FastAPI", "React"],
     githubUrl: "https://github.com/AnasKhan2310",
     liveDemoUrl: "https://medi-scan-ai-theta.vercel.app/",
-    hasInteractivePreview: false,
     isFeatured: true,
     order: 2,
     previewVisualType: 'document-qa',
@@ -107,66 +88,18 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     }
   },
   {
-    id: "teachable-machine-vision",
-    title: "Teachable Machine: Vision AI Classifier",
-    category: "Computer Vision",
-    tag: "Interactive Vision AI · TensorFlow.js · Real-Time Classifier",
-    statusBadge: "Interactive Classifier Demo",
-    shortDescription: "Interactive computer vision classifier running client-side transfer learning to recognize objects and gestures via live camera or test inputs.",
-    problem: "Businesses often lack fast, accessible ways to prototype and test visual quality inspection or custom image sorting without heavy cloud pipelines.",
-    solution: "Constructed an in-browser computer vision system utilizing transfer learning and Teachable Machine models to classify images with sub-50ms inference and confidence meters.",
-    technologies: ["Python", "TensorFlow.js", "Teachable Machine", "Computer Vision", "TypeScript", "Canvas API"],
-    keyHighlights: [
-      "Sub-50ms In-Browser Inference: Runs lightweight neural classification directly in client browser memory",
-      "Dual Input Modes: Toggle between live webcam stream and preset test image categories",
-      "Real-Time Confidence Meters: Dynamic probability distribution bars across recognized visual classes"
-    ],
-    outcome: "Delivers responsive visual classification with zero server latency and immediate confidence feedback.",
-    githubUrl: "https://github.com/AnasKhan2310",
-    hasInteractivePreview: true,
-    previewType: "vision",
-    isFeatured: true,
-    order: 3,
-    previewVisualType: 'teachable-machine',
-    caseStudy: {
-      businessProblem: "Deploying custom visual classification models usually incurs expensive cloud GPU latency and complex infrastructure for early-stage proof of concepts.",
-      approach: "Trained transfer-learning models on custom image classes and exported optimized weights for client-side TensorFlow.js execution, enabling instantaneous classification.",
-      architectureSolution: "Reactive React interface capturing video frames and canvas pixels, normalizing tensors, and updating animated probability distributions in real time.",
-      keyFeatures: [
-        "Transfer Learning Classification: Custom neural model tuned on distinct object and pose categories",
-        "Webcam Stream Processing: Real-time video frame sampling at 30 FPS",
-        "Sample Benchmark Suite: Instant evaluation against curated test images across target categories",
-        "Confidence Threshold Filtering: Dynamic classification attribution with certainty scoring"
-      ],
-      capabilities: [
-        "Computer vision model training and transfer learning workflows",
-        "TensorFlow.js client-side inference optimization and tensor manipulation",
-        "Interactive real-time visual UI feedback and camera hardware integration"
-      ]
-    }
-  },
-  {
     id: "ecommerce-bi-dashboard",
     title: "Executive BI & Sales Intelligence Dashboard",
     category: "Data Analytics",
-    tag: "Data Analytics · Python · Pandas · Power BI & Recharts",
-    statusBadge: "Live Dashboard Demo",
-    shortDescription: "Executive BI and analytics dashboard transforming 520,000+ transactional records into instant KPI cards, trend curves, and RFM customer cohorts.",
-    problem: "Business decision-makers struggle to extract fast, actionable revenue insights from raw transactional databases, leaving customer retention trends obscured.",
-    solution: "Engineered an executive analytics dashboard aggregating raw transaction logs into dynamic KPI cards, seasonal revenue wave charts, and automated RFM customer cohorts.",
-    technologies: ["Python", "Pandas", "Power BI / Recharts", "React", "TypeScript", "Tailwind CSS", "SQL"],
-    keyHighlights: [
-      "Sub-Second Data Slicing: Instant multi-criteria filtering across global markets, dates, and categories",
-      "RFM Customer Cohorts: Automated segmentation into Loyal Champions, At-Risk, and Recent Buyers",
-      "Interactive Trend Curves: Comparative period-over-period tracking with dual-wave revenue curves"
-    ],
-    outcome: "Empowers leadership with instant visibility into revenue concentration, customer retention, and sales velocity.",
+    tag: "Python · Pandas · Power BI / Recharts · SQL",
+    statusBadge: "Live Dashboard",
+    problem: "Executives handling massive sales datasets struggle to identify real revenue drivers, customer drop-offs, and product performance from raw SQL tables.",
+    solution: "Created an interactive executive analytics dashboard that aggregates 520,000+ orders into live revenue trends, multi-country drill-downs, and automated RFM customer cohorts.",
+    technologies: ["Python", "Pandas", "Power BI / Recharts", "SQL", "TypeScript"],
     githubUrl: "https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard",
     liveDemoUrl: "https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/",
-    hasInteractivePreview: true,
-    previewType: "analytics",
     isFeatured: true,
-    order: 4,
+    order: 3,
     previewVisualType: 'bi-dashboard',
     caseStudy: {
       businessProblem: "Enterprises handling large transaction databases often lack unified, accessible business intelligence, delaying quarterly reviews and strategic planning.",

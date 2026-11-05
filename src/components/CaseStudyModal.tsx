@@ -50,7 +50,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               {project.title}
             </h2>
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed max-w-3xl">
-              {project.shortDescription}
+              {project.solution}
             </p>
 
             {/* Quick Action Links */}

@@ -1,93 +1,81 @@
-# Implementation Plan: Remove Clutter Elements & Global Location/Freelance Text
+# Implementation Plan: 3-Project Showcase & Minimal Problem/Solution Format
 
-Eliminate unwanted visual clutter from the hero section (top micro-data bar and left vertical expertise sidebar), completely remove all location and freelance availability text from across the website, and position a clean, quiet expertise badge in the footer.
+Remove the Teachable Machine project and trim verbose descriptions down to a clean, high-impact format focused strictly on **What was the Problem** and **How it Solves it**, arranged in an elegant 3-column grid.
 
 ---
 
 ## 1. User Decisions & Design Direction (Phase 1 Synthesis)
 
-* **Hero Section Cleanup**:
-  * **Remove Top Micro-Data Bar**: Delete the line containing `AI/ML DEVELOPER • DATA ANALYTICS • AI APPLICATIONS` and `KARACHI, PK (REMOTE) • AVAILABLE FOR FREELANCE & CONTRACT` above the portrait.
-  * **Remove Left Vertical Sidebar Column**: Delete the floating absolute column (`01 / EXPERTISE + DATA ANALYTICS MACHINE LEARNING AI APPLICATIONS`) shown in the user's reference image (`image_84577723.png`).
-  * Give the hero section an airy, unobstructed editorial focus directly on the cutout portrait, name typography, and primary headline.
-* **Global Removal of Location & Freelance Status**:
-  * Completely remove all instances of `"Karachi, PK"`, `"Karachi, Pakistan"`, and `"Available for Freelance & Contract"` across all sections (Hero, About section, Contact section, and Chatbot system instructions).
-  * Focus messaging strictly on technical capability, problem-solving, and client collaboration.
-* **Footer Refinement**:
-  * Add a clean, unboxed or minimal pill in the footer representing core competencies: `Data Analytics · Machine Learning · AI Applications`.
+* **Curated 3 Projects Showcase**:
+  1. **ZestFit: AI Health & Gym Management SaaS** (Full-Stack SaaS — Next.js, FastAPI, PostgreSQL, Stripe)
+  2. **MediScan AI: Document Q&A & Clinical Intelligence** (Document AI — OCR, LLM, FastAPI, React)
+  3. **Executive BI & Ecommerce Sales Intelligence Dashboard** (Data Analytics — Python, Pandas, Power BI / Recharts, SQL)
+* **Removed**:
+  * Completely remove `teachable-machine-vision` project item and its classifier component from the featured section.
+* **Layout Structure**:
+  * Balanced 3-column grid (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7`) allowing viewers to inspect all 3 solutions side-by-side.
+* **Streamlined Card Format (Problem + Solution + Tech Tags)**:
+  * Remove long feature bullet lists, extra filler text, and heavy paragraphs.
+  * Keep only:
+    - **Title & Category**: Clear editorial title with status badge (`Live App` / `Live Demo`).
+    - **Problem**: 1 clear, punchy sentence explaining the business pain point.
+    - **Solution**: 1 clear sentence explaining how the application solves it.
+    - **Tech Tags**: Clean unboxed technology stack with separator dots (`·`).
+    - **Action Buttons**: `Live Demo`, `Code`, and `Case Study`.
 
 ---
 
 ## 2. Technical Architecture & Component Flow
 
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                   Top Navigation: Cod≡r | Muhammad Anas Khan             │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-           [Top Micro-Data Bar & Left Vertical Sidebar REMOVED]
-                                     │
-┌────────────────────────────────────▼─────────────────────────────────────┐
-│ Hero Section: Pure, Uncluttered Editorial Presentation                  │
-│                                                                          │
-│  • Clean Cutout PNG Portrait with soft silhouette shadow                 │
-│  • Muhammad Anas Khan                                                    │
-│  • "I Help Businesses Turn Data Into AI Solutions"                       │
-│  • Supporting Text + 3 Action Buttons                                   │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-┌────────────────────────────────────▼─────────────────────────────────────┐
-│ About & Contact Sections: Cleaned of all location & freelance text       │
-│                                                                          │
-│  • Focused on AI/ML development, analytics dashboards, and SaaS          │
-│  • Contact channels: Email, GitHub, LinkedIn, WhatsApp/Phone             │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-┌────────────────────────────────────▼─────────────────────────────────────┐
-│ Footer: Minimalist Brand Row + Clean Expertise Badge                     │
-│  • "Data Analytics · Machine Learning · AI Applications"                 │
-└──────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                    Muhammad Anas Khan (Berghan Font Hero)                    │
+│             "I Help Businesses Turn Data Into AI Solutions"                  │
+└──────────────────────────────────────┬───────────────────────────────────────┘
+                                       │
+┌──────────────────────────────────────▼───────────────────────────────────────┐
+│        Featured Projects Section: Balanced 3-Column Responsive Grid          │
+│                                                                              │
+│ ┌─────────────────────────┐ ┌─────────────────────────┐ ┌──────────────────┐ │
+│ │ 01. ZestFit SaaS        │ │ 02. MediScan AI         │ │ 03. Executive BI │ │
+│ │ Next.js & FastAPI       │ │ OCR & LLMs              │ │ Python & Pandas  │ │
+│ │                         │ │                         │ │                  │ │
+│ │ Problem: Fragmented     │ │ Problem: Manual medical │ │ Problem: Raw     │ │
+│ │ gym tools & manual logs │ │ report review is slow   │ │ transactions hide│ │
+│ │                         │ │                         │ │ retention trends │ │
+│ │ Solution: Multi-tenant  │ │ Solution: OCR biomarker │ │ Solution: Instant│ │
+│ │ SaaS with AI routines   │ │ parsing & document Q&A  │ │ KPI curves & RFM │ │
+│ │                         │ │                         │ │ customer cohorts │ │
+│ │ Stack: Next.js · Stripe │ │ Stack: Python · LLMs    │ │ Stack: SQL · BI  │ │
+│ │ [Live Demo] [Code]      │ │ [Live Demo] [Code]      │ │ [Live Demo][Code]│ │
+│ └─────────────────────────┘ └─────────────────────────┘ └──────────────────┘ │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## 3. Step-by-Step Implementation Roadmap
 
-### Step 1: Remove Hero Micro-Data Bar and Sidebar (`src/App.tsx`)
-* Remove the top micro-data bar (`lines 346–357`):
-  ```tsx
-  {/* REMOVE: Top Micro-Data Bar */}
-  <div className="flex flex-wrap items-center justify-between ...">
-    ... AI/ML DEVELOPER • DATA ANALYTICS • AI APPLICATIONS ...
-    ... KARACHI, PK (REMOTE) • AVAILABLE FOR FREELANCE & CONTRACT ...
-  </div>
-  ```
-* Remove the floating left vertical sidebar (`lines 359–369`):
-  ```tsx
-  {/* REMOVE: Left Vertical Micro Data Column */}
-  <div className="hidden lg:flex flex-col gap-3 ...">
-    <div className="text-[#FF4D00] font-bold">01 / EXPERTISE</div>
-    ...
-  </div>
-  ```
+### Step 1: Update Project Data Schema (`src/data/projectsData.ts`)
+* Remove `teachable-machine-vision` from `FEATURED_PROJECTS`.
+* Retain the 3 core projects: `zestfit-saas`, `mediscan-document-qa`, and `ecommerce-bi-dashboard`.
+* Streamline `problem` and `solution` fields into crisp, punchy sentences.
 
-### Step 2: Purge Location & Freelance Status Across the Codebase
-* In `src/App.tsx`:
-  * Update Chatbot system instructions: remove location reference (`Karachi, Pakistan`) and freelance phrasing.
-  * Update About section and Contact section: remove any location badges, remote tags, or freelance availability indicators.
-* In `src/components/ResumeModal.tsx`:
-  * Clean location line from plain text resume and rendered HTML resume.
+### Step 2: Redesign Projects Grid & Card Layout (`src/components/ProjectsSection.tsx`)
+* Change grid container to 3-column layout: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7`.
+* Strip out large filler bullet point lists and unnecessary text layers.
+* Render clean:
+  - **Header preview**: Compact workspace metrics for ZestFit, clinical extraction preview for MediScan AI, and KPI metrics for Ecommerce BI.
+  - **Problem & Solution box**:
+    - `Problem`: What friction existed.
+    - `Solution`: How this AI/Data solution solves it.
+  - **Stack**: Single-line tech badges with `·` separators.
+  - **Direct links**: Live Demo, GitHub, and Case Study.
 
-### Step 3: Add Clean Expertise Pill to Footer (`src/App.tsx`)
-* In the site footer, place a subtle, elegant expertise pill:
-  ```tsx
-  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#262626] text-[11px] font-mono text-neutral-400">
-    <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00]" />
-    <span>Data Analytics · Machine Learning · AI Applications</span>
-  </div>
-  ```
+### Step 3: Sync Chatbot System Instructions (`src/App.tsx`)
+* Update chatbot knowledge base from 4 projects to the 3 featured projects.
 
 ### Step 4: Verification & Build Inspection
-* Run `lint_applet` (`tsc --noEmit`) to verify zero compile or type errors.
-* Run `compile_applet` to confirm the production build passes.
-* Verify dev server response on port 3000.
+* Run `lint_applet` (`tsc --noEmit`) to verify strict type safety.
+* Run `compile_applet` to test production Vite build.
+* Verify clean responsive layout across desktop, tablet, and mobile.

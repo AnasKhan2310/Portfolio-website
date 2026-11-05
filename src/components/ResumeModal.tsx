@@ -92,11 +92,7 @@ FEATURED PROJECTS:
    Document intelligence application using OCR and LLMs for clinical biomarker parsing and conversational Q&A.
    Live: https://medi-scan-ai-theta.vercel.app/
 
-3. Teachable Machine: Vision AI Classifier
-   Interactive client-side computer vision transfer-learning classifier for real-time object and gesture recognition.
-   GitHub: https://github.com/AnasKhan2310
-
-4. Executive BI & Ecommerce Sales Intelligence Dashboard
+3. Executive BI & Ecommerce Sales Intelligence Dashboard
    Executive business intelligence dashboard analyzing £10.64M revenue across 524k+ orders, RFM customer cohorts, and exportable ledgers.
    Live: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
 
@@ -248,16 +244,6 @@ EDUCATION:
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Clinical report OCR and biomarker extraction tool creating structured patient summaries and contextual Q&A.
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs sm:text-sm text-neutral-900">Teachable Machine: Vision AI Classifier</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Interactive Vision</span>
-                  </div>
-                  <p className="text-xs text-neutral-600 mt-0.5">
-                    Interactive client-side computer vision transfer-learning classifier for real-time object and gesture recognition.
                   </p>
                 </div>
 
