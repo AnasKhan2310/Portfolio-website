@@ -475,36 +475,33 @@ Style: Be professional, articulate, and honest. Avoid marketing hype or fake met
             {/* Right Column: Narrative Position Statement */}
             <div className="lg:col-span-6 flex flex-col items-start">
               
-              <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+              <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-2.5">
                 ABOUT MUHAMMAD ANAS KHAN
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-berghan text-white tracking-[-0.02em] leading-tight mb-4">
                 Turning Raw Data Into <br className="hidden sm:block" />
                 <span className="text-[#FF4D00]">Actionable AI Solutions</span>
               </h2>
 
-              <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed mb-8">
+              <div className="space-y-3 text-neutral-300 text-xs sm:text-sm leading-relaxed mb-6">
                 <p>
-                  I'm a versatile <strong className="text-white">AI/ML Developer, Data Analytics professional, and AI Applications Developer</strong> dedicated to helping businesses across different industries unlock the full value of their data.
+                  I engineer practical <strong className="text-white">machine learning models, executive BI dashboards, and full-stack AI SaaS applications</strong> that turn complex data into clear strategic decisions, automated workflows, and measurable business growth.
                 </p>
-                <p>
-                  Rather than treating AI as an abstract experiment, I engineer interactive data analytics dashboards, machine learning prediction models, and practical AI applications that solve concrete business challenges, eliminate manual bottlenecks, and empower better strategic decisions.
-                </p>
-                <p>
-                  Whether you need executive business intelligence dashboards, predictive customer churn modeling, recommendation algorithms, or full-stack AI SaaS applications, every solution is <strong className="text-white">grounded in production-ready code, transparent architectures, and measurable results</strong>.
+                <p className="text-neutral-400">
+                  Every solution is grounded in clean Python and TypeScript architecture, tested data pipelines, and production-ready code.
                 </p>
               </div>
 
               {/* Education & credentials badge */}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
-                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">EDUCATION</div>
-                  <div className="text-xs font-semibold text-white">Bachelor's in Computer Science • Federal Urdu University</div>
+                <div className="bg-[#121212] border border-[#222222] px-3.5 py-2 rounded-lg">
+                  <div className="text-[9.5px] font-mono uppercase text-[#FF4D00] font-bold">DEGREE</div>
+                  <div className="text-xs font-semibold text-white">BS in Computer Science • Federal Urdu University</div>
                 </div>
-                <div className="bg-[#121212] border border-[#222222] px-4 py-2.5 rounded-lg">
-                  <div className="text-[10px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
-                  <div className="text-xs font-semibold text-white">AI/ML Development • Data Analytics • AI Web Applications</div>
+                <div className="bg-[#121212] border border-[#222222] px-3.5 py-2 rounded-lg">
+                  <div className="text-[9.5px] font-mono uppercase text-[#FF4D00] font-bold">CORE FOCUS</div>
+                  <div className="text-xs font-semibold text-white">AI/ML • Data Analytics • Full-Stack SaaS</div>
                 </div>
               </div>
 
@@ -517,18 +514,18 @@ Style: Be professional, articulate, and honest. Avoid marketing hype or fake met
         {/* ========================================================================= */}
         {/* CONTACT / CTA SECTION */}
         {/* ========================================================================= */}
-        <section id="contact" className="py-16 lg:py-24 border-t border-[#1C1C1C] relative z-10">
+        <section id="contact" className="py-14 lg:py-20 border-t border-[#1C1C1C] relative z-10">
           
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/30 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-2.5">
               START A CONVERSATION
             </div>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-white font-display tracking-[-0.02em] mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-berghan text-white tracking-[-0.02em] mb-2.5">
               Let's Work Together
             </h2>
-            <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
+            <div className="w-10 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
             <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-              Have a data analytics challenge, need an AI/ML model or want to build a custom SaaS tool? Let's discuss how we can solve it.
+              Have a data challenge, need an ML model, or want to build a custom AI app? Let's talk.
             </p>
           </div>
 

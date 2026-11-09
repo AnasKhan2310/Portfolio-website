@@ -6,104 +6,86 @@ export const TechStackSection: React.FC = () => {
     {
       category: 'Data Analytics & Visualization',
       icon: BarChart3,
-      tagline: 'Business Intelligence & Dashboards',
+      tagline: 'BI & Dashboards',
       skills: [
-        'Power BI',
-        'Pandas',
-        'NumPy',
-        'Matplotlib & Seaborn',
-        'Recharts',
+        'Power BI & DAX',
+        'Pandas & NumPy',
+        'SQL & Query Optimization',
         'Exploratory Data Analysis (EDA)',
-        'KPI Dashboards',
-        'Statistical Modeling'
+        'KPI Dashboards & Recharts'
       ]
     },
     {
-      category: 'Python & Data Processing',
+      category: 'Python & Data Pipelines',
       icon: Database,
-      tagline: 'Pipelines & ETL Engineering',
+      tagline: 'ETL & Data Engineering',
       skills: [
         'Python (Core & Advanced)',
-        'SQL & Query Optimization',
-        'Pandas DataFrames',
         'ETL Data Pipelines',
         'Data Cleaning & Normalization',
-        'REST APIs & JSON Parsing',
-        'Regex Text Parsing'
+        'REST APIs & JSON Parsing'
       ]
     },
     {
-      category: 'Machine Learning & Predictive Modeling',
+      category: 'Machine Learning',
       icon: Brain,
-      tagline: 'Supervised Learning & Algorithms',
+      tagline: 'Predictive Modeling',
       skills: [
-        'Scikit-learn',
-        'XGBoost',
-        'Predictive Classification',
+        'Scikit-learn & XGBoost',
+        'Supervised Classification',
         'Regression Analysis',
-        'Model Evaluation (ROC-AUC, F1)',
-        'Feature Engineering',
-        'Hyperparameter Tuning'
+        'Model Tuning & ROC-AUC'
       ]
     },
     {
-      category: 'Generative AI & LLM Applications',
+      category: 'Generative AI & LLMs',
       icon: Sparkles,
-      tagline: 'Prompt Engineering & RAG',
+      tagline: 'RAG & Document Intelligence',
       skills: [
-        'OpenAI API',
-        'Anthropic Claude API',
-        'Google Gemini API',
-        'LangChain',
-        'Document Q&A Pipelines',
-        'Context Management',
-        'OCR Document Extraction'
+        'Gemini, OpenAI & Claude APIs',
+        'LangChain & RAG Workflows',
+        'Document Q&A & OCR Extraction',
+        'Prompt Engineering'
       ]
     },
     {
-      category: 'AI Agents & Chatbots',
+      category: 'AI Agents & Automation',
       icon: Bot,
-      tagline: 'Autonomous Workflows & Conversational AI',
+      tagline: 'Autonomous Workflows',
       skills: [
         'AI Chatbot Architectures',
-        'Autonomous Agents',
-        'Function Calling & Tool Use',
+        'Autonomous Agents & Function Calling',
         'n8n Workflow Automation',
-        'Webhook Integration',
-        'Event-Driven Workflows'
+        'Webhooks & Event Triggers'
       ]
     },
     {
-      category: 'Web Applications & SaaS Development',
+      category: 'Web Apps & SaaS',
       icon: Globe,
-      tagline: 'Full-Stack Software Architecture',
+      tagline: 'Full-Stack Architecture',
       skills: [
         'FastAPI (Python)',
-        'Next.js & React',
-        'TypeScript',
-        'PostgreSQL',
-        'Tailwind CSS',
-        'RESTful API Design',
-        'Stripe Payments & Webhooks',
-        'Cloud Deployment (Vercel)'
+        'Next.js, React & TypeScript',
+        'PostgreSQL & Database Design',
+        'Tailwind CSS & Stripe Integration'
       ]
     }
   ];
 
   return (
-    <section id="tech-stack" className="py-16 lg:py-24 border-t border-[#1C1C1C] relative z-10">
+    <section id="tech-stack" className="py-14 lg:py-20 border-t border-[#1C1C1C] relative z-10">
       
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-block bg-[#FF4D00]/10 border border-[#FF4D00]/25 text-[#FF4D00] text-[10px] font-mono font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-2.5">
             TECHNICAL PROFICIENCY
           </div>
-          <h2 className="text-3xl sm:text-4xl font-semibold font-display text-white tracking-[-0.02em] mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-berghan text-white tracking-[-0.02em] mb-2.5">
             Skills & Technical Tooling
           </h2>
-          <div className="w-12 h-0.5 bg-[#FF4D00] mx-auto mb-4" />
-          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
-            Practical skills, frameworks, and libraries backed by production code, machine learning pipelines, and working web applications.
+          <div className="w-10 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
+          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
+            Core tools and frameworks powering production data pipelines, ML models, and SaaS apps.
           </p>
         </div>
 

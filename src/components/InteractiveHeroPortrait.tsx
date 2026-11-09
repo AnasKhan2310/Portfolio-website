@@ -98,9 +98,9 @@ export const InteractiveHeroPortrait: React.FC<InteractiveHeroPortraitProps> = (
 
             let dotColor = '#ECECEC';
             if (x > targetW * 0.52 && (r > 130 && g > 75 && b < 105)) {
-              dotColor = '#FF8800'; // Warm amber glow
+              dotColor = '#FF4D00'; // Pure brand orange
             } else if (x > targetW * 0.65 && r > 90) {
-              dotColor = '#FFAA33';
+              dotColor = '#FF4D00';
             } else if (brightness < 0.25) {
               dotColor = 'rgba(255, 255, 255, 0.45)';
             }
