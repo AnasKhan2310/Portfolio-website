@@ -97,7 +97,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     solution: "Created an interactive executive analytics dashboard that aggregates 520,000+ orders into live revenue trends, multi-country drill-downs, and automated RFM customer cohorts.",
     technologies: ["Python", "Pandas", "Power BI / Recharts", "SQL", "TypeScript"],
     githubUrl: "https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard",
-    liveDemoUrl: "https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/",
+    liveDemoUrl: "https://ecommerce-sales-dashboard-ten.vercel.app/",
     isFeatured: true,
     order: 3,
     previewVisualType: 'bi-dashboard',

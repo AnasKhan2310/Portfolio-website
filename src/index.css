@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
 @font-face {
   font-family: 'Berghan';
   src: url('/fonts/Berghan-Regular.otf') format('opentype');
@@ -5,11 +10,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-@import "tailwindcss";
-@config "../tailwind.config.js";
 
 @theme {
   --font-berghan: 'Berghan', 'Poppins', sans-serif;

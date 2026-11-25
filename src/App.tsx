@@ -11,6 +11,7 @@ import NetworkBackground from './components/NetworkBackground';
 import TerminalTyping from './components/TerminalTyping';
 import InteractiveHeroPortrait from './components/InteractiveHeroPortrait';
 import { ProjectItem } from './data/projectsData';
+import { ANAS_CHATBOT_SYSTEM_INSTRUCTION } from './data/chatbotKnowledge';
 import { 
   Send, 
   X, 
@@ -42,7 +43,7 @@ export default function App() {
     {
       role: 'assistant',
       parts: [{
-        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan specializes in Data Analysis, AI/ML, and SaaS Development backed by real projects. How can I help you today?"
+        text: "Hello! I'm Anas's AI Assistant. Muhammad Anas Khan is an AI + Data + SaaS Developer (BSCS, Federal Urdu University) who ships deployed ML models, BI dashboards, and full-stack AI apps. What problem are you looking to solve today?"
       }]
     }
   ]);
@@ -74,38 +75,12 @@ export default function App() {
   };
 
   // System instruction for Gemini chatbot
-  const systemInstruction = `You are "Anas's AI Assistant", representing Muhammad Anas Khan, a versatile AI/ML Developer, Data Analytics Professional, and AI Applications Developer.
-
-Primary Positioning:
-- Professional Headline: "I Help Businesses Turn Data Into AI Solutions | Python | Machine Learning | AI Applications"
-- Core Capabilities:
-  1. Data Analytics & Visualization (Interactive dashboards, KPI reporting, statistical exploratory analysis in Python, Pandas, Power BI)
-  2. Machine Learning & Predictive Modeling (Supervised classification, regression, customer churn prediction, recommendation systems using Scikit-learn, XGBoost)
-  3. AI Applications & Chatbots (Document Q&A, OCR text extraction, LLM applications using OpenAI/Gemini/Anthropic, LangChain)
-  4. Web Applications & SaaS Development (Full-stack architectures using FastAPI, Next.js, PostgreSQL, Tailwind CSS)
-  5. Workflow Automation (n8n automations, event webhooks, autonomous agents)
-- Target Clients: Organizations and businesses across diverse industries (SaaS, Healthcare, Financial Services, Retail, Logistics, Enterprise Operations).
-- Key Principle: Muhammad Anas Khan does NOT specialize in a single niche; he builds tailored AI, ML, and data solutions for different business domains.
-
-Contact & Profile:
-- Name: Muhammad Anas Khan
-- Degree: BS in Computer Science from Federal Urdu University
-- Email: anaskhanz.dev@gmail.com
-- Phone / WhatsApp: +92 311 2813828
-- GitHub: https://github.com/AnasKhan2310
-- LinkedIn: https://www.linkedin.com/in/anas-khan1290/
-
-Featured Projects:
-1. ZestFit: AI Health & Gym Management SaaS (Next.js, TypeScript, FastAPI, PostgreSQL, Stripe) - Live Demo: https://zestfitmanagement.vercel.app/
-2. MediScan AI: Document Q&A & Clinical Intelligence (Python, LLMs, LangChain, OCR, FastAPI, React) - Live Demo: https://medi-scan-ai-theta.vercel.app/
-3. Executive BI & Ecommerce Sales Intelligence Dashboard (Python, Pandas, Power BI / Recharts, SQL) - Live Demo: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/
-
-Style: Be professional, articulate, and honest. Avoid marketing hype or fake metrics. Highlight real software architecture, clean code, and working project links.`;
+  const systemInstruction = ANAS_CHATBOT_SYSTEM_INSTRUCTION;
 
   const suggestions = [
-    "What kind of AI & ML solutions can Anas build for my business?",
-    "Tell me about the 3 featured projects and working demos",
-    "How can we collaborate on an AI or data project?"
+    "How can Anas automate manual Excel/reporting or integrate AI?",
+    "Tell me about Anas's deployed projects (MediScan AI, ZestFit & more)",
+    "What roles, tech stack & services does Anas offer?"
   ];
 
   // Send message to Server

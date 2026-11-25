@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  server: {
+    hmr: false,
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true

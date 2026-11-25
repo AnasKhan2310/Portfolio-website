@@ -4,12 +4,7 @@ import {
   ExternalLink, 
   Github, 
   FileText, 
-  TrendingUp, 
-  Dumbbell, 
-  ArrowUpRight,
-  FileSearch,
-  AlertCircle,
-  CheckCircle2
+  ArrowUpRight
 } from 'lucide-react';
 
 interface ProjectsSectionProps {
@@ -34,10 +29,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-berghan text-white tracking-[-0.02em] mb-2.5">
             Featured Projects & Real Solutions
           </h2>
-          <div className="w-10 h-0.5 bg-[#FF4D00] mx-auto mb-3" />
-          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed">
-            Production SaaS software, clinical document intelligence, and enterprise BI dashboards.
-          </p>
+          <div className="w-10 h-0.5 bg-[#FF4D00] mx-auto" />
         </div>
 
         {/* 3-Column Responsive Grid */}
@@ -47,148 +39,28 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               key={project.id}
               className="bg-[#121212] border border-[#222222] hover:border-[#383838] rounded-xl flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] group"
             >
-              <div className="flex flex-col flex-1">
-                
-                {/* 1. Project Visual Preview Header */}
-                <div className="p-3.5 bg-[#0D0D0D] border-b border-[#1E1E1E]">
-                  
-                  {/* Category & Status Metadata */}
-                  <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-2.5">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[#FF4D00] font-bold">0{index + 1}.</span>
-                      <span className="text-neutral-300 font-medium">{project.category}</span>
-                      <span aria-hidden="true" className="text-neutral-600">·</span>
-                      <span className="text-neutral-400">{project.statusBadge}</span>
-                    </div>
-
-                    {project.liveDemoUrl && (
-                      <span className="text-[10px] text-[#FF4D00] flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D00] animate-pulse" />
-                        <span>Online</span>
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Visual UI Previews for each project */}
-                  {project.previewVisualType === 'saas-platform' && (
-                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-2.5 text-xs">
-                      <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#222222]">
-                        <div className="flex items-center gap-2">
-                          <Dumbbell size={13} className="text-[#FF4D00]" />
-                          <span className="font-semibold text-white text-[11px]">ZestFit Gym SaaS</span>
-                        </div>
-                        <span className="text-[9.5px] font-mono text-neutral-500">FastAPI & Stripe</span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-1.5 text-center">
-                        <div className="p-1 rounded bg-[#181818] border border-[#222222]">
-                          <div className="text-[9px] font-mono text-neutral-400">Members</div>
-                          <div className="text-xs font-bold text-white">140+</div>
-                        </div>
-                        <div className="p-1 rounded bg-[#181818] border border-[#222222]">
-                          <div className="text-[9px] font-mono text-neutral-400">Routines</div>
-                          <div className="text-xs font-bold text-[#FF4D00]">AI Engine</div>
-                        </div>
-                        <div className="p-1 rounded bg-[#181818] border border-[#222222]">
-                          <div className="text-[9px] font-mono text-neutral-400">Billing</div>
-                          <div className="text-xs font-bold text-white">Stripe</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {project.previewVisualType === 'document-qa' && (
-                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-2.5 text-xs">
-                      <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#222222]">
-                        <div className="flex items-center gap-2">
-                          <FileSearch size={13} className="text-[#FF4D00]" />
-                          <span className="font-semibold text-white text-[11px]">MediScan Clinical AI</span>
-                        </div>
-                        <span className="text-[9.5px] font-mono text-[#FF4D00]">OCR: 99.2%</span>
-                      </div>
-                      <div className="bg-[#101010] p-1.5 rounded border border-[#222222] font-mono text-[9.5px] text-neutral-300 space-y-0.5">
-                        <div className="flex justify-between">
-                          <span>FASTING GLUCOSE:</span>
-                          <span className="text-[#FF4D00] font-bold">112 mg/dL (ELEVATED)</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>TOTAL CHOLESTEROL:</span>
-                          <span className="text-neutral-200 font-bold">178 mg/dL (NORMAL)</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {project.previewVisualType === 'bi-dashboard' && (
-                    <div className="rounded-lg bg-[#141414] border border-[#262626] p-2.5 text-xs">
-                      <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#222222]">
-                        <div className="flex items-center gap-2">
-                          <TrendingUp size={13} className="text-[#FF4D00]" />
-                          <span className="font-semibold text-white text-[11px]">520K+ Orders ETL</span>
-                        </div>
-                        <span className="text-[9.5px] font-mono text-neutral-400">Power BI / SQL</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-1.5 text-center">
-                        <div className="p-1 rounded bg-[#181818] border border-[#222222]">
-                          <div className="text-[9px] font-mono text-neutral-400">Revenue</div>
-                          <div className="text-xs font-bold text-white">£10.64M</div>
-                        </div>
-                        <div className="p-1 rounded bg-[#181818] border border-[#222222]">
-                          <div className="text-[9px] font-mono text-neutral-400">Avg Order</div>
-                          <div className="text-xs font-bold text-[#FF4D00]">£486.20</div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
+              {/* 1. Project Card Content: Minimal Title & Tech Stack Only */}
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-4">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#FF4D00] block mb-1.5">
+                    0{index + 1}.
+                  </span>
+                  <h3 className="text-base sm:text-lg font-bold font-berghan text-white tracking-tight group-hover:text-[#FF4D00] transition-colors leading-snug">
+                    {project.title}
+                  </h3>
                 </div>
 
-                {/* 2. Project Card Content: Short Problem & Solution Only */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-                  
-                  <div>
-                    {/* Project Title */}
-                    <h3 className="text-base font-bold font-berghan text-white tracking-tight mb-3 group-hover:text-[#FF4D00] transition-colors leading-snug">
-                      {project.title}
-                    </h3>
-
-                    {/* Problem Section */}
-                    <div className="mb-2.5 bg-[#0F0F0F] border border-[#202020] rounded-lg p-2.5">
-                      <div className="flex items-center gap-1.5 text-[9.5px] font-mono font-bold uppercase tracking-wider text-neutral-400 mb-0.5">
-                        <AlertCircle size={11} className="shrink-0 text-neutral-400" />
-                        <span>Problem</span>
-                      </div>
-                      <p className="text-[11.5px] text-neutral-300 leading-relaxed">
-                        {project.problem}
-                      </p>
-                    </div>
-
-                    {/* Solution Section */}
-                    <div className="mb-3 bg-[#0F0F0F] border border-[#202020] rounded-lg p-2.5">
-                      <div className="flex items-center gap-1.5 text-[9.5px] font-mono font-bold uppercase tracking-wider text-[#FF4D00] mb-0.5">
-                        <CheckCircle2 size={11} className="shrink-0 text-[#FF4D00]" />
-                        <span>Solution</span>
-                      </div>
-                      <p className="text-[11.5px] text-neutral-300 leading-relaxed">
-                        {project.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Tech Tags */}
-                  <div className="pt-2.5 border-t border-[#1C1C1C] text-[10.5px] font-mono text-neutral-400 flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="text-neutral-500 font-semibold">Tech:</span>
-                    {project.technologies.map((tech, tIdx) => (
-                      <React.Fragment key={tIdx}>
-                        <span className="hover:text-white transition-colors">{tech}</span>
-                        {tIdx < project.technologies.length - 1 && (
-                          <span aria-hidden="true" className="text-neutral-600">·</span>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </div>
-
+                {/* Tech Tags */}
+                <div className="pt-3 border-t border-[#1C1C1C] text-[10.5px] font-mono text-neutral-400 flex flex-wrap items-center gap-x-2 gap-y-1">
+                  {project.technologies.map((tech, tIdx) => (
+                    <React.Fragment key={tIdx}>
+                      <span className="hover:text-white transition-colors">{tech}</span>
+                      {tIdx < project.technologies.length - 1 && (
+                        <span aria-hidden="true" className="text-neutral-600">·</span>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </div>
-
               </div>
 
               {/* 3. Bottom Action Buttons */}

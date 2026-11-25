@@ -94,7 +94,7 @@ FEATURED PROJECTS:
 
 3. Executive BI & Ecommerce Sales Intelligence Dashboard
    Executive business intelligence dashboard analyzing £10.64M revenue across 524k+ orders, RFM customer cohorts, and exportable ledgers.
-   Live: https://ecommerce-sales-intelligence-dashbo-flame.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
+   Live: https://ecommerce-sales-dashboard-ten.vercel.app/ | GitHub: https://github.com/AnasKhan2310/Ecommerce-Sales-Intelligence-Dashboard
 
 EDUCATION:
 - Bachelor of Science in Computer Science (BSCS)
@@ -230,7 +230,7 @@ EDUCATION:
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-neutral-900">ZestFit: AI Fitness & Nutrition SaaS</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Live SaaS</span>
+                    <a href="https://zestfitmanagement.vercel.app/" target="_blank" rel="noreferrer" className="text-[11px] text-[#FF4D00] font-semibold hover:underline">Live SaaS ↗</a>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Engineered full-stack subscription platform with dynamic AI routine generators, macro calculation, and central client tracking.
@@ -240,7 +240,7 @@ EDUCATION:
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-neutral-900">MediScan AI: Clinical Document Intelligence</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Document Intelligence</span>
+                    <a href="https://medi-scan-ai-theta.vercel.app/" target="_blank" rel="noreferrer" className="text-[11px] text-[#FF4D00] font-semibold hover:underline">Live AI App ↗</a>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Clinical report OCR and biomarker extraction tool creating structured patient summaries and contextual Q&A.
@@ -250,7 +250,7 @@ EDUCATION:
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs sm:text-sm text-neutral-900">Executive BI & Sales Intelligence Dashboard</span>
-                    <span className="text-[11px] text-[#FF4D00] font-semibold">Executive BI</span>
+                    <a href="https://ecommerce-sales-dashboard-ten.vercel.app/" target="_blank" rel="noreferrer" className="text-[11px] text-[#FF4D00] font-semibold hover:underline">Live Dashboard ↗</a>
                   </div>
                   <p className="text-xs text-neutral-600 mt-0.5">
                     Analyzed £10.64M revenue and 524,000+ orders with Python data modeling, RFM customer segmentation, multi-country drill-downs, and dynamic exportable ledgers.
